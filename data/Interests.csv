@@ -1,0 +1,167 @@
+InterestID,InterestName,InterestCategoryID
+2,Action,2
+3,Action Sports,4
+4,Adventure/Fantasy,2
+5,Alternative,1
+7,Animated,2
+8,Anime,2
+9,Art,6
+10,Arts & Crafts,3
+11,Baking,3
+12,Band/Pep Band,7
+13,Baseball,4
+14,Basketball,4
+16,Bluegrass,1
+17,Boating ,4
+18,Boxing,4
+20,Bro-mance/Buddy Comedy,2
+21,Business,6
+25,Cheerleading,7
+26,Choir,7
+27,Classic Rock,1
+28,Classical,1
+29,Comedy,2
+31,Communications,6
+32,Community Service,7
+33,Country,1
+34,Crew,4
+35,Cultural/Gender Studies,6
+37,Cycling,4
+39,Dance Team,7
+40,Dance/House Music,1
+44,Diversity/Culture,7
+45,Documentary,2
+46,Drama,2
+47,Dubstep,1
+49,Education,6
+50,English,6
+51,Equestrian,4
+53,Fantasy Sports,3
+54,Fashion,3
+55,Fencing,4
+56,Fitness,7
+57,Fitness/Weights,4
+58,Fitness/Working Out,3
+60,Football,4
+61,Foreign Language,6
+62,Foreign Language,2
+64,Gaming,3
+65,Golf,4
+66,Gospel,1
+68,Gymnastics,4
+69,Hanging with Friends,3
+71,Health and Fitness,7
+72,Hip Hop,1
+73,History,6
+75,Hockey,4
+76,Honor Societies,7
+77,Honors Program,6
+78,Horror,2
+79,Ice Skating,4
+80,Indie,1
+81,Indie ,2
+82,International Studies,6
+83,Intramural sports,7
+85,Jazz,1
+86,Job,7
+87,Journalism,7
+88,Lacrosse,4
+90,Latin,1
+91,Law,6
+92,Leadership Organizations,7
+93,Live Concerts,3
+94,Live Sporting Events,3
+96,Music,6
+97,Musical Instrument,3
+98,NASCAR,4
+103,Nursing,6
+104,Occupational Therapy,6
+105,Orchestra/Musical Ensemble,7
+106,Philanthrophy,7
+107,Philosophy,6
+108,Photography,3
+109,Political Science,6
+110,Politics,7
+111,Polo,4
+112,Pop/Top 40,1
+114,Pre-Med,6
+118,Psychology,6
+119,Punk,1
+120,R&B,1
+121,Rap,1
+122,Reading,3
+123,Religious/Spiritual,7
+124,Rock,1
+125,Romance,2
+126,Romantic Comedy,2
+127,ROTC,7
+128,Rugby,4
+129,Running/Jogging,4
+130,Sand Volleyball,4
+132,Sci-Fi,2
+133,Sciences,6
+134,Shopping,3
+135,Show Choir,7
+136,Skiing,4
+137,Snowboarding,4
+138,Soccer,4
+139,Social Work,6
+140,Softball,4
+141,Soul,1
+142,Spirit/Pep Squad,7
+143,Sports Marketing,6
+144,Student Government,7
+145,Student Newspaper,7
+146,Study Abroad,7
+147,Swimming,4
+148,Techno,1
+149,Tennis,4
+150,Theatre,6
+151,Theatre,7
+152,Theology,6
+153,Thriller,2
+156,Track & Field,4
+157,Traveling,3
+158,Twitter,3
+159,Ultimate Frisbee,4
+160,Undecided,6
+164,Visual Arts,7
+165,Volleyball,4
+166,Volunteering,3
+167,Watching Movies,3
+168,Water Polo,4
+171,Work/Internship,7
+172,Writing/Journaling,3
+173,Mathematics,6
+174,Computer Science,6
+175,Latin/Classics/Classic Languages,6
+176,Athletic Training,6
+177,Bass Fishing,4
+178,Triathlon,4
+179,Film/Television/AV Production,7
+180,American Horror Story,8
+181,Big Bang Theory,8
+182,Bobs Burger's,8
+183,Chopped,8
+184,Criminal Minds,8
+185,Empire,8
+186,Family Guy,8
+187,Friends,8
+188,Grey's Anatomy,8
+189,How I Met Your Mother,8
+190,How to Get Away with Murder,8
+191,It's Always Sunny in Philadelphia,8
+193,Mad Men,8
+194,Once Upon a Time,8
+195,Orange is the New Black,8
+196,Parks & Rec,8
+197,Prison Break,8
+199,SNL,8
+200,Sons of Anarchy,8
+201,Supernatural,8
+202,The Office,8
+203,The Voice,8
+204,Walking Dead,8
+205,Gotham,8
+207,Game of Thrones,8
+208,Atlanta,7
