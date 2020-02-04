@@ -11,6 +11,3 @@ def nearest_neighbor():
     # go to shortest distance vertex
     # mark it as visited
     return 0
-
-def a():
-    return 0
