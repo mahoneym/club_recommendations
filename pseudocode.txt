@@ -1,0 +1,23 @@
+class user:
+  interest* interests[SOME_NUMBER]
+  int id
+
+class interests:                      // interest or club
+  int category
+  interest* related[SOME_NUMBER]      // can be interest or clubs
+  string name
+  int id
+  int is_club
+
+insert_user():
+  create user node
+  add a pointer to each of the user's interests in their array
+
+insert_club():
+  create interest node
+  connect node to interests/categories
+
+create_user_recommendations(user):
+    make a list of the related clubs and interests
+    cut down the list to only clubs
+    check for duplicates? go from top to bottom? pick them randomly?

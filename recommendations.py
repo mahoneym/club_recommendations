@@ -4,6 +4,11 @@ def centroid_of_user_points():
     # find the middle of them
     return 0
 
+def insert_user():
+    # add a pointer to each of their interests
+
+    return 0
+
 # find nearest neighbor point
 def nearest_neighbor():
     # start at vertex- mark it as visited
