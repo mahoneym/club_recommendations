@@ -51,7 +51,7 @@ create_user_recommendations(user):
     check for duplicates? go from top to bottom? pick them randomly?
 
 find_related_clubs_to_user(user):
-  go to the user =>
+  go to the user => how is based on how users are stored 
   follow a few of the user's interest pointers
   go to a few of the clubs related organizations
 
