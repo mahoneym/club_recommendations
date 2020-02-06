@@ -10,13 +10,24 @@ class interests:                      // interest or club
   int id
   int is_club
 
+
 /* data structures */
-=> some way to store users => linkedlist? array?
-    =>> have one list/array for each graduating class?
+=> some way to store users => LinkedList? Array?
+    =>> have one list/array for each graduating class? still need a way to go directly to the student.. hmmmm
+
+=> some way to store clubs => so I don't lose it before I use it
+
 
 /* methods I could use */
-insert_user():
-  create user node
+main():
+  create the club nodes and put them somewhere organized
+  create interest nodes => they'll be the same every time
+  add_user_data()
+
+// add a user to the graph thingy
+insert_user(user_id):
+  if(!find_user):                   // double check the user doesn't already exist
+    create user node
 
 add_user_interest():
     add a pointer to each of the user's interests in their array
@@ -32,10 +43,17 @@ insert_club():
   create interest node
   connect node to interests/categories
 
+// come up with recommendations for the user
 create_user_recommendations(user):
+    find_related_clubs_to_user(user)
     make a list of the related clubs and interests
     cut down the list to only clubs
     check for duplicates? go from top to bottom? pick them randomly?
+
+find_related_clubs_to_user(user):
+  go to the user =>
+  follow a few of the user's interest pointers
+  go to a few of the clubs related organizations
 
 add_user_data():
   if(!user_exists):
@@ -43,7 +61,6 @@ add_user_data():
   while(still data available):
     add_user_interest()
 
-// NULL => user not found
-// pointer to the user
+// returns: NULL- user not found; a pointer to the user
 find_user():
-  // depends on how i store it
+  // depends on how I store it
