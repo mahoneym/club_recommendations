@@ -1,3 +1,4 @@
+/* objects/structs that I will need */
 class user:
   interest* interests[SOME_NUMBER]
   int id
@@ -9,9 +10,23 @@ class interests:                      // interest or club
   int id
   int is_club
 
+/* data structures */
+=> some way to store users => linkedlist? array?
+    =>> have one list/array for each graduating class?
+
+/* methods I could use */
 insert_user():
   create user node
-  add a pointer to each of the user's interests in their array
+
+add_user_interest():
+    add a pointer to each of the user's interests in their array
+    if(connection_between_clubs):   // how do i test this
+      make club connection
+    else:
+      add one to the weight of the connection between two clubs
+
+look_for_connection_between_clubs():
+  go through and look for the right one?  // there has to be a better way
 
 insert_club():
   create interest node
@@ -21,3 +36,14 @@ create_user_recommendations(user):
     make a list of the related clubs and interests
     cut down the list to only clubs
     check for duplicates? go from top to bottom? pick them randomly?
+
+add_user_data():
+  if(!user_exists):
+    insert_user()
+  while(still data available):
+    add_user_interest()
+
+// NULL => user not found
+// pointer to the user
+find_user():
+  // depends on how i store it
