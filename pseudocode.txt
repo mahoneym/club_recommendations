@@ -1,9 +1,9 @@
 /* objects/structs that I will need */
-class user:
+class user:                           // if I do the database idea I don't need this
   interest* interests[SOME_NUMBER]
   int id
 
-class interests:                      // interest or club
+class interests:                      // interest or club but i will need this to store pointers to related clubs
   int category
   interest* related[SOME_NUMBER]      // can be interest or clubs
   string name
