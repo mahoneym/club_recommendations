@@ -20,7 +20,7 @@ class interests:                      // interest or club
 
 /* methods I could use */
 main():
-  create the club nodes and put them somewhere organized
+  create the club AND interest nodes and put them somewhere organized
   create interest nodes => they'll be the same every time
   add_user_data()
 
@@ -65,7 +65,10 @@ add_user_data():
 find_user():
   // depends on how I store users
 
-/*  Where will data be stored?
+/* RANDOM NOTES */
+
+/*  Where will data be stored? */
+/*
 Database seems obvious if web development is coming.
   => Each excel file could be a database table
   => what about storing the graph?
@@ -80,7 +83,8 @@ Database seems obvious if web development is coming.
       if i was not thinking about putting it into web development
 */
 
-/* Category Jazz that I want to try to understand
+/* Category Jazz that I want to try to understand */
+/*
 - interests (interests.csv): seem like what freshmen get to check boxes; includes tv shows, pep band,
     some clubs, music genres, hobbies, etc.
 - Interest categories: more abstract versions of interests; 8 of them; each of the interests are put
@@ -89,7 +93,8 @@ Database seems obvious if web development is coming.
     others could be in multiple or are more abstract than the interests.csv
 */
 
-/* Questions I have about the system presented in the data
+/* Questions I have about the system presented in the data */
+/*
 1. why can't club categories be one of the other categories? Similarly, why are there so many categories of categories?
 2. Is it possible to avoid a few of these categories of categories?
 3. Is it legal to store pointers in a database? (users have to be in a database anyway right)
