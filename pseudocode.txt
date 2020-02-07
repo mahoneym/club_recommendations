@@ -73,7 +73,8 @@ Database seems obvious if web development is coming.
           =>>> wait.. do I need user nodes then? I could just use a student's database entry.
           =>>> could I store interests in the database instead of pointers to their nodes?
                   => do students pick the same number all the time? How do I account for more/less in a database?
-                  => each club has a code that could represent it
+                  => each club has a code that could represent it => could I have booleans for each interest? Then have
+                        another database with clubs and a pointer to its node
                   => have a hash-map type thing that could, given a club code, return the pointer to the club's node
   => the recommendation will be running on the server => could the graph be stored in memory like I would
       if i was not thinking about putting it into web development
