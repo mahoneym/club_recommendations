@@ -79,3 +79,18 @@ Database seems obvious if web development is coming.
   => the recommendation will be running on the server => could the graph be stored in memory like I would
       if i was not thinking about putting it into web development
 */
+
+/* Category Jazz that I want to try to understand
+- interests (interests.csv): seem like what freshmen get to check boxes; includes tv shows, pep band,
+    some clubs, music genres, hobbies, etc.
+- Interest categories: more abstract versions of interests; 8 of them; each of the interests are put
+    into one of these categories
+- club categories: not sure where some came from; some seem to be the same as those in interests.csv;
+    others could be in multiple or are more abstract than the interests.csv
+*/
+
+/* Questions I have about the system presented in the data
+1. why can't club categories be one of the other categories? Similarly, why are there so many categories of categories?
+2. Is it possible to avoid a few of these categories of categories?
+3. Is it legal to store pointers in a database? (users have to be in a database anyway right)
+*/
