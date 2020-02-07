@@ -51,16 +51,30 @@ create_user_recommendations(user):
     check for duplicates? go from top to bottom? pick them randomly?
 
 find_related_clubs_to_user(user):
-  go to the user => how is based on how users are stored 
+  go to the user => how is based on how users are stored
   follow a few of the user's interest pointers
   go to a few of the clubs related organizations
 
 add_user_data():
   if(!user_exists):
     insert_user()
-  while(still data available):
-    add_user_interest()
+  add arrows for user
+  link 2 organizations?
 
 // returns: NULL- user not found; a pointer to the user
 find_user():
-  // depends on how I store it
+  // depends on how I store users
+
+/*  Where will data be stored?
+Database seems obvious if web development is coming.
+  => Each excel file could be a database table
+  => what about storing the graph?
+    =>> could the pointers to the users be stored in the database? that seems bad to me for some reason..
+          =>>> wait.. do I need user nodes then? I could just use a student's database entry.
+          =>>> could I store interests in the database instead of pointers to their nodes?
+                  => do students pick the same number all the time? How do I account for more/less in a database?
+                  => each club has a code that could represent it
+                  => have a hash-map type thing that could, given a club code, return the pointer to the club's node
+  => the recommendation will be running on the server => could the graph be stored in memory like I would
+      if i was not thinking about putting it into web development
+*/
