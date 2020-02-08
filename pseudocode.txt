@@ -11,17 +11,19 @@ class interests:                      // interest or club but i will need this t
   int is_club
 
 
-/* data structures */
+/* data structures => can I just use a hashmap? it seems like the obvious choice but i dk */
 => some way to store users => LinkedList? Array?
     =>> have one list/array for each graduating class? still need a way to go directly to the student.. hmmmm
+    =>> thought about using a pointer or something in the database, but that just feels wrong to me
 
-=> some way to store clubs => so I don't lose it before I use it
+=> some way to store clubs => so I don't lose the node before I use it
 
 
 /* methods I could use */
 main():
   create the club AND interest nodes and put them somewhere organized
   create interest nodes => they'll be the same every time
+  connect interest nodes to the relevant clubs
   add_user_data()
 
 // add a user to the graph thingy
@@ -53,7 +55,7 @@ create_user_recommendations(user):
 find_related_clubs_to_user(user):
   go to the user => how is based on how users are stored
   follow a few of the user's interest pointers
-  go to a few of the clubs related organizations
+  go to a few of those clubs related organizations
 
 add_user_data():
   if(!user_exists):
