@@ -5,11 +5,25 @@ class user:                           // if I do the database idea I don't need 
 
 class interests:                      // interest or club but i will need this to store pointers to related clubs
   int category
-  interest* related[SOME_NUMBER]      // can be interest or clubs
+  interest* related[SOME_OTHER_NUMBER]      // can be interest or clubs
   string name
   int id
   int is_club
 
+/*
+=> maybe separate out clubs and interests => this would allow users who are actually in clubs to
+    have the recommendations based on just clubs
+=> this would just mean putting another array[list] in the user object/struct
+=> PROBLEM: how would i differentiate between the clubs and interests on the form => would
+    that just be another step that may not be worth it?
+    =>> i could use the is_club boolean that is already present in the interest struct/object
+*/
+
+/* thoughts on weighing the connectors between the nodes
+- it would be useful for recommending the most common other clubs that people in a certain organization are interested in
+- possible downfall: would it lead to only recommending clubs that are already popular? E.g. Everyone is in extreme
+    fans => recommending extreme fans is exactly 0 help
+*/
 
 /* data structures => can I just use a hashmap? it seems like the obvious choice but i dk */
 => some way to store users => LinkedList? Array?
