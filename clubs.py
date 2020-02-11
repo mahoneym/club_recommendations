@@ -17,4 +17,5 @@ class Clubs:
     # add a related club by pointing to it in the related array
     def add_related():
         # append the related array with the interest
+        related.append();
         return 0

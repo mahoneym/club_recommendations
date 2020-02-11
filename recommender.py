@@ -2,6 +2,7 @@ import clubs.py
 import user.py
 
 class Recommender:
+    """The hub of activity in the project"""
     users                   # a dictionary of the students
     clubs                   # a dictionary of the created clubs
 
@@ -18,8 +19,21 @@ class Recommender:
         # call __init__ of the User class
         return 0
 
-    def readClubData(self):
+# the read data methods are taking it from excel spreadsheets and doing the appropriate
+
+    def __readClubData(self):
+        # open club information
         return 0
 
-    def readUserData():
+    def __readUserData():
+        return 0
+
+    def getClubPointer():
+
+        return 0
+
+    def createUserRecommendations():
+        # get user's node address
+        # go to a club in the user's array
+        # follow one of the higher rated related clubs
         return 0
