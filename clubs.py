@@ -19,8 +19,8 @@ class Clubs:
     # add a related club by pointing to it in the related array
     # returns 0 if the connection was added; o.w. returns -1
     def addRelated(clubName):
-        ptr = getClubPointer(clubName)                # get pointer to the club in the recommender object
-        flag = -1                                     # assumes the connection will not be added
+        ptr = getClubPointer(clubName)                   # get pointer to the club in the recommender object
+        flag = -1                                        # assumes the connection will not be added
         if(ptr != -1):
             newConnection = graph_edge(ptr, clubName)    # create the graph_edge object
             related.append(newConnection);               # append the related array with the object
