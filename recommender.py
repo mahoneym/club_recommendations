@@ -5,6 +5,7 @@ class Recommender:
     """The hub of activity in the project"""
     __users                   # a private dictionary of the students
     __clubs                   # a private dictionary of the created clubs
+
     # __users: id => ptr to user object
     # the __club: name => ptr to club object
 

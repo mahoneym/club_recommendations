@@ -13,18 +13,18 @@ class User:
         self.id = studentId
         self.name = studentName
 
-
     def addClub(clubName):
         # check that the club isn't already being pointed to
         for club in clubs:                                      # loop through each of the clubs
             if (club.destination == clubName):                  # check the graph_edge destinations to be the same as the parameter
-                return -1                                       # Get out of here cause it's already here..
+                return -1                                       # Get out of here cause the club is already here..
         getClubPointer(clubName)                                # get a pointer to the club from recommender class
         newClub = graph_edge(a)                                 # create a graph_edge object
         clubs.append(newClub)                                   # append the graph_edge object to the clubs dictionary
         # make connections between clubs to the club I just added to this user
         return 0
 
+    # pre-condition:
     def findClubs():
         return 0
 
