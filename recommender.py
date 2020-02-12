@@ -17,8 +17,11 @@ class Recommender:
         readClubData()
         return 0
 
-    def addUser():
+    def addUser(id, studentName):
         # call __init__ of the user class
+        newUser = User(id, studentName)
+        ptr = id(newUser)
+        __users.update({id: ptr})
         return 0
 
     # return the id of the club if it is found; o.w. return -1
