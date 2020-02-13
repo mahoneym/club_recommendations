@@ -3,6 +3,9 @@ import user.py
 
 class Recommender:
     """The hub of activity in the project"""
+
+    # these need to be instance variables i think
+    # i think if they aren't then how will I deal with them in user
     __users                   # a private dictionary of the students
     __clubs                   # a private dictionary of the created clubs
 
@@ -33,10 +36,12 @@ class Recommender:
         return -1
 
     def createUserRecommendations():
+        recommendations = []
         # get user's node address
-        # go to a club in the user's array
-        # follow one of the higher rated related clubs
-        return 0
+        for user in __users:
+            # call findClub() in the user's object to get 3 recommendations
+            recommendations = user.findClub()
+        return recommendations
 
     # the read data methods are taking it from excel spreadsheets
     def __readClubData():

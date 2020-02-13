@@ -5,14 +5,12 @@ import random
 
 class User:
     """Represents a student in the recommendation system"""
-    clubs           # put graoh edge objects for the student's interests
+    clubs           # put graph edge objects for the student's interests
     id              # a unique id for the user
-    name            # student's full name
 
     def __init__(self, studentId, studentName):
         self.clubs = []
         self.id = studentId
-        self.name = studentName
 
     def addClub(clubName):
         # check that the club isn't already being pointed to
@@ -22,16 +20,28 @@ class User:
         getClubPointer(clubName)                            # get a pointer to the club from recommender class
         newClub = graph_edge(a)                             # create a graph_edge object
         clubs.append(newClub)                               # append the graph_edge object to the clubs dictionary
-        # make connections between clubs to the club I just added to this user
+
+        # make connections between clubs to the club I just added to this user (A)
+        # go through each club in the user's array
+        # for each club:
+            # make a pointer in club A to it
+            # make a pointer from the club to club A
         return 0
 
-    # pre-condition:
-    def findClubs():
-        # https://docs.python.org/3.8/library/random.html
-        index = random.randrange(len(clubs)) # get random number
-        index = index % len(clubs)           # mod it by the number of things in the clubs array
-        # go to that club
-        clubs[index].pointer
+    def findClub():
+        # find club with highest weight
+        index = 0
+        # set index and weight to a negative number
+        # so we will know if something messed up
+        maxIndex = -1
+        maxWeight = -1
+        while(index < len(clubs)):
+            if club.weight > maxWeight:
+                maxIndex = index
+                maxWeight = club.Weight
+            index++
+        # follow the club index to the club's actual object
+        # look for the club's heaviest edge
         # follow one of the pointers and get it back
         return 0
 
