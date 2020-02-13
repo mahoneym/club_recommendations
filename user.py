@@ -1,12 +1,13 @@
 from clubs.py import addRelated
 from recommender.py import getClubPointer
 import graph_edge.py
+import random
 
 class User:
     """Represents a student in the recommendation system"""
-    clubs           # put pointers to the student's interests in here
+    clubs           # put graoh edge objects for the student's interests
     id              # a unique id for the user
-    name
+    name            # student's full name
 
     def __init__(self, studentId, studentName):
         self.clubs = []
@@ -26,6 +27,12 @@ class User:
 
     # pre-condition:
     def findClubs():
+        # https://docs.python.org/3.8/library/random.html
+        index = random.randrange(len(clubs)) # get random number
+        index = index % len(clubs)           # mod it by the number of things in the clubs array
+        # go to that club
+        clubs[index].pointer
+        # follow one of the pointers and get it back
         return 0
 
     def addUserData():
