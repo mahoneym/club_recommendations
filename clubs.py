@@ -1,13 +1,13 @@
-import user.py
-import graph_edge.py
-from recommender.py import getClubPointer
+import user
+import graph_edge
+import recommender
 
 class Clubs:
     """Represents clubs at Xavier University"""
-    category
-    related
-    name
-    id
+    category = ""
+    related = []
+    name = ""
+    id = 0
 
     # the constructor for the Clubs class
     def __init__(self, clubName, clubCategory, clubID):

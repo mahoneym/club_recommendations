@@ -1,6 +1,6 @@
-from clubs.py import addRelated
-from recommender.py import getClubPointer
-import graph_edge.py
+import clubs
+import recommender
+import graph_edge
 import random
 
 class User:
@@ -39,7 +39,7 @@ class User:
             if club.weight > maxWeight:
                 maxIndex = index
                 maxWeight = club.Weight
-            index++
+            index = index + 1
         # follow the club index to the club's actual object
         # look for the club's heaviest edge
         # follow one of the pointers and get it back
