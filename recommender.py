@@ -9,8 +9,10 @@ class Recommender:
     __users = []                   # a private dictionary of the students
     __clubs = []                   # a private dictionary of the created clubs
 
-    # __users: id => ptr to user object
-    # the __club: name => ptr to club object
+    # all variables are pointers
+    # I don't need to have the value be pointers
+    # __users: id => user object
+    # __club: name => club object
 
     def __init__(self):
         # read in the data for users
@@ -54,7 +56,29 @@ class Recommender:
     # the read data methods are taking it from excel spreadsheets
     def __readClubData():
         # open club information
+        data = __readExcelData("")
+        clubName = ""
+        clubCategory = ""
+        clubId = None
+        newClub = Club(clubName, clubCategory, clubID)
         return 0
 
     def __readUserData():
+        data = __readExcelData("")
+        studentId = -1
+        newUser = User(studentId)
         return 0
+
+    def __readExcelData(filePath):
+        data = None
+        if(1 == 1):               # if the file has been completely read
+            data = -1
+        elif("" in filePath):     # the data is abput student interests
+            # parse data from a line
+            # deal with it
+            data = 0
+        else:                   # the data is about clubs
+            # parse data from a line
+            # deal with that
+            data = 1
+        return data
