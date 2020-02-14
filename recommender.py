@@ -17,10 +17,10 @@ class Recommender:
     def __init__(self):
         # read in the data for users
         #self.__users                      # initiate to an empty array
-        readUserData()
+        #readUserData()
         # read in the data for clubs
         #self.__clubs                      # initiate to an empty array
-        readClubData()
+        #readClubData()
         return 0
 
     # create a user and add to the __user dictionary
@@ -31,6 +31,9 @@ class Recommender:
         __users.update({id: newUser})               # add the user to the dict
         return 0
 
+    # add a new club to the list
+    # param: the name of the club, its category, and its ID
+    # returns: 0
     def addClub(clubName, clubCategory, clubID):
         newClub = Club(clubName, clubCategory, clubID)
         __clubs.update({clubName: newClub})     # do i need self.__clubs? i dk

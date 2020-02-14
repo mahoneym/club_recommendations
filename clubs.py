@@ -31,15 +31,14 @@ class Clubs:
     # param: the clubs array from the user and the index of the
         # club that called the method
     # return: TBD
-    def makeConnectionsBetweenClubs(clubs, indexToStartWih):
-        # create a graph_edge to each of the other clubs
-        # append to the related array
+    def addConnection(clubToConnectTo):
+        if(clubToConnectTo in related):      # if the clubs already have a connection:
+            oneToAddTo = related.index(clubToConnectTo)# find the club in the array
+            related[oneToAddTo].addOneToWeight()   # add one to the weight
+        else:
+            newConnection = graph_edge(clubs[index]) # create a graph_edge to each of the other clubs
+            related.update(newConnection)            # append to the club's related array
 
-        # make connections between clubs to the club I just added to this user (A)
-        # go through each club in the user's array
-        # for each club:
-            # make a pointer in club A to it
-            # make a pointer from the club to club A
         return 0
 
     # looks at the club's most common related club

@@ -24,7 +24,17 @@ class User:
         newClub = graph_edge(clubs[index].destination)              # create a graph_edge object
         clubs.append(newClub)                                       # append the graph_edge object to the clubs dictionary
 
-        clubs[index].makeConnectionsBetweenClubs(clubs, index)
+        makeConnectionsBetweenClubs(len(clubs)-1)
+        return 0
+
+    def makeConnectionsBetweenClubs(indexAdded):
+        index = 0
+
+        while(index < len(clubs)):
+            if (index != indexAdded):         # make sure im not gonna connect the club with itself
+                clubs[index].destination.addConnection(clubs[indexAdded].destination)
+                clubs[indexAdded].destination.addConnection(clubs[index].destination)
+            index = index + 1
         return 0
 
     def findClub():
@@ -42,6 +52,8 @@ class User:
         # follow the club index to the club's actual object to get recommendation
         return clubs[index].destination.returnMostCommonClub()
 
-    def addUserData():
+    def addUserClub(club):
         # add a pointer to the new interests
+        newEdge = graph_edge(club)
+        clubs.append(newEdge)
         return 0

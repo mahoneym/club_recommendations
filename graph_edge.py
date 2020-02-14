@@ -4,7 +4,7 @@ class GraphEdge:
     destination = None
 
     def __init__(self, newDestination):
-        self.weight = 1
+        self.weight = 1     # initialize it to one 
         destination = newDestination
         return 0
 
