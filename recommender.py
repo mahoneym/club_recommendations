@@ -21,13 +21,17 @@ class Recommender:
         readClubData()
         return 0
 
-    def addUser(id, studentName):
-        # call __init__ of the user class
-        newUser = User(id, studentName)
-        __users.update({id: newUser})
+    # create a user and add to the __user dictionary
+    # param: student's ID
+    # returns: 0
+    def addUser(id):
+        newUser = User(id, studentName)             # call __init__ of the user class
+        __users.update({id: newUser})               # add the user to the dict
         return 0
 
-    def addClub():
+    def addClub(clubName, clubCategory, clubID):
+        newClub = Club(clubName, clubCategory, clubID)
+        __clubs.update({clubName: newClub})     # do i need self.__clubs? i dk
         return 0
 
     # return the id of the club if it is found; o.w. return -1
@@ -38,12 +42,14 @@ class Recommender:
         return -1                                   # something went wrong..
 
     def createUserRecommendations(id):
+        # set recommendation to None (NULL) so it has the scope of the method
+        recommendation = None
         # get user's node address
         for user in __users:
             if(user.id == id):
                 # call findClub() in the user's object to get recommendations
-                recommendations = user.findClub()
-        return recommendations
+                recommendation = user.findClub()
+        return recommendation
 
     # the read data methods are taking it from excel spreadsheets
     def __readClubData():

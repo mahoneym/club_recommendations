@@ -27,10 +27,36 @@ class Clubs:
             flag = 0
         return flag
 
-    def makeConnectionsBetweenClubs():
-        # create a graph_edge
+    # call when tbe club needs to connect it to person's other clubs
+    # param: the clubs array from the user and the index of the
+        # club that called the method
+    # return: TBD
+    def makeConnectionsBetweenClubs(clubs, indexToStartWih):
+        # create a graph_edge to each of the other clubs
         # append to the related array
+
+        # make connections between clubs to the club I just added to this user (A)
+        # go through each club in the user's array
+        # for each club:
+            # make a pointer in club A to it
+            # make a pointer from the club to club A
         return 0
 
+    # looks at the club's most common related club
+    # look for the club's heaviest edge
+    # param: none
+    # returns: club object to the user
     def returnMostCommonClub():
-        return 0
+        # set the local variables
+        # -1 so they are less than all objects
+        mostCommonIndex = -1
+        heaviestWeight = -1
+
+        # go through the related and look for the most common link
+        index = 0                   # 0 since we need to start at the beginning
+        while(index < len(clubs)):
+            if(heaviestWeight < related[index].weight):
+                mostCommonIndex = index
+                heaviestWeight = related[index].weight
+            index = index + 1
+        return related[index]       # return the club to the user

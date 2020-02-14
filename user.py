@@ -8,30 +8,29 @@ class User:
     clubs           # put graph edge objects for the student's interests
     id              # a unique id for the user
 
-    def __init__(self, studentId, studentName):
+    def __init__(self, studentId):
         self.clubs = []
         self.id = studentId
 
     def addClub(clubName):
+        index = 0
         # check that the club isn't already being pointed to
-        for club in clubs:                                  # loop through each of the clubs
-            if (club.destination == clubName):              # check the graph_edge destinations to be the same as the parameter
-                return -1                                   # Get out of here cause the club is already here..
-        getClubPointer(clubName)                            # get a pointer to the club from recommender class
-        newClub = graph_edge(a)                             # create a graph_edge object
-        clubs.append(newClub)                               # append the graph_edge object to the clubs dictionary
+        while(index < len(clubs)):                                  # loop through each of the clubs
+            if (club.destination == clubName):                      # check the graph_edge destinations to be the same as the parameter
+                return -1                                           # Get out of here cause the club is already here..
+            index = index + 1
+        # a = getClubPointer(clubName)                              # get a pointer to the club from recommender class
+        # clubs[index].destination will be the club
+        newClub = graph_edge(clubs[index].destination)              # create a graph_edge object
+        clubs.append(newClub)                                       # append the graph_edge object to the clubs dictionary
 
-        # make connections between clubs to the club I just added to this user (A)
-        # go through each club in the user's array
-        # for each club:
-            # make a pointer in club A to it
-            # make a pointer from the club to club A
+        clubs[index].makeConnectionsBetweenClubs(clubs, index)
         return 0
 
     def findClub():
         # find club with highest weight
         index = 0
-        # set index and weight to a negative number
+        # set maxIndex and weight to a negative number
         # so we will know if something messed up
         maxIndex = -1
         maxWeight = -1
@@ -40,10 +39,8 @@ class User:
                 maxIndex = index
                 maxWeight = club.Weight
             index = index + 1
-        # follow the club index to the club's actual object
-        # look for the club's heaviest edge
-        # follow one of the pointers and get it back
-        return 0
+        # follow the club index to the club's actual object to get recommendation
+        return clubs[index].destination.returnMostCommonClub()
 
     def addUserData():
         # add a pointer to the new interests
