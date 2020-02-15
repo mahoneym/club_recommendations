@@ -6,7 +6,7 @@ import random
 class User:
     """Represents a student in the recommendation system"""
     clubs           # put graph edge objects for the student's interests
-    id              # a unique id for the user
+    id              # a unique id for the user => given by the data
 
     def __init__(self, studentId):
         self.clubs = []
@@ -16,7 +16,7 @@ class User:
         index = 0
         # check that the club isn't already being pointed to
         while(index < len(clubs)):                                  # loop through each of the clubs
-            if (club.destination == clubName):                      # check the graph_edge destinations to be the same as the parameter
+            if (club.destination.name == clubName):                      # check the graph_edge destinations to be the same as the parameter
                 return -1                                           # Get out of here cause the club is already here..
             index = index + 1
         # a = getClubPointer(clubName)                              # get a pointer to the club from recommender class
@@ -29,16 +29,15 @@ class User:
 
     def makeConnectionsBetweenClubs(indexAdded):
         index = 0
-
         while(index < len(clubs)):
             if (index != indexAdded):         # make sure im not gonna connect the club with itself
-                clubs[index].destination.addConnection(clubs[indexAdded].destination)
-                clubs[indexAdded].destination.addConnection(clubs[index].destination)
+                clubs[index].destination.addConnection(clubs[indexAdded].destination)       # point from the already present club to the new one
+                clubs[indexAdded].destination.addConnection(clubs[index].destination)       # point from the new club to the already present club
             index = index + 1
         return 0
 
+    # find club with highest weight
     def findClub():
-        # find club with highest weight
         index = 0
         # set maxIndex and weight to a negative number
         # so we will know if something messed up

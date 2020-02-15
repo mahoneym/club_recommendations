@@ -16,10 +16,10 @@ class Recommender:
 
     def __init__(self):
         # read in the data for users
-        #self.__users                      # initiate to an empty array
+        __users = []                      # initiate to an empty array
         #readUserData()
         # read in the data for clubs
-        #self.__clubs                      # initiate to an empty array
+        __clubs = []                      # initiate to an empty array
         #readClubData()
         return 0
 
@@ -27,9 +27,13 @@ class Recommender:
     # param: student's ID
     # returns: 0
     def addUser(id):
-        newUser = User(id, studentName)             # call __init__ of the user class
+        newUser = User(id)                          # call __init__ of the user class
         __users.update({id: newUser})               # add the user to the dict
-        return 0
+        return newUser
+
+    def print__users():
+        print (users)
+        return 0;
 
     # add a new club to the list
     # param: the name of the club, its category, and its ID
@@ -44,7 +48,7 @@ class Recommender:
         for club in __clubs:
             if(clubName == club.name):
                 return club                         # return the pointer to the club
-        return -1                                   # something went wrong..
+        return -1                                   # something went wrong if I'm here..
 
     def createUserRecommendations(id):
         # set recommendation to None (NULL) so it has the scope of the method
