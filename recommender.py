@@ -50,10 +50,14 @@ class Recommender:
                 return club                         # return the pointer to the club
         return -1                                   # something went wrong if I'm here..
 
+    # gets the recommendation from the user and returns it
+    # param: student's ID
+    # returns the recommendation
     def createUserRecommendations(id):
         # set recommendation to None (NULL) so it has the scope of the method
         recommendation = None
         # get user's node address
+        # can i take advantage of the dictionary here instead of doing this loop thing???
         for user in __users:
             if(user.id == id):
                 # call findClub() in the user's object to get recommendations
