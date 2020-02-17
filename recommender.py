@@ -7,21 +7,10 @@ class Recommender:
 
     # these need to be instance variables i think => initialize here not in __init__()
     # i think if they aren't then how will I deal with them in user
-    __users = []                   # a private dictionary of the students
-    __clubs = []                  # a private dictionary of the created clubs
+    __users = []                   # a private array of the students
+    __clubs = []                  # a private array of the created clubs
 
     # all variables are pointers
-    # I don't need to have the value be pointers
-    # __users: id => user object
-    # __club: name => club object
-
-    #def __init__(self):
-        # read in the data for users
-        #__users = []                      # initiate to an empty array
-        #readUserData()
-        # read in the data for clubs
-        #__clubs = []                      # initiate to an empty array
-        #readClubData()
 
     # create a user and add to the __user dictionary
     # param: student's ID
