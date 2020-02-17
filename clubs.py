@@ -1,6 +1,5 @@
 import user
 import graph_edge
-#import recommender
 
 class Club:
     """Represents clubs at Xavier University"""

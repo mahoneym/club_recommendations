@@ -15,12 +15,11 @@ def createUser1(recommendObject):
 def addUser1Clubs():
     return 0
 
-def main():
+def main_1():
     recommendObject = recommender.Recommender()
     addSomeClubs(recommendObject)
     print("added some clubs")
     createUser1(recommendObject)
     return None
 
-
-main()
+main_1()

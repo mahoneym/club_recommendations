@@ -4,9 +4,7 @@
 # each one) and keeps a list of the user's clubs. As a result, the class is
 # able to addClubs and calls the methods to maintain the connections between clubs.
 
-
 import clubs
-#import recommender
 import graph_edge
 
 class User:
