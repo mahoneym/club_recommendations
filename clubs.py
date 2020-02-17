@@ -2,7 +2,7 @@ import user
 import graph_edge
 #import recommender
 
-class Clubs:
+class Club:
     """Represents clubs at Xavier University"""
     category = ""
     related = []

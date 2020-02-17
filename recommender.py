@@ -1,16 +1,15 @@
-#import clubs
+import clubs
 import user
-#from .user import *
 
 class Recommender:
     """The hub of activity for the project"""
 
     # these need to be instance variables i think => initialize here not in __init__()
     # i think if they aren't then how will I deal with them in user
-    __users = []                   # a private array of the students
-    __clubs = []                  # a private array of the created clubs
+    __users = []                   # array of connections to students
+    __clubs = []                   # array of connections to clubs
 
-    # all variables are pointers
+    # all variables are pointers in python
 
     # create a user and add to the __user dictionary
     # param: student's ID
@@ -22,19 +21,27 @@ class Recommender:
 
     def print__users(self):
         print (self.__users)
-        return 0;
+        return 0
+
+    def print_clubs(self):
+        for club in self.__clubs:
+            print(club.name)
+            print(club.category)
+            print(club.id)
+            print('\n')
+        return 0
 
     # add a new club to the list
     # param: the name of the club, its category, and its ID
     # returns: 0
     def addClub(self, clubName, clubCategory, clubID):
-        newClub = club.Club(clubName, clubCategory, clubID)
-        __clubs.append(newClub)     # do i need self.__clubs? i dk
+        newClub = clubs.Club(clubName, clubCategory, clubID)
+        self.__clubs.append(newClub)
         return 0
 
     # return the id of the club if it is found; o.w. return -1
     def getClub(clubName):
-        for club in __clubs:
+        for club in self.__clubs:
             if(clubName == club.name):
                 return club                         # return the pointer to the club
         return -1                                   # something went wrong if I'm here..
@@ -45,10 +52,8 @@ class Recommender:
     def createUserRecommendations(id):
         # set recommendation to None (NULL) so it has the scope of the method
         recommendation = None
-        # get user's node address
-        # can i take advantage of the dictionary here instead of doing this loop thing???
         for user in __users:
-            if(user.id == id):
+            if(user.destination.id == id):
                 # call findClub() in the user's object to get recommendations
                 recommendation = user.findClub()
         return recommendation
