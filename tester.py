@@ -6,5 +6,5 @@ def createUser1():
     print("Created user 1")
     return 0
 
-recommendObject = Recommender()
+recommendObject = recommender.Recommender()
 createUser1()

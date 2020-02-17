@@ -6,9 +6,8 @@
 
 
 import clubs
-import recommender
+#import recommender
 import graph_edge
-import random
 
 class User:
     """Represents a student in the recommendation system"""

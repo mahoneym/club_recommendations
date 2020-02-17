@@ -1,5 +1,6 @@
-import clubs
+#import clubs
 import user
+#from .user import *
 
 class Recommender:
     """The hub of activity for the project"""
@@ -7,40 +8,39 @@ class Recommender:
     # these need to be instance variables i think => initialize here not in __init__()
     # i think if they aren't then how will I deal with them in user
     __users = []                   # a private dictionary of the students
-    __clubs = []                   # a private dictionary of the created clubs
+    __clubs = []                  # a private dictionary of the created clubs
 
     # all variables are pointers
     # I don't need to have the value be pointers
     # __users: id => user object
     # __club: name => club object
 
-    def __init__(self):
+    #def __init__(self):
         # read in the data for users
-        __users = []                      # initiate to an empty array
+        #__users = []                      # initiate to an empty array
         #readUserData()
         # read in the data for clubs
-        __clubs = []                      # initiate to an empty array
+        #__clubs = []                      # initiate to an empty array
         #readClubData()
-        return 0
 
     # create a user and add to the __user dictionary
     # param: student's ID
-    # returns: 0
-    def addUser(id):
-        newUser = User(id)                          # call __init__ of the user class
-        __users.update({id: newUser})               # add the user to the dict
+    # returns: the new user
+    def addUser(self, id):
+        newUser = user.User(id)                          # call __init__ of the user class
+        self.__users.append(newUser)               # add the user to the dict
         return newUser
 
-    def print__users():
-        print (users)
+    def print__users(self):
+        print (self.__users)
         return 0;
 
     # add a new club to the list
     # param: the name of the club, its category, and its ID
     # returns: 0
-    def addClub(clubName, clubCategory, clubID):
-        newClub = Club(clubName, clubCategory, clubID)
-        __clubs.update({clubName: newClub})     # do i need self.__clubs? i dk
+    def addClub(self, clubName, clubCategory, clubID):
+        newClub = club.Club(clubName, clubCategory, clubID)
+        __clubs.append(newClub)     # do i need self.__clubs? i dk
         return 0
 
     # return the id of the club if it is found; o.w. return -1
@@ -71,13 +71,13 @@ class Recommender:
         clubName = ""
         clubCategory = ""
         clubId = None
-        newClub = Club(clubName, clubCategory, clubID)
+        newClub = club.Club(clubName, clubCategory, clubID)
         return 0
 
     def __readUserData():
         data = __readExcelData("")
         studentId = -1
-        newUser = User(studentId)
+        newUser = user.User(studentId)
         return 0
 
     def __readExcelData(filePath):
