@@ -1,11 +1,11 @@
+import recommender
 #import clubs
-#import recommender
 
 def addSomeClubs():
-    import clubs
-    clubs.addClub('Computer Science Club', 'Academic', 1)
-    clubs.addClub('Pep Band', 'Music', 2)
-    #recommendObject.print_clubs()
+    #import clubs
+    clubs.Club('Computer Science Club', 'Academic', 1)
+    clubs.print_clubs()
+    #clubs.Club('Pep Band', 'Music', 2)
     return None
 
 def createUser1(recommendObject):
@@ -20,15 +20,14 @@ def addUser1Clubs():
     return None
 
 def main_1():
-    import recommender
     recommendObject = recommender.Recommender()
-    addSomeClubs(recommendObject)
+    #addSomeClubs()
     print("added some clubs")
     createUser1(recommendObject)
-    addUser1Clubs()                     # this is causing problems
+    #addUser1Clubs()                     # this is causing problems
     #a = u1.checkForClub('Pep Band')
     #print (a)
     return None
 
-#main_1()
-addSomeClubs()
+main_1()
+#addSomeClubs()

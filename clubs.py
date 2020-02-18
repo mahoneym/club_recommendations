@@ -1,12 +1,8 @@
-import user
+#import user
 import graph_edge
 
 class Club:
     """Represents clubs at Xavier University"""
-    category = ""
-    related = []
-    name = ""
-    id = 0
     __clubs = []
 
     # the constructor for the Clubs class
@@ -15,6 +11,7 @@ class Club:
         self.category = clubCategory
         self.related = []
         self.id = clubID
+        __clubs.append(self)
 
     # add a related club by pointing to it in the related array
     # returns 0 if the connection was added; o.w. returns -1
@@ -61,20 +58,11 @@ class Club:
         return related[index]       # return the club to the user
 
 
-
     def print_clubs(self):
         for club in self.__clubs:
             print(club.name)
             print(club.category)
             print(club.id)
-        return 0
-
-    # add a new club to the list
-    # param: the name of the club, its category, and its ID
-    # returns: 0
-    def addClub(self, clubName, clubCategory, clubID):
-        newClub = clubs.Club(clubName, clubCategory, clubID)
-        self.__clubs.append(newClub)
         return 0
 
     # return the id of the club if it is found; o.w. return -1
