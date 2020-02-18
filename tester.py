@@ -13,7 +13,7 @@ def createUser1(recommendObject):
     print("Created user 1")
     return None
 
-def addUser1Clubs(recommendObject):
+def addUser1Clubs():
     u1.addClub('Pep Band')
     return None
 
