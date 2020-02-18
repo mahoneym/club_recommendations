@@ -4,9 +4,9 @@ class GraphEdge:
     destination = None
 
     def __init__(self, newDestination):
-        self.weight = 1     # initialize it to one 
+        self.weight = 1     # initialize it to one
         destination = newDestination
-        return 0
+        return self
 
     def addOneToWeight(self):
         self.weight = self.weight + 1

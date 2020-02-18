@@ -20,7 +20,8 @@ class Recommender:
         return newUser
 
     def print__users(self):
-        print (self.__users)
+        for user in self.__users:
+            print(user.id)
         return 0
 
     def print_clubs(self):
@@ -28,7 +29,6 @@ class Recommender:
             print(club.name)
             print(club.category)
             print(club.id)
-            print('\n')
         return 0
 
     # add a new club to the list
@@ -57,6 +57,7 @@ class Recommender:
                 # call findClub() in the user's object to get recommendations
                 recommendation = user.findClub()
         return recommendation
+
 
     # the read data methods are taking it from excel spreadsheets
     def __readClubData():

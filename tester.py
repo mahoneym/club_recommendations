@@ -3,23 +3,28 @@ import recommender
 def addSomeClubs(recommendObject):
     recommendObject.addClub('Computer Science Club', 'Academic', 1)
     recommendObject.addClub('Pep Band', 'Music', 2)
-    recommendObject.print_clubs()
-    return 0
+    #recommendObject.print_clubs()
+    return None
 
 def createUser1(recommendObject):
-    recommendObject.addUser(1)
-    recommendObject.print__users()
+    global u1
+    u1 = recommendObject.addUser(1)
+    #recommendObject.print__users()
     print("Created user 1")
-    return 0
+    return None
 
-def addUser1Clubs():
-    return 0
+def addUser1Clubs(recommendObject):
+    u1.addClub('Pep Band')
+    return None
 
 def main_1():
     recommendObject = recommender.Recommender()
     addSomeClubs(recommendObject)
     print("added some clubs")
     createUser1(recommendObject)
+    addUser1Clubs()                     # this is causing problems
+    a = u1.checkForClub('Pep Band')
+    print (a)
     return None
 
 main_1()
