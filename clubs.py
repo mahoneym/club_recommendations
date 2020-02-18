@@ -7,6 +7,7 @@ class Club:
     related = []
     name = ""
     id = 0
+    __clubs = []
 
     # the constructor for the Clubs class
     def __init__(self, clubName, clubCategory, clubID):
@@ -58,3 +59,27 @@ class Club:
                 heaviestWeight = related[index].weight
             index = index + 1
         return related[index]       # return the club to the user
+
+
+
+    def print_clubs(self):
+        for club in self.__clubs:
+            print(club.name)
+            print(club.category)
+            print(club.id)
+        return 0
+
+    # add a new club to the list
+    # param: the name of the club, its category, and its ID
+    # returns: 0
+    def addClub(self, clubName, clubCategory, clubID):
+        newClub = clubs.Club(clubName, clubCategory, clubID)
+        self.__clubs.append(newClub)
+        return 0
+
+    # return the id of the club if it is found; o.w. return -1
+    def getClub(clubName):
+        for club in self.__clubs:
+            if(clubName == club.name):
+                return club                         # return the pointer to the club
+        return -1                                   # something went wrong if I'm here..

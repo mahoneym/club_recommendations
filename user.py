@@ -26,7 +26,7 @@ class User:
                 return -1                               # Get out of here cause the club is already here..
             index = index + 1
 
-        clubPointer = getClub(clubName)                 # get the club object that I need
+        clubPointer = clubs.getClub(clubName)                 # get the club object that I need
         newClub = graph_edge(clubPointer)               # create a graph_edge object
         __clubs.append(newClub)                         # append the graph_edge object to the clubs dictionary
 

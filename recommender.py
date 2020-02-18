@@ -7,7 +7,7 @@ class Recommender:
     # these need to be instance variables i think => initialize here not in __init__()
     # i think if they aren't then how will I deal with them in user
     __users = []                   # array of connections to students
-    __clubs = []                   # array of connections to clubs
+    #__clubs = []                   # array of connections to clubs
 
     # all variables are pointers in python
 
@@ -23,28 +23,6 @@ class Recommender:
         for user in self.__users:
             print(user.id)
         return 0
-
-    def print_clubs(self):
-        for club in self.__clubs:
-            print(club.name)
-            print(club.category)
-            print(club.id)
-        return 0
-
-    # add a new club to the list
-    # param: the name of the club, its category, and its ID
-    # returns: 0
-    def addClub(self, clubName, clubCategory, clubID):
-        newClub = clubs.Club(clubName, clubCategory, clubID)
-        self.__clubs.append(newClub)
-        return 0
-
-    # return the id of the club if it is found; o.w. return -1
-    def getClub(clubName):
-        for club in self.__clubs:
-            if(clubName == club.name):
-                return club                         # return the pointer to the club
-        return -1                                   # something went wrong if I'm here..
 
     # gets the recommendation from the user and returns it
     # param: student's ID
