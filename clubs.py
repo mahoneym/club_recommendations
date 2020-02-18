@@ -11,7 +11,7 @@ class Club:
         self.category = clubCategory
         self.related = []
         self.id = clubID
-        __clubs.append(self)
+        #self.__clubs.append(self)
 
     # add a related club by pointing to it in the related array
     # returns 0 if the connection was added; o.w. returns -1
@@ -57,6 +57,10 @@ class Club:
             index = index + 1
         return related[index]       # return the club to the user
 
+
+    def addClub(club):
+        self.__clubs.append(club)
+        return None
 
     def print_clubs(self):
         for club in self.__clubs:
