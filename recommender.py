@@ -19,7 +19,7 @@ class Recommender:
         self.__users.append(newUser)               # add the user to the dict
         return newUser
 
-    def print__users(self):
+    def print_users(self):
         for user in self.__users:
             print(user.id)
         return 0

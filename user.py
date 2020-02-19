@@ -8,7 +8,7 @@ import clubs
 from graph_edge import *
 
 class User:
-    """Represents a student in the recommendation system"""                
+    """Represents a student in the recommendation system"""
 
     def __init__(self, studentId):
         self.id = studentId            # a unique id for the user => given by the data
@@ -42,7 +42,7 @@ class User:
         self.__userClubs.append(newClub)                    # append the graph_edge object to the clubs dictionary
 
         # add connections between the new club and the rest of the user's clubs
-        makeConnectionsBetweenClubs(len(self.__userClubs)-1)
+        # makeConnectionsBetweenClubs(len(self.__userClubs)-1)
         return 0
 
     def checkForClub(self, clubName):
