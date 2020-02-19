@@ -27,8 +27,10 @@ class Recommender:
     def print_clubs(self):
         for club in self.__clubs:
             print(club.name)
-            print(club.category)
-            print(club.id)
+            #print(club.category)
+            #print(club.id)
+            club.printRelated()
+            print("\n")
         return 0
 
     # add a new club to the list
@@ -42,7 +44,7 @@ class Recommender:
     # return the id of the club if it is found; o.w. return -1
     def getClub(self, clubName):
         for club in self.__clubs:
-            if(clubName == club.name):
+            if(clubName is club.name):
                 return club                         # return the pointer to the club
         return -1                                   # something went wrong if I'm here..
 

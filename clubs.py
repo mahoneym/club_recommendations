@@ -1,5 +1,5 @@
 import user
-import graph_edge
+from graph_edge import *
 
 class Club:
     """Represents clubs at Xavier University"""
@@ -16,25 +16,33 @@ class Club:
     # returns 0 if the connection was added; o.w. returns -1
     def addRelated(self, clubName):
         club = self.recommender.getClub(clubName)                   # get pointer to the club in the recommender object
-        flag = -1                                        # assumes the connection will not be added
+        flag = -1
+        print("about to check club")                                      # assumes the connection will not be added
         if(club != -1):
+            print("about to add a club")
             newConnection = GraphEdge(club)    # create the graph_edge object
             related.append(newConnection);               # append the related array with the object
             flag = 0
         return flag
+
+    def printRelated(self):
+        for club in self.related:
+            print(club.destination)
+            #print(club.weight)
+        return None
 
     # call when tbe club needs to connect it to person's other clubs
     # param: the clubs array from the user and the index of the
         # club that called the method
     # return: TBD
     def addConnection(self, clubToConnectTo):
-        if(clubToConnectTo in self.related):      # if the clubs already have a connection:
-            oneToAddTo = related.index(clubToConnectTo)# find the club in the array
-            related[oneToAddTo].addOneToWeight()   # add one to the weight
+        if(clubToConnectTo in self.related):              # if the clubs already have a connection:
+            oneToAddTo = self.related.index(clubToConnectTo)   # find the club in the array
+            self.related[oneToAddTo].addOneToWeight()     # add one to the weight
         else:
-            newConnection = graphEdge(related[index]) # create a graph_edge to each of the other clubs
-            related.update(newConnection)            # append to the club's related array
-
+            club = self.recommender.getClub(clubToConnectTo)
+            newConnection = GraphEdge(club)               # create a graph_edge to each of the other clubs
+            self.related.append(newConnection)            # append to the club's related array
         return 0
 
     # looks at the club's most common related club
