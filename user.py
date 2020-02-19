@@ -17,9 +17,10 @@ class User:
     # goes through the clubs array and connects the index added and the other indices
     # param: the index of the club that was added before this method
     # returns: 0
-    def makeConnectionsBetweenClubs(self, indexAdded):
+    def makeConnectionsBetweenClubs(self):
         index = 0
-        while(index < len(clubs)):
+        indexAdded = len(self.__userClubs) - 1
+        while(index < len(self.__userClubs)):
             if (index != indexAdded):                                                       # make sure im not gonna connect the club with itself
                 self.__userClubs[index].destination.addConnection(self.__userClubs[indexAdded].destination)       # point from the already present club to the new one
                 self.__userClubs[indexAdded].destination.addConnection(self.__userClubs[index].destination)       # point from the new club to the already present club
@@ -42,7 +43,7 @@ class User:
         self.__userClubs.append(newClub)                    # append the graph_edge object to the clubs dictionary
 
         # add connections between the new club and the rest of the user's clubs
-        # makeConnectionsBetweenClubs(len(self.__userClubs)-1)
+        self.makeConnectionsBetweenClubs()
         return 0
 
     def checkForClub(self, clubName):
