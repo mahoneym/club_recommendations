@@ -35,12 +35,12 @@ class Recommender:
     # param: the name of the club, its category, and its ID
     # returns: 0
     def addClub(self, clubName, clubCategory, clubID):
-        newClub = clubs.Club(clubName, clubCategory, clubID)
+        newClub = clubs.Club(clubName, clubCategory, clubID, self)
         self.__clubs.append(newClub)
         return 0
 
     # return the id of the club if it is found; o.w. return -1
-    def getClub(clubName):
+    def getClub(self, clubName):
         for club in self.__clubs:
             if(clubName == club.name):
                 return club                         # return the pointer to the club

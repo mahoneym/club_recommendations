@@ -3,25 +3,22 @@ import graph_edge
 
 class Club:
     """Represents clubs at Xavier University"""
-    category = ""
-    related = []
-    name = ""
-    id = 0
 
     # the constructor for the Clubs class
-    def __init__(self, clubName, clubCategory, clubID):
+    def __init__(self, clubName, clubCategory, clubID, recommender):
         self.name = clubName
         self.category = clubCategory
         self.related = []
         self.id = clubID
+        self.recommender = recommender
 
     # add a related club by pointing to it in the related array
     # returns 0 if the connection was added; o.w. returns -1
     def addRelated(clubName):
-        ptr = getClubPointer(clubName)                   # get pointer to the club in the recommender object
+        club = self.recommender.getClub(clubName)                   # get pointer to the club in the recommender object
         flag = -1                                        # assumes the connection will not be added
-        if(ptr != -1):
-            newConnection = graph_edge(ptr, clubName)    # create the graph_edge object
+        if(club != -1):
+            newConnection = GraphEdge(club)    # create the graph_edge object
             related.append(newConnection);               # append the related array with the object
             flag = 0
         return flag
@@ -35,7 +32,7 @@ class Club:
             oneToAddTo = related.index(clubToConnectTo)# find the club in the array
             related[oneToAddTo].addOneToWeight()   # add one to the weight
         else:
-            newConnection = graph_edge(clubs[index]) # create a graph_edge to each of the other clubs
+            newConnection = graphEdge(related[index]) # create a graph_edge to each of the other clubs
             related.update(newConnection)            # append to the club's related array
 
         return 0

@@ -5,20 +5,31 @@
 # able to addClubs and calls the methods to maintain the connections between clubs.
 
 import clubs
-import graph_edge
+from graph_edge import *
 
 class User:
-    """Represents a student in the recommendation system"""
-    __userClubs = []          # put graph edge objects for the student's interests
-    id              # a unique id for the user => given by the data
+    """Represents a student in the recommendation system"""                
 
     def __init__(self, studentId):
-        self.id = studentId
+        self.id = studentId            # a unique id for the user => given by the data
+        self.__userClubs = []          # put graph edge objects for the student's interests
+
+    # goes through the clubs array and connects the index added and the other indices
+    # param: the index of the club that was added before this method
+    # returns: 0
+    def makeConnectionsBetweenClubs(self, indexAdded):
+        index = 0
+        while(index < len(clubs)):
+            if (index != indexAdded):                                                       # make sure im not gonna connect the club with itself
+                self.__userClubs[index].destination.addConnection(self.__userClubs[indexAdded].destination)       # point from the already present club to the new one
+                self.__userClubs[indexAdded].destination.addConnection(self.__userClubs[index].destination)       # point from the new club to the already present club
+            index = index + 1
+        return 0
 
     # adds a club to the user's clubs array
     # param: the name of the club to be added
     # returns: 0 when the method finish
-    def addClub(self, clubName):
+    def addClub(self, clubName, recommender):
         index = 0
         # check that the club isn't already in the list
         while(index < len(self.__userClubs)):           # loop through each of the clubs
@@ -26,31 +37,20 @@ class User:
                 return -1                               # Get out of here cause the club is already here..
             index = index + 1
 
-        clubPointer = getClub(clubName)                 # get the club object that I need
-        newClub = graph_edge(clubPointer)               # create a graph_edge object
-        __clubs.append(newClub)                         # append the graph_edge object to the clubs dictionary
+        club = recommender.getClub(clubName)                # get the club object that I need
+        newClub = GraphEdge(club)                           # create a graph_edge object
+        self.__userClubs.append(newClub)                    # append the graph_edge object to the clubs dictionary
 
         # add connections between the new club and the rest of the user's clubs
-        makeConnectionsBetweenClubs(len(__userClubs)-1)
+        makeConnectionsBetweenClubs(len(self.__userClubs)-1)
         return 0
 
-    def checkForClub(clubName):
+    def checkForClub(self, clubName):
         for club in self.__userClubs:
             if(club.destination == self.__userClubs):
                 return True
         return False
 
-    # goes through the clubs array and connects the index added and the other indices
-    # param: the index of the club that was added before this method
-    # returns: 0
-    def makeConnectionsBetweenClubs(indexAdded):
-        index = 0
-        while(index < len(clubs)):
-            if (index != indexAdded):                                                       # make sure im not gonna connect the club with itself
-                __userClubs[index].destination.addConnection(__userClubs[indexAdded].destination)       # point from the already present club to the new one
-                __userClubs[indexAdded].destination.addConnection(__userClubs[index].destination)       # point from the new club to the already present club
-            index = index + 1
-        return 0
 
     # find club with highest weight
     # param: None

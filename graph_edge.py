@@ -1,12 +1,10 @@
 class GraphEdge:
     """ Represents a edge in the graph of users and clubs- allows me to have a weight to the graph"""
-    weight = 1
-    destination = None
 
     def __init__(self, newDestination):
         self.weight = 1     # initialize it to one
-        destination = newDestination
-        return self
+        self.destination = newDestination
+        return None
 
     def addOneToWeight(self):
         self.weight = self.weight + 1

@@ -1,12 +1,14 @@
 import recommender
 
-def addSomeClubs(recommendObject):
+recommendObject = recommender.Recommender()
+
+def addSomeClubs():
     recommendObject.addClub('Computer Science Club', 'Academic', 1)
     recommendObject.addClub('Pep Band', 'Music', 2)
     #recommendObject.print_clubs()
     return None
 
-def createUser1(recommendObject):
+def createUser1():
     global u1
     u1 = recommendObject.addUser(1)
     #recommendObject.print__users()
@@ -14,14 +16,14 @@ def createUser1(recommendObject):
     return None
 
 def addUser1Clubs():
-    u1.addClub('Pep Band')
+    u1.addClub('Pep Band', recommendObject)
     return None
 
 def main_1():
-    recommendObject = recommender.Recommender()
-    addSomeClubs(recommendObject)
+    #recommendObject = recommender.Recommender()
+    addSomeClubs()
     print("added some clubs")
-    createUser1(recommendObject)
+    createUser1()
     addUser1Clubs()                     # this is causing problems
     a = u1.checkForClub('Pep Band')
     print (a)
