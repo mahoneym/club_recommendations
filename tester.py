@@ -16,6 +16,7 @@ def createUser1():
 
 def addUser1Clubs():
     u1.addClub('Pep Band', recommendObject)
+    u1.print_userClubs()
     return None
 
 def main_1():
@@ -24,9 +25,10 @@ def main_1():
     print("added some clubs")
     # works to here..
     createUser1()
-    #addUser1Clubs()                     # this is causing problems
-    #a = u1.checkForClub('Pep Band')
-    #print (a)
+    addUser1Clubs()                     # this is causing problems
+    # PEP BAND IS THERE!!!
+    a = u1.checkForClub('Pep Band')
+    print (a)
     return None
 
 main_1()

@@ -47,10 +47,13 @@ class User:
 
     def checkForClub(self, clubName):
         for club in self.__userClubs:
-            if(club.destination == self.__userClubs):
+            if(club.destination.name == clubName):
                 return True
         return False
 
+    def print_userClubs(self):
+        for club in self.__userClubs:
+            print(club.destination.name)
 
     # find club with highest weight
     # param: None
