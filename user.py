@@ -15,6 +15,7 @@ class User:
         self.__userClubs = []          # put graph edge objects for the student's interests
 
     # goes through the clubs array and connects the index added and the other indices
+    # pre-condition: assumes the item that needs to be connected is the last item in the clubs array
     # param: the index of the club that was added before this method
     # returns: 0
     def makeConnectionsBetweenClubs(self):
