@@ -17,9 +17,9 @@ class Club:
     def addRelated(self, clubName):
         club = self.recommender.getClub(clubName)                   # get pointer to the club in the recommender object
         flag = -1
-        print("about to check club")                                      # assumes the connection will not be added
+        #print("about to check club")                                      # assumes the connection will not be added
         if(club != -1):
-            print("about to add a club")
+            #print("about to add a club")
             newConnection = GraphEdge(club)    # create the graph_edge object
             related.append(newConnection);               # append the related array with the object
             flag = 0

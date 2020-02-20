@@ -3,8 +3,8 @@ class GraphEdge:
 
     def __init__(self, newDestination):
         self.weight = 1     # initialize it to one
+        #print(newDestination.name)
         self.destination = newDestination
-        return None
 
     def addOneToWeight(self):
         self.weight = self.weight + 1

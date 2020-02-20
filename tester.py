@@ -15,25 +15,20 @@ def createUser1():
 
 def addUser1Clubs():
     u1.addClub('Pep Band', recommendObject)
-    #u1.addClub('Computer Science Club', recommendObject)
-    u1.print_userClubs()
+    u1.addClub('Computer Science Club', recommendObject)
     return None
 
 def checkForConnectionBetweenClubs():
-    print("checking for connections")
     recommendObject.print_clubs()
     return None
 
 def main_1():
-    #recommendObject = recommender.Recommender()
     addSomeClubs()
-    print("added some clubs")
     createUser1()
     addUser1Clubs()                     # this is causing problems
     a = u1.checkForClub('Pep Band')
     # a IS TRUE => It works to here
-    print('\n')
-    #checkForConnectionBetweenClubs()
+    checkForConnectionBetweenClubs()
     return None
 
 main_1()

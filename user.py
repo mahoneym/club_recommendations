@@ -12,7 +12,7 @@ class User:
 
     def __init__(self, studentId):
         self.id = studentId            # a unique id for the user => given by the data
-        self.__userClubs = []          # put graph edge objects for the student's interests
+        self.__userClubs = []      # put graph edge objects for the student's interests
 
     # goes through the clubs array and connects the index added and the other indices
     # pre-condition: assumes the item that needs to be connected is the last item in the clubs array
@@ -22,9 +22,9 @@ class User:
         index = 0
         indexAdded = len(self.__userClubs) - 1
         while(index < len(self.__userClubs)):
-            #if (index != indexAdded):                                                       # make sure im not gonna connect the club with itself
-                #self.__userClubs[index].destination.addConnection(self.__userClubs[indexAdded].destination)       # point from the already present club to the new one
-                #self.__userClubs[indexAdded].destination.addConnection(self.__userClubs[index].destination)       # point from the new club to the already present club
+            if (index != indexAdded):                                                       # make sure im not gonna connect the club with itself
+                self.__userClubs[index].destination.addConnection(self.__userClubs[indexAdded].destination)       # point from the already present club to the new one
+                self.__userClubs[indexAdded].destination.addConnection(self.__userClubs[index].destination)       # point from the new club to the already present club
             index = index + 1
         return 0
 
@@ -34,9 +34,9 @@ class User:
     def addClub(self, clubName, recommender):
         index = 0
         # check that the club isn't already in the list
-        while(index < len(self.__userClubs)):           # loop through each of the clubs
-            if (self.checkForClub(clubName)):                          # check the graph_edge destinations to be the same as the parameter
-                return -1                               # Get out of here cause the club is already here..
+        while(index < len(self.__userClubs)):               # loop through each of the clubs
+            if (self.checkForClub(clubName)):               # check the graph_edge destinations to be the same as the parameter
+                return -1                                   # Get out of here cause the club is already here..
             index = index + 1
 
         club = recommender.getClub(clubName)                # get the club object that I need
@@ -55,7 +55,9 @@ class User:
 
     def print_userClubs(self):
         for club in self.__userClubs:
-            print(club.destination)
+            print(club.destination.name)
+            print(club.weight)
+            print('\n')
 
     # find club with highest weight
     # param: None
