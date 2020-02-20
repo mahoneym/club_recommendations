@@ -19,9 +19,9 @@ class Club:
         flag = -1
         #print("about to check club")                                      # assumes the connection will not be added
         if(club != -1):
-            #print("about to add a club")
+            print("about to add a club to related")
             newConnection = GraphEdge(club)    # create the graph_edge object
-            related.append(newConnection);               # append the related array with the object
+            self.related.append(newConnection);               # append the related array with the object
             flag = 0
         return flag
 

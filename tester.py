@@ -25,9 +25,7 @@ def checkForConnectionBetweenClubs():
 def main_1():
     addSomeClubs()
     createUser1()
-    addUser1Clubs()                     # this is causing problems
-    a = u1.checkForClub('Pep Band')
-    # a IS TRUE => It works to here
+    addUser1Clubs()                     # this is causing problems    
     checkForConnectionBetweenClubs()
     return None
 

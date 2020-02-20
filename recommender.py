@@ -4,12 +4,11 @@ import user
 class Recommender:
     """The hub of activity for the project"""
 
-    # these need to be instance variables i think => initialize here not in __init__()
-    # i think if they aren't then how will I deal with them in user
+    # instance variables
     __users = []                   # array of connections to students
     __clubs = []                   # array of connections to clubs
 
-    # all variables are pointers in python
+    # all variables are pointers
 
     # create a user and add to the __user dictionary
     # param: student's ID
@@ -27,7 +26,8 @@ class Recommender:
     def print_clubs(self):
         for club in self.__clubs:
             print(club.name)
-            #club.printRelated()
+            club.printRelated()
+            print('\n')
         return 0
 
     # add a new club to the list
