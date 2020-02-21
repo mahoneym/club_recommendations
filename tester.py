@@ -7,15 +7,8 @@ def addMiniClubs():
     return None
 
 def addSmallClubs():
-    recommendObject.addClub('United for Uganda', 'Service', 4)
-    recommendObject.addClub('In the Loop', 'Sewing', 5)
-    recommendObject.addClub('Outdoor Club', 'Fun', 6)
-    recommendObject.addClub('4 Paws for Ability', 'Animals', 7)
-    recommendObject.addClub('Honors Council', 'Academic', 8)
-    return None
-
-def checkForConnectionBetweenClubs():
-    recommendObject.print_clubs()
+    recommendObject.addClub("Don't Tell Anna", 'Service', 4)
+    recommendObject.addClub('4 Paws for Ability', 'Animals', 5)
     return None
 
 def miniDataSet():
@@ -35,8 +28,32 @@ def miniDataSet():
     miniRecommendations()
     return None
 
+def smallDataSet():
+    global u3, u4, u5
+    addSmallClubs()
+
+    u3 = recommendObject.addUser(3)
+    u4 = recommendObject.addUser(4)
+    u5 = recommendObject.addUser(5)
+
+    u3.addClub('A Xavier Christmas', recommendObject)
+    u3.addClub('4 Paws for Ability', recommendObject)
+    u3.addClub("Don't Tell Anna", recommendObject)
+
+    u4.addClub('A Xavier Christmas', recommendObject)
+    u4.addClub("Don't Tell Anna", recommendObject)
+    u4.addClub('Pep Band', recommendObject)
+
+    u5.addClub("Computer Science Club", recommendObject)
+    u5.addClub("Don't Tell Anna", recommendObject)
+    u5.addClub('A Xavier Christmas', recommendObject)
+
+    smallRecommendations()
+
+    return None
+
 def miniRecommendations():
-    print("Mini Recommendations: ")
+    print("Mini Recommendations: \n")
     a = recommendObject.createUserRecommendations(1)
     print("recommendation for user 1: " + a.destination.name + '\n')
 
@@ -44,25 +61,8 @@ def miniRecommendations():
     print("recommendation for user 2: " + b.destination.name + '\n')
     return None
 
-def smallDataSet():
-    global u3, u4
-    addSmallClubs()
-
-    u3 = recommendObject.addUser(3)
-    u4 = recommendObject.addUser(4)
-
-    u3.addClub('A Xavier Christmas', recommendObject)
-    u3.addClub('4 Paws for Ability', recommendObject)
-
-    u4.addClub('A Xavier Christmas', recommendObject)
-
-    smallRecommendations()
-
-    return None
-
-
 def smallRecommendations():
-    print("Small Recommendations: ")
+    print("Small Recommendations: \n")
     a = recommendObject.createUserRecommendations(3)
     print("recommendation for user 3: " + a.destination.name + '\n')
 
