@@ -19,31 +19,40 @@ class Club:
         flag = -1
         #print("about to check club")                                      # assumes the connection will not be added
         if(club != -1):
-            print("about to add a club to related")
             newConnection = GraphEdge(club)    # create the graph_edge object
             self.related.append(newConnection);               # append the related array with the object
             flag = 0
         return flag
 
     def printRelated(self):
+        print(self.name)
         for club in self.related:
-            print(club.destination)
-            #print(club.weight)
+            print("Club:" + club.destination.name)
+            print(club.weight)
         return None
 
     # call when tbe club needs to connect it to person's other clubs
-    # param: the clubs array from the user and the index of the
-        # club that called the method
+    # param: the club to connect to
     # return: TBD
+    #def addConnection(self, clubToConnectTo):
+        #if(clubToConnectTo in self.related):              # if the clubs already have a connection:
+        #    oneToAddTo = self.related.index(clubToConnectTo)   # find the club in the array
+        #    self.related[oneToAddTo].addOneToWeight()     # add one to the weight
+        #else:
+        #    newConnection = GraphEdge(clubToConnectTo)               # create a graph_edge to each of the other clubs
+        #    self.related.append(newConnection)            # append to the club's related array
+        #return 0
+
     def addConnection(self, clubToConnectTo):
-        if(clubToConnectTo in self.related):              # if the clubs already have a connection:
-            oneToAddTo = self.related.index(clubToConnectTo)   # find the club in the array
-            self.related[oneToAddTo].addOneToWeight()     # add one to the weight
-        else:
-            club = self.recommender.getClub(clubToConnectTo)
-            newConnection = GraphEdge(club)               # create a graph_edge to each of the other clubs
-            self.related.append(newConnection)            # append to the club's related array
-        return 0
+        for club in self.related:
+            if(club.destination.name is clubToConnectTo.name):
+                club.addOneToWeight()
+                return 0                                    # get out of here cause we don't need to add it again
+
+        # If I am here, I know the club was not already related
+        newConnection = GraphEdge(clubToConnectTo)
+        self.related.append(newConnection)
+        return 1
 
     # looks at the club's most common related club
     # look for the club's heaviest edge

@@ -5,8 +5,8 @@ class Recommender:
     """The hub of activity for the project"""
 
     # instance variables
-    __users = []                   # array of connections to students
-    __clubs = []                   # array of connections to clubs
+    __users = []                   # array of students
+    __clubs = []                   # array of clubs
 
     # all variables are pointers
 
@@ -21,13 +21,13 @@ class Recommender:
     def print_users(self):
         for user in self.__users:
             print(user.id)
+            user.print_userClubs()
         return 0
 
     def print_clubs(self):
         for club in self.__clubs:
-            print(club.name)
+            print("Printing Related for:" + club.name)
             club.printRelated()
-            print('\n')
         return 0
 
     # add a new club to the list
@@ -56,7 +56,6 @@ class Recommender:
                 # call findClub() in the user's object to get recommendations
                 recommendation = user.findClub()
         return recommendation
-
 
     # the read data methods are taking it from excel spreadsheets
     def __readClubData():

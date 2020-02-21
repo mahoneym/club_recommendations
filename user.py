@@ -23,8 +23,8 @@ class User:
         indexAdded = len(self.__userClubs) - 1
         while(index < len(self.__userClubs)):
             if (index != indexAdded):                                                       # make sure im not gonna connect the club with itself
-                self.__userClubs[index].destination.addConnection(self.__userClubs[indexAdded].destination)       # point from the already present club to the new one
-                self.__userClubs[indexAdded].destination.addConnection(self.__userClubs[index].destination)       # point from the new club to the already present club
+                self.__userClubs[index].destination.addConnection(self.__userClubs[indexAdded].destination)       # from the already present club to the new one
+                self.__userClubs[indexAdded].destination.addConnection(self.__userClubs[index].destination)       # from the new club to the already present club
             index = index + 1
         return 0
 
@@ -57,7 +57,6 @@ class User:
         for club in self.__userClubs:
             print(club.destination.name)
             print(club.weight)
-            print('\n')
 
     # find club with highest weight
     # param: None
