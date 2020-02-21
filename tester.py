@@ -11,6 +11,9 @@ def addSmallClubs():
     recommendObject.addClub('4 Paws for Ability', 'Animals', 5)
     return None
 
+def addMediumClubs():
+    return None
+
 def miniDataSet():
     global u1, u2
     addMiniClubs()
@@ -49,7 +52,9 @@ def smallDataSet():
     u5.addClub('A Xavier Christmas', recommendObject)
 
     smallRecommendations()
+    return None
 
+def mediumDataSet():
     return None
 
 def miniRecommendations():
@@ -68,6 +73,9 @@ def smallRecommendations():
 
     b = recommendObject.createUserRecommendations(4)
     print("recommendation for user 2: " + b.destination.name)
+    return None
+
+def mediumRecommendations():
     return None
 
 recommendObject = recommender.Recommender()
