@@ -4,11 +4,10 @@ import user
 class Recommender:
     """The hub of activity for the project"""
 
+    # all variables are pointers
     # instance variables
     __users = []                   # array of students
     __clubs = []                   # array of clubs
-
-    # all variables are pointers
 
     # create a user and add to the __user dictionary
     # param: student's ID
@@ -48,11 +47,11 @@ class Recommender:
     # gets the recommendation from the user and returns it
     # param: student's ID
     # returns the recommendation
-    def createUserRecommendations(id):
+    def createUserRecommendations(self, id):
         # set recommendation to None (NULL) so it has the scope of the method
         recommendation = None
-        for user in __users:
-            if(user.destination.id == id):
+        for user in self.__users:
+            if(user.id == id):
                 # call findClub() in the user's object to get recommendations
                 recommendation = user.findClub()
         return recommendation

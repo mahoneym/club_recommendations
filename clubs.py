@@ -32,17 +32,8 @@ class Club:
         return None
 
     # call when tbe club needs to connect it to person's other clubs
-    # param: the club to connect to
-    # return: TBD
-    #def addConnection(self, clubToConnectTo):
-        #if(clubToConnectTo in self.related):              # if the clubs already have a connection:
-        #    oneToAddTo = self.related.index(clubToConnectTo)   # find the club in the array
-        #    self.related[oneToAddTo].addOneToWeight()     # add one to the weight
-        #else:
-        #    newConnection = GraphEdge(clubToConnectTo)               # create a graph_edge to each of the other clubs
-        #    self.related.append(newConnection)            # append to the club's related array
-        #return 0
-
+    # param: the club [object/pointer] to connect to
+    # return: 0 if the club's weight was added; 1 if the club is new to related
     def addConnection(self, clubToConnectTo):
         for club in self.related:
             if(club.destination.name is clubToConnectTo.name):
@@ -65,9 +56,9 @@ class Club:
 
         # go through the related and look for the most common link
         index = 0                   # 0 since we need to start at the beginning
-        while(index < len(clubs)):
+        while(index < len(self.related)-1):
             if(heaviestWeight < self.related[index].weight):
                 mostCommonIndex = index
                 heaviestWeight = self.related[index].weight
             index = index + 1
-        return self.related[index]       # return the club to the user
+        return self.related[mostCommonIndex]       # return the club to the user

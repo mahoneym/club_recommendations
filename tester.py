@@ -18,14 +18,10 @@ def createUsers():
 def addUserClubs():
     u1.addClub('Pep Band', recommendObject)
     u1.addClub('Computer Science Club', recommendObject)
-    #print("User 1:")
-    #u1.print_userClubs()
 
     u2.addClub('Pep Band', recommendObject)
     u2.addClub('Students For Life', recommendObject)
     u2.addClub('Computer Science Club', recommendObject)
-    #print("User 2:")
-    #u2.print_userClubs()
     return None
 
 def checkForConnectionBetweenClubs():
@@ -36,7 +32,12 @@ def main_1():
     addClubs()
     createUsers()
     addUserClubs()
-    checkForConnectionBetweenClubs()
+    #checkForConnectionBetweenClubs()
+    a = recommendObject.createUserRecommendations(1)
+    print("recommendation for user 1: " + a.destination.name + '\n')
+
+    b = recommendObject.createUserRecommendations(2)
+    print("recommendation for user 2: " + b.destination.name)
     return None
 
 main_1()

@@ -6,13 +6,14 @@
 
 import clubs
 from graph_edge import *
+import random
 
 class User:
     """Represents a student in the recommendation system"""
 
     def __init__(self, studentId):
-        self.id = studentId            # a unique id for the user => given by the data
-        self.__userClubs = []      # put graph edge objects for the student's interests
+        self.id = studentId                             # a unique id for the user => given by the data
+        self.__userClubs = []                           # put graph edge objects for the student's interests
 
     # goes through the clubs array and connects the index added and the other indices
     # pre-condition: assumes the item that needs to be connected is the last item in the clubs array
@@ -59,18 +60,17 @@ class User:
             print(club.weight)
 
     # find club with highest weight
+    # NOTE: THIS COULD RETURN A CLUB THE USER IS ALREADY IN
     # param: None
     # returns: the club with the heaviest connection
-    def findClub():
+    def findClub(self):
         index = 0
         # set maxIndex and weight to a negative number
-        # so we will know if something messed up
         maxIndex = -1
         maxWeight = -1
-        while(index < len(self.__userClubs)):
-            if club.weight > maxWeight:
-                maxIndex = index
-                maxWeight = club.Weight
-            index = index + 1
-        # follow the club index to the club's actual object to get recommendation
-        return self.__userClubs[index].destination
+        # go to a "random" club => random index of the user's clubs
+        numberOfItems = len(self.__userClubs) - 1
+        index = random.randint(0, numberOfItems)        # this might return numberOfItems
+        print("going to " + self.__userClubs[index].destination.name)
+        # use club index to call the most common club method on club's object
+        return self.__userClubs[index].destination.returnMostCommonClub()
