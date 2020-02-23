@@ -12,8 +12,11 @@ def addSmallClubs():
     return None
 
 def addMediumClubs():
-    recommendObject.addClub("",'', 6)
-    recommendObject.addClub("",'', 7)
+    recommendObject.addClub("Child's Play",'Games', 6)
+    recommendObject.addClub("Club Sports",'Sports', 7)
+    recommendObject.addClub("Network of Enlightened Women",'Politics', 8)
+    recommendObject.addClub("MuskieTHON",'Fundraisers', 9)
+    recommendObject.addClub("Newswire", 'English', 10)
     return None
 
 def miniDataSet():
@@ -60,20 +63,24 @@ def mediumDataSet():
     global u6, u7, u8, u9, u10
     addMediumClubs()
 
-    u6.addClub()
+    u1.addClub("Child's Play", recommendObject)
 
-    u7.addClub()
+    #u6.addClub()
 
-    u8.addClub()
+    #u7.addClub()
 
-    u9.addClub()
+    #u8.addClub()
 
-    u10.addClub()
+    #u9.addClub()
+
+    #u10.addClub()
+
+    mediumRecommendations()
 
     return None
 
 def miniRecommendations():
-    print("Mini Recommendations: \n")
+    print("\n" + "Mini Recommendations:")
     a = recommendObject.createUserRecommendations(1)
     print("recommendation for user 1: " + a.destination.name + '\n')
 
@@ -82,7 +89,7 @@ def miniRecommendations():
     return None
 
 def smallRecommendations():
-    print("Small Recommendations: \n")
+    print("\n" + "Small Recommendations:")
     a = recommendObject.createUserRecommendations(3)
     print("recommendation for user 3: " + a.destination.name + '\n')
 
@@ -91,8 +98,10 @@ def smallRecommendations():
     return None
 
 def mediumRecommendations():
+    print("\n" + "Medium recommendations:")
     return None
 
 recommendObject = recommender.Recommender()
 miniDataSet()
 smallDataSet()
+mediumDataSet()
