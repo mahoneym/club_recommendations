@@ -12,6 +12,8 @@ def addSmallClubs():
     return None
 
 def addMediumClubs():
+    recommendObject.addClub("",'', 6)
+    recommendObject.addClub("",'', 7)
     return None
 
 def miniDataSet():
@@ -55,6 +57,19 @@ def smallDataSet():
     return None
 
 def mediumDataSet():
+    global u6, u7, u8, u9, u10
+    addMediumClubs()
+
+    u6.addClub()
+
+    u7.addClub()
+
+    u8.addClub()
+
+    u9.addClub()
+
+    u10.addClub()
+
     return None
 
 def miniRecommendations():
