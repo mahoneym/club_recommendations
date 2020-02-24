@@ -11,7 +11,7 @@ def addSmallClubs():
     recommendObject.addClub('4 Paws for Ability', 'Animals', 5)
     return None
 
-def addMediumClubs():
+def addLargeClubs():
     recommendObject.addClub("Child's Play",'Games', 6)
     recommendObject.addClub("Club Sports",'Sports', 7)
     recommendObject.addClub("Network of Enlightened Women",'Politics', 8)
@@ -59,9 +59,9 @@ def smallDataSet():
     smallRecommendations()
     return None
 
-def mediumDataSet():
-    global u6, u7, u8, u9, u10
-    addMediumClubs()
+def largeDataSet():
+    global u6, u7, u8, u9, u10, u12, u13, u14, u15, u16, u17, u18, u19, u20
+    addLargeClubs()
 
     u1.addClub("Child's Play", recommendObject)
 
@@ -75,7 +75,7 @@ def mediumDataSet():
 
     #u10.addClub()
 
-    mediumRecommendations()
+    largeRecommendations()
 
     return None
 
@@ -97,8 +97,8 @@ def smallRecommendations():
     print("recommendation for user 2: " + b.destination.name)
     return None
 
-def mediumRecommendations():
-    print("\n" + "Medium recommendations:")
+def largeRecommendations():
+    print("\n" + "Large recommendations:")
     return None
 
 def caseForNoRelated():
@@ -111,12 +111,12 @@ def caseForNoRelated():
     u0.addClub("Lone Club", recommendObject)
 
     c = recommendObject.createUserRecommendations(11)
-    print("Recommendation for user 11 (Lone club Test Case): " + c)
-
+    assert(c == None)
+    print("Success! The assertion passed!")
     return None
 
 recommendObject = recommender.Recommender()
 miniDataSet()
 smallDataSet()
-#mediumDataSet()
+#largeDataSet()
 caseForNoRelated()

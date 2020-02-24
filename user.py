@@ -59,21 +59,21 @@ class User:
             print(club.destination.name)
             print(club.weight)
 
-    # find club with highest weight
+    # find club with highest weight to a random club that the user is in
     # NOTE: THIS COULD RETURN A CLUB THE USER IS ALREADY IN
     # param: None
     # returns: the club with the heaviest connection
     def findClub(self):
-        index = 0
-        # set maxIndex and weight to a negative number
-        maxIndex = -1
-        maxWeight = -1
         # go to a "random" club => random index of the user's clubs
         numberOfItems = len(self.__userClubs) - 1
         club = 0
+        count = 0
         while(club == 0):
             index = random.randint(0, numberOfItems)        # this might return numberOfItems
-            print("going to " + self.__userClubs[index].destination.name)
+            print("Going to " + self.__userClubs[index].destination.name)
             # use club index to call the most common club method on club's object
             club = self.__userClubs[index].destination.returnMostCommonClub()
+            count = count + 1
+            if(count == 5):
+                club = None
         return club
