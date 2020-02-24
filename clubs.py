@@ -56,6 +56,8 @@ class Club:
 
         # go through the related and look for the most common link
         index = 0                   # 0 since we need to start at the beginning
+        if(len(self.related) == 0):
+            return 0
         while(index < len(self.related)-1):
             if(heaviestWeight < self.related[index].weight):
                 mostCommonIndex = index

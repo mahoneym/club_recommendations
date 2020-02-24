@@ -70,7 +70,10 @@ class User:
         maxWeight = -1
         # go to a "random" club => random index of the user's clubs
         numberOfItems = len(self.__userClubs) - 1
-        index = random.randint(0, numberOfItems)        # this might return numberOfItems
-        print("going to " + self.__userClubs[index].destination.name)
-        # use club index to call the most common club method on club's object
-        return self.__userClubs[index].destination.returnMostCommonClub()
+        club = 0
+        while(club == 0):
+            index = random.randint(0, numberOfItems)        # this might return numberOfItems
+            print("going to " + self.__userClubs[index].destination.name)
+            # use club index to call the most common club method on club's object
+            club = self.__userClubs[index].destination.returnMostCommonClub()
+        return club
