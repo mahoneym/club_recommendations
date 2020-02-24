@@ -62,7 +62,7 @@ class User:
     # find club with highest weight to a random club that the user is in
     # NOTE: THIS COULD RETURN A CLUB THE USER IS ALREADY IN
     # param: None
-    # returns: the club with the heaviest connection
+    # returns: the club with the heaviest connection to the one chosen in this method
     def findClub(self):
         # go to a "random" club => random index of the user's clubs
         numberOfItems = len(self.__userClubs) - 1
