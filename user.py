@@ -74,6 +74,6 @@ class User:
             # use club index to call the most common club method on club's object
             club = self.__userClubs[index].destination.returnMostCommonClub()
             count = count + 1
-            if(count == 5):
+            if(count == 5 and club == 0):
                 club = None
         return club
