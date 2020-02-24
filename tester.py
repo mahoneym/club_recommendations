@@ -101,7 +101,22 @@ def mediumRecommendations():
     print("\n" + "Medium recommendations:")
     return None
 
+def caseForNoRelated():
+    print("\n" + "This is the case for a club having no related clubs")
+
+    recommendObject.addClub("Lone Club", 'Test Case', 0)
+
+    u0 = recommendObject.addUser(11)
+
+    u0.addClub("Lone Club", recommendObject)
+
+    c = recommendObject.createUserRecommendations(11)
+    print("Recommendation for user 11 (Lone club Test Case): " + c)
+
+    return None
+
 recommendObject = recommender.Recommender()
 miniDataSet()
 smallDataSet()
-mediumDataSet()
+#mediumDataSet()
+caseForNoRelated()
