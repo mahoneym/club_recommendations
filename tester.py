@@ -102,7 +102,7 @@ def largeRecommendations():
     return None
 
 def caseForNoRelated():
-    print("\n" + "This is the case for a club having no related clubs")
+    print("\n" + "A club having no related clubs")
 
     recommendObject.addClub("Lone Club", 'Test Case', 0)
 
@@ -115,8 +115,32 @@ def caseForNoRelated():
     print("Success! The assertion passed!")
     return None
 
+def checkNotReturningClubAlreadyIn():
+    print("\n" + "Not recommending a club the user is already in")
+
+    u101 = recommendObject.addUser(101)
+    u102 = recommendObject.addUser(102)
+    u103 = recommendObject.addUser(103)
+
+    a = recommendObject.addClub('Common Club', 'something', 2)
+    b = recommendObject.addClub('Not in it club', 'something', 3)
+    c = recommendObject.addClub("Random Other Club", 'something', 4)
+
+    u101.addClub("Common Club", recommendObject)
+    u101.addClub("Random Other Club", recommendObject)
+
+    u102.addClub("Common Club", recommendObject)
+    u102.addClub("Not in it club", recommendObject)
+    u102.addClub("Random Other Club", recommendObject)
+
+    c = recommendObject.createUserRecommendations(101)
+    print("Recommendation in new club is " + c.destination.name)
+    return None
+
 recommendObject = recommender.Recommender()
-miniDataSet()
-smallDataSet()
+#miniDataSet()
+#smallDataSet()
 #largeDataSet()
 caseForNoRelated()
+
+checkNotReturningClubAlreadyIn()
