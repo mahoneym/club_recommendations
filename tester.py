@@ -134,7 +134,7 @@ def checkNotReturningClubAlreadyIn():
     u102.addClub("Random Other Club", recommendObject)
 
     c = recommendObject.createUserRecommendations(101)
-    print("Recommendation in new club is " + c.destination.name)
+    print("Recommendation: " + c.destination.name)
     return None
 
 recommendObject = recommender.Recommender()
