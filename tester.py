@@ -134,13 +134,14 @@ def checkNotReturningClubAlreadyIn():
     u102.addClub("Random Other Club", recommendObject)
 
     c = recommendObject.createUserRecommendations(101)
-    print("Recommendation: " + c.destination.name)
+    print("Recommendation for user 101: " + c.destination.name)
+    print("Should be: Not in it club")
     return None
 
 recommendObject = recommender.Recommender()
 #miniDataSet()
 #smallDataSet()
 #largeDataSet()
-caseForNoRelated()
+#caseForNoRelated()
 
 checkNotReturningClubAlreadyIn()

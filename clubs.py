@@ -63,4 +63,4 @@ class Club:
                 mostCommonIndex = index
                 heaviestWeight = self.related[index].weight
             index = index + 1
-        return self.related[mostCommonIndex]       # return the club to the user
+        return self.related[mostCommonIndex]      # return the club to the user

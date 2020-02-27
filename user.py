@@ -36,7 +36,7 @@ class User:
         index = 0
         # check that the club isn't already in the list
         while(index < len(self.__userClubs)):               # loop through each of the clubs
-            if (self.checkForClub(clubName)):               # check the graph_edge destinations to be the same as the parameter
+            if (self.alreadyInClub(clubName)):               # check the graph_edge destinations to be the same as the parameter
                 return -1                                   # Get out of here cause the club is already here..
             index = index + 1
 
@@ -48,9 +48,9 @@ class User:
         self.makeConnectionsBetweenClubs(recommender)
         return 0
 
-    def checkForClub(self, clubName):
+    def alreadyInClub(self, clubName):
         for club in self.__userClubs:
-            if(club.destination == clubName):
+            if(club.destination.name == clubName):
                 return True
         return False
 
@@ -65,15 +65,21 @@ class User:
     # returns: the club with the heaviest connection to the one chosen in this method
     def findClub(self):
         # go to a "random" club => random index of the user's clubs
-        numberOfItems = len(self.__userClubs) - 1
+        lengthOfClubs = len(self.__userClubs)
         club = 0
         count = 0
-        while(club == 0):
-            index = random.randint(0, numberOfItems)        # this might return numberOfItems
-            print("Going to " + self.__userClubs[index].destination.name)
+        foundInUser = False
+        while(club == 0 or foundInUser == True):
+            index = random.randint(0, 1000) % lengthOfClubs        # this might return numberOfItems
+            usingClubToRecommend = self.__userClubs[index].destination
+            print("Going to " + usingClubToRecommend.name)
             # use club index to call the most common club method on club's object
-            club = self.__userClubs[index].destination.returnMostCommonClub()
+            club = usingClubToRecommend.returnMostCommonClub()
+            if(club != 0):
+                foundInUser = self.alreadyInClub(club.destination.name)
             count = count + 1
+
+            # if there are no related clubs and we have tried 5 times
             if(count == 5 and club == 0):
-                club = None
+                club = None         # set club to none so we stop trying
         return club
