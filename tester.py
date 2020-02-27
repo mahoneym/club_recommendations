@@ -12,11 +12,24 @@ def addSmallClubs():
     return None
 
 def addLargeClubs():
-    recommendObject.addClub("Child's Play",'Games', 6)
-    recommendObject.addClub("Club Sports",'Sports', 7)
-    recommendObject.addClub("Network of Enlightened Women",'Politics', 8)
-    recommendObject.addClub("MuskieTHON",'Fundraisers', 9)
-    recommendObject.addClub("Newswire", 'English', 10)
+    recommendObject.addClub("c1",'Games', 6)
+    recommendObject.addClub("c2",'Sports', 7)
+    recommendObject.addClub("c3",'Politics', 8)
+    recommendObject.addClub("c4",'Fundraisers', 9)
+    recommendObject.addClub("c5", 'English', 10)
+    recommendObject.addClub("c7", 'English', 11)
+    recommendObject.addClub("c8", 'English', 12)
+    recommendObject.addClub("c9", 'English', 13)
+    recommendObject.addClub("c10", 'English', 14)
+    recommendObject.addClub("c11", "English", 15)
+    recommendObject.addClub("c12", 'English', 16)
+    recommendObject.addClub("c13", 'English', 17)
+    recommendObject.addClub("c14", 'English', 18)
+    recommendObject.addClub("c15", 'English', 19)
+    recommendObject.addClub("c16", 'English', 20)
+    recommendObject.addClub("c17", 'English', 21)
+    recommendObject.addClub("c18", 'English', 22)
+    recommendObject.addClub("c19", 'English', 23)
     return None
 
 def miniDataSet():
@@ -60,20 +73,84 @@ def smallDataSet():
     return None
 
 def largeDataSet():
-    global u6, u7, u8, u9, u10, u12, u13, u14, u15, u16, u17, u18, u19, u20
+    global u6, u7, u8, u9, u10, u12, u13, u14, u15, u16, u17, u18, u19, u20, u21, u22, u23, u24
     addLargeClubs()
 
-    u1.addClub("Child's Play", recommendObject)
+    u6.addClub("c1")
+    u6.addClub("c2")
+    u6.addClub("c3")
 
-    #u6.addClub()
+    u7.addClub("c2")
+    u7.addClub("c3")
+    u7.addClub("c4")
 
-    #u7.addClub()
+    u8.addClub("c1")
+    u8.addClub("c3")
+    u8.addClub("c4")
 
-    #u8.addClub()
+    u9.addClub("c2")
+    u9.addClub("c4")
+    u9.addClub("c5")
 
-    #u9.addClub()
+    u10.addClub("c5")
+    u10.addClub("c6")
+    u10.addClub("c7")
 
-    #u10.addClub()
+    u11.addClub("c6")
+    u11.addClub("c7")
+    u11.addClub("c8")
+
+    u12.addClub("c8")
+    u12.addClub("c12")
+    u12.addClub("c9")
+
+    u13.addClub("c12")
+    u13.addClub("c16")
+    u13.addClub("c15")
+
+    u14.addClub("c8")
+    u14.addClub("c12")
+    u14.addClub("c13")
+
+    u15.addClub("c8")
+    u15.addClub("c1")
+    u15.addClub("c18")
+
+    u16.addClub("c8")
+    u16.addClub("c19")
+    u16.addClub("c1")
+
+    u17.addClub("c19")
+    u17.addClub("c2")
+    u17.addClub("c10")
+
+    u18.addClub("c5")
+    u18.addClub("c13")
+    u18.addClub("c19")
+
+    u19.addClub("c17")
+    u19.addClub("c18")
+    u19.addClub("c14")
+
+    u20.addClub("c13")
+    u20.addClub("c14")
+    u20.addClub("c17")
+
+    u21.addClub("c16")
+    u21.addClub("c17")
+    u21.addClub("c18")
+
+    u22.addClub("c11")
+    u22.addClub("c12")
+    u22.addClub("c13")
+
+    u23.addClub("c13")
+    u23.addClub("c14")
+    u23.addClub("c18")
+
+    u24.addClub("c8")
+    u24.addClub("c10")
+    u24.addClub("c12")
 
     largeRecommendations()
 
@@ -139,9 +216,9 @@ def checkNotReturningClubAlreadyIn():
     return None
 
 recommendObject = recommender.Recommender()
-#miniDataSet()
-#smallDataSet()
+miniDataSet()
+smallDataSet()
 #largeDataSet()
-#caseForNoRelated()
+caseForNoRelated()
 
-checkNotReturningClubAlreadyIn()
+#checkNotReturningClubAlreadyIn()
