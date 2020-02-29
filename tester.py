@@ -299,4 +299,4 @@ smallDataSet()
 largeDataSet()
 caseForNoRelated()
 
-#checkNotReturningClubAlreadyIn()
+checkNotReturningClubAlreadyIn()
