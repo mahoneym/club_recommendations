@@ -17,6 +17,7 @@ def addLargeClubs():
     recommendObject.addClub("c3",'Politics', 8)
     recommendObject.addClub("c4",'Fundraisers', 9)
     recommendObject.addClub("c5", 'English', 10)
+    recommendObject.addClub("c6", 'English', 10)
     recommendObject.addClub("c7", 'English', 11)
     recommendObject.addClub("c8", 'English', 12)
     recommendObject.addClub("c9", 'English', 13)
@@ -73,84 +74,104 @@ def smallDataSet():
     return None
 
 def largeDataSet():
-    global u6, u7, u8, u9, u10, u12, u13, u14, u15, u16, u17, u18, u19, u20, u21, u22, u23, u24
+    global u6, u7, u8, u9, u10, u12, u13, u14, u15, u16, u17, u18, u19, u20, u21, u22, u23, u25, u24
     addLargeClubs()
 
-    u6.addClub("c1")
-    u6.addClub("c2")
-    u6.addClub("c3")
+    u6 = recommendObject.addUser(6)
+    u7 = recommendObject.addUser(7)
+    u8 = recommendObject.addUser(8)
+    u9 = recommendObject.addUser(9)
+    u10 = recommendObject.addUser(10)
+    u12 = recommendObject.addUser(12)
+    u13 = recommendObject.addUser(13)
+    u14 = recommendObject.addUser(14)
+    u15 = recommendObject.addUser(15)
+    u16 = recommendObject.addUser(16)
+    u17 = recommendObject.addUser(17)
+    u18 = recommendObject.addUser(18)
+    u19 = recommendObject.addUser(19)
+    u20 = recommendObject.addUser(20)
+    u21 = recommendObject.addUser(21)
+    u22 = recommendObject.addUser(22)
+    u23 = recommendObject.addUser(23)
+    u24 = recommendObject.addUser(24)
+    u25 = recommendObject.addUser(25)
 
-    u7.addClub("c2")
-    u7.addClub("c3")
-    u7.addClub("c4")
+    u6.addClub("c1", recommendObject)
+    u6.addClub("c2", recommendObject)
+    u6.addClub("c3", recommendObject)
 
-    u8.addClub("c1")
-    u8.addClub("c3")
-    u8.addClub("c4")
+    u7.addClub("c2", recommendObject)
+    u7.addClub("c3", recommendObject)
+    u7.addClub("c4", recommendObject)
 
-    u9.addClub("c2")
-    u9.addClub("c4")
-    u9.addClub("c5")
+    u8.addClub("c1", recommendObject)
+    u8.addClub("c3", recommendObject)
+    u8.addClub("c4", recommendObject)
 
-    u10.addClub("c5")
-    u10.addClub("c6")
-    u10.addClub("c7")
+    u9.addClub("c2", recommendObject)
+    u9.addClub("c4", recommendObject)
+    u9.addClub("c5", recommendObject)
 
-    u11.addClub("c6")
-    u11.addClub("c7")
-    u11.addClub("c8")
+    u10.addClub("c5", recommendObject)
+    u10.addClub("c6", recommendObject)
+    u10.addClub("c7", recommendObject)
 
-    u12.addClub("c8")
-    u12.addClub("c12")
-    u12.addClub("c9")
+    u12.addClub("c6", recommendObject)
+    u12.addClub("c7", recommendObject)
+    u12.addClub("c8", recommendObject)
 
-    u13.addClub("c12")
-    u13.addClub("c16")
-    u13.addClub("c15")
+    u13.addClub("c8", recommendObject)
+    u13.addClub("c12", recommendObject)
+    u13.addClub("c9", recommendObject)
 
-    u14.addClub("c8")
-    u14.addClub("c12")
-    u14.addClub("c13")
+    u14.addClub("c12", recommendObject)
+    u14.addClub("c16", recommendObject)
+    u14.addClub("c15", recommendObject)
 
-    u15.addClub("c8")
-    u15.addClub("c1")
-    u15.addClub("c18")
+    u15.addClub("c8", recommendObject)
+    u15.addClub("c12", recommendObject)
+    u15.addClub("c13", recommendObject)
 
-    u16.addClub("c8")
-    u16.addClub("c19")
-    u16.addClub("c1")
+    u16.addClub("c8", recommendObject)
+    u16.addClub("c1", recommendObject)
+    u16.addClub("c18", recommendObject)
 
-    u17.addClub("c19")
-    u17.addClub("c2")
-    u17.addClub("c10")
+    u17.addClub("c8", recommendObject)
+    u17.addClub("c19", recommendObject)
+    u17.addClub("c1", recommendObject)
 
-    u18.addClub("c5")
-    u18.addClub("c13")
-    u18.addClub("c19")
+    u18.addClub("c19", recommendObject)
+    u18.addClub("c2", recommendObject)
+    u18.addClub("c10", recommendObject)
 
-    u19.addClub("c17")
-    u19.addClub("c18")
-    u19.addClub("c14")
+    u19.addClub("c5", recommendObject)
+    u19.addClub("c13", recommendObject)
+    u19.addClub("c19", recommendObject)
 
-    u20.addClub("c13")
-    u20.addClub("c14")
-    u20.addClub("c17")
+    u20.addClub("c17", recommendObject)
+    u20.addClub("c18", recommendObject)
+    u20.addClub("c14", recommendObject)
 
-    u21.addClub("c16")
-    u21.addClub("c17")
-    u21.addClub("c18")
+    u21.addClub("c13", recommendObject)
+    u21.addClub("c14", recommendObject)
+    u21.addClub("c17", recommendObject)
 
-    u22.addClub("c11")
-    u22.addClub("c12")
-    u22.addClub("c13")
+    u22.addClub("c16", recommendObject)
+    u22.addClub("c17", recommendObject)
+    u22.addClub("c18", recommendObject)
 
-    u23.addClub("c13")
-    u23.addClub("c14")
-    u23.addClub("c18")
+    u23.addClub("c11", recommendObject)
+    u23.addClub("c12", recommendObject)
+    u23.addClub("c13", recommendObject)
 
-    u24.addClub("c8")
-    u24.addClub("c10")
-    u24.addClub("c12")
+    u24.addClub("c13", recommendObject)
+    u24.addClub("c14", recommendObject)
+    u24.addClub("c18", recommendObject)
+
+    u25.addClub("c8", recommendObject)
+    u25.addClub("c10", recommendObject)
+    u25.addClub("c12", recommendObject)
 
     largeRecommendations()
 
@@ -176,6 +197,63 @@ def smallRecommendations():
 
 def largeRecommendations():
     print("\n" + "Large recommendations:")
+    a = recommendObject.createUserRecommendations(6)
+    print("recommendation for user 3: " + a.destination.name + '\n')
+
+    b = recommendObject.createUserRecommendations(7)
+    print("recommendation for user 7: " + b.destination.name + '\n')
+
+    c = recommendObject.createUserRecommendations(8)
+    print("recommendation for user 8: " + c.destination.name + '\n')
+
+    d = recommendObject.createUserRecommendations(9)
+    print("recommendation for user 9: " + d.destination.name + '\n')
+
+    a = recommendObject.createUserRecommendations(10)
+    print("recommendation for user 10: " + a.destination.name + '\n')
+
+    b = recommendObject.createUserRecommendations(12)
+    print("recommendation for user 12: " + b.destination.name + '\n')
+
+    c = recommendObject.createUserRecommendations(13)
+    print("recommendation for user 13: " + c.destination.name + '\n')
+
+    d = recommendObject.createUserRecommendations(14)
+    print("recommendation for user 14: " + d.destination.name + '\n')
+
+    a = recommendObject.createUserRecommendations(15)
+    print("recommendation for user 15: " + a.destination.name + '\n')
+
+    b = recommendObject.createUserRecommendations(16)
+    print("recommendation for user 16: " + b.destination.name + '\n')
+
+    c = recommendObject.createUserRecommendations(17)
+    print("recommendation for user 17: " + c.destination.name + '\n')
+
+    d = recommendObject.createUserRecommendations(18)
+    print("recommendation for user 18: " + d.destination.name + '\n')
+
+    a = recommendObject.createUserRecommendations(19)
+    print("recommendation for user 19: " + a.destination.name + '\n')
+
+    b = recommendObject.createUserRecommendations(20)
+    print("recommendation for user 20: " + b.destination.name + '\n')
+
+    c = recommendObject.createUserRecommendations(21)
+    print("recommendation for user 21: " + c.destination.name + '\n')
+
+    d = recommendObject.createUserRecommendations(22)
+    print("recommendation for user 22: " + d.destination.name + '\n')
+
+    c = recommendObject.createUserRecommendations(23)
+    print("recommendation for user 23: " + c.destination.name + '\n')
+
+    d = recommendObject.createUserRecommendations(24)
+    print("recommendation for user 24: " + d.destination.name + '\n')
+
+    d = recommendObject.createUserRecommendations(25)
+    print("recommendation for user 24: " + d.destination.name + '\n')
+
     return None
 
 def caseForNoRelated():
@@ -218,7 +296,7 @@ def checkNotReturningClubAlreadyIn():
 recommendObject = recommender.Recommender()
 miniDataSet()
 smallDataSet()
-#largeDataSet()
+largeDataSet()
 caseForNoRelated()
 
 #checkNotReturningClubAlreadyIn()

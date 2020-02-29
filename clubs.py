@@ -1,5 +1,6 @@
 import user
 from graph_edge import *
+import random
 
 class Club:
     """Represents clubs at Xavier University"""
@@ -36,7 +37,7 @@ class Club:
     # return: 0 if the club's weight was added; 1 if the club is new to related
     def addConnection(self, clubToConnectTo):
         for club in self.related:
-            if(club.destination.name is clubToConnectTo.name):
+            if(club.destination.name == clubToConnectTo.name):
                 club.addOneToWeight()
                 return 0                                    # get out of here cause we don't need to add it again
 
@@ -49,18 +50,25 @@ class Club:
     # look for the club's heaviest edge
     # param: none
     # returns: club object to the user
-    def returnMostCommonClub(self):
+    def returnMostCommonClub(self, previousIndex):
         # set the local variables so they are less than all objects
         mostCommonIndex = -1
         heaviestWeight = -1
 
+        if(previousIndex != -1):
+            previousIndex = (previousIndex + 1) % len(self.related)
+            return self.related[previousIndex], previousIndex
         # go through the related and look for the most common link
         index = 0                   # 0 since we need to start at the beginning
         if(len(self.related) == 0):
-            return 0
+            return 0, 0
         while(index < len(self.related)-1):
             if(heaviestWeight < self.related[index].weight):
                 mostCommonIndex = index
                 heaviestWeight = self.related[index].weight
             index = index + 1
-        return self.related[mostCommonIndex]      # return the club to the user
+        return self.related[mostCommonIndex], index      # return the club to the user
+
+    def returnARelatedClub(self, index):
+        newIndex = (index + 1) % len(self.related)
+        return self.related[newIndex], newIndex
