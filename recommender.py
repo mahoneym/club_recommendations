@@ -40,7 +40,7 @@ class Recommender:
     # return the id of the club if it is found; o.w. return -1
     def getClub(self, clubName):
         for club in self.__clubs:
-            if(clubName == club.name):
+            if(clubName == club.getClubName()):
                 return club                         # return the pointer to the club
         return -1                                   # something went wrong if I'm here..
 
@@ -55,33 +55,3 @@ class Recommender:
                 # call findClub() in the user's object to get recommendations
                 recommendation = user.findClub()
         return recommendation
-
-    # the read data methods are taking it from excel spreadsheets
-    def __readClubData():
-        # open club information
-        data = __readExcelData("")
-        clubName = ""
-        clubCategory = ""
-        clubId = None
-        newClub = club.Club(clubName, clubCategory, clubID)
-        return 0
-
-    def __readUserData():
-        data = __readExcelData("")
-        studentId = -1
-        newUser = user.User(studentId)
-        return 0
-
-    def __readExcelData(filePath):
-        data = None
-        if(1 == 1):               # if the file has been completely read
-            data = -1
-        elif("" in filePath):     # the data is abput student interests
-            # parse data from a line
-            # deal with it
-            data = 0
-        else:                   # the data is about clubs
-            # parse data from a line
-            # deal with that
-            data = 1
-        return data

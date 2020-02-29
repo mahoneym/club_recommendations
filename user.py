@@ -19,13 +19,13 @@ class User:
     # pre-condition: assumes the item that needs to be connected is the last item in the clubs array
     # param: the index of the club that was added before this method
     # returns: 0
-    def makeConnectionsBetweenClubs(self, recommender):
+    def __makeConnectionsBetweenClubs(self, recommender):
         index = 0
         indexAdded = len(self.__userClubs) - 1
         while(index < len(self.__userClubs)):
             if (index != indexAdded):                                                       # make sure im not gonna connect the club with itself
-                self.__userClubs[index].destination.addConnection(self.__userClubs[indexAdded].destination)       # from the already present club to the new one
-                self.__userClubs[indexAdded].destination.addConnection(self.__userClubs[index].destination)       # from the new club to the already present club
+                self.__userClubs[index].getDestination().addConnection(self.__userClubs[indexAdded].getDestination())       # from the already present club to the new one
+                self.__userClubs[indexAdded].getDestination().addConnection(self.__userClubs[index].getDestination())       # from the new club to the already present club
             index = index + 1
         return 0
 
@@ -36,7 +36,7 @@ class User:
         index = 0
         # check that the club isn't already in the list
         while(index < len(self.__userClubs)):               # loop through each of the clubs
-            if (self.alreadyInClub(clubName)):               # check the graph_edge destinations to be the same as the parameter
+            if (self.__alreadyInClub(clubName)):               # check the graph_edge destinations to be the same as the parameter
                 return -1                                   # Get out of here cause the club is already here..
             index = index + 1
 
@@ -45,22 +45,24 @@ class User:
         self.__userClubs.append(newClub)                    # append the graph_edge object to the clubs dictionary
 
         # add connections between the new club and the rest of the user's clubs
-        self.makeConnectionsBetweenClubs(recommender)
+        self.__makeConnectionsBetweenClubs(recommender)
         return 0
 
-    def alreadyInClub(self, clubName):
+    # checks to see if this user is in the given club clubName
+    # param: the name of the club as a string
+    # returns: True if the user is in the club; o.w. False
+    def __alreadyInClub(self, clubName):
         for club in self.__userClubs:
-            if(club.destination.name == clubName):
+            if(club.getDestination().getClubName() == clubName):
                 return True
         return False
 
     def print_userClubs(self):
         for club in self.__userClubs:
-            print(club.destination.name)
-            print(club.weight)
+            print(club.getDestination().getClubName())
+            print(club.getWeight())
 
     # find club with highest weight to a random club that the user is in
-    # NOTE: THIS COULD RETURN A CLUB THE USER IS ALREADY IN
     # param: None
     # returns: the club with the heaviest connection to the one chosen in this method
     def findClub(self):
@@ -72,15 +74,15 @@ class User:
         index = random.randint(0, 1000)    # this might return numberOfItems
         while(club == 0 and foundInUser):
             index = (index + 1) % lengthOfClubs
-            usingClubToRecommend = self.__userClubs[index].destination
+            usingClubToRecommend = self.__userClubs[index].getDestination()
             # use club index to call the most common club method on club's object
             club, firstIndexUsed = usingClubToRecommend.returnMostCommonClub(-1)
             if(club != 0):
-                foundInUser = self.alreadyInClub(club.destination.name)
+                foundInUser = self.__alreadyInClub(club.getDestination().getClubName())
                 indexUsed = -1
                 while(foundInUser and (indexUsed != firstIndexUsed)):
                     club, indexUsed = usingClubToRecommend.returnARelatedClub(indexUsed)
-                    foundInUser = self.alreadyInClub(club.destination.name)
+                    foundInUser = self.__alreadyInClub(club.getDestination().getClubName())
 
             count = count + 1
 
