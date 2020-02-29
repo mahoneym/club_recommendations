@@ -180,79 +180,79 @@ def largeDataSet():
 def miniRecommendations():
     print("\n" + "Mini Recommendations:")
     a = recommendObject.createUserRecommendations(1)
-    print("recommendation for user 1: " + a.destination.name + '\n')
+    print("recommendation for user 1: " + a.destination.name)
 
     b = recommendObject.createUserRecommendations(2)
-    print("recommendation for user 2: " + b.destination.name + '\n')
+    print("recommendation for user 2: " + b.destination.name)
     return None
 
 def smallRecommendations():
     print("\n" + "Small Recommendations:")
     a = recommendObject.createUserRecommendations(3)
-    print("recommendation for user 3: " + a.destination.name + '\n')
+    print("recommendation for user 3: " + a.destination.name)
 
     b = recommendObject.createUserRecommendations(4)
-    print("recommendation for user 2: " + b.destination.name)
+    print("recommendation for user 4: " + b.destination.name)
     return None
 
 def largeRecommendations():
     print("\n" + "Large recommendations:")
     a = recommendObject.createUserRecommendations(6)
-    print("recommendation for user 3: " + a.destination.name + '\n')
+    print("recommendation for user 6: " + a.destination.name)
 
     b = recommendObject.createUserRecommendations(7)
-    print("recommendation for user 7: " + b.destination.name + '\n')
+    print("recommendation for user 7: " + b.destination.name)
 
     c = recommendObject.createUserRecommendations(8)
-    print("recommendation for user 8: " + c.destination.name + '\n')
+    print("recommendation for user 8: " + c.destination.name)
 
     d = recommendObject.createUserRecommendations(9)
-    print("recommendation for user 9: " + d.destination.name + '\n')
+    print("recommendation for user 9: " + d.destination.name)
 
     a = recommendObject.createUserRecommendations(10)
-    print("recommendation for user 10: " + a.destination.name + '\n')
+    print("recommendation for user 10: " + a.destination.name)
 
     b = recommendObject.createUserRecommendations(12)
-    print("recommendation for user 12: " + b.destination.name + '\n')
+    print("recommendation for user 12: " + b.destination.name)
 
     c = recommendObject.createUserRecommendations(13)
-    print("recommendation for user 13: " + c.destination.name + '\n')
+    print("recommendation for user 13: " + c.destination.name)
 
     d = recommendObject.createUserRecommendations(14)
-    print("recommendation for user 14: " + d.destination.name + '\n')
+    print("recommendation for user 14: " + d.destination.name)
 
     a = recommendObject.createUserRecommendations(15)
-    print("recommendation for user 15: " + a.destination.name + '\n')
+    print("recommendation for user 15: " + a.destination.name)
 
     b = recommendObject.createUserRecommendations(16)
-    print("recommendation for user 16: " + b.destination.name + '\n')
+    print("recommendation for user 16: " + b.destination.name)
 
     c = recommendObject.createUserRecommendations(17)
-    print("recommendation for user 17: " + c.destination.name + '\n')
+    print("recommendation for user 17: " + c.destination.name)
 
     d = recommendObject.createUserRecommendations(18)
-    print("recommendation for user 18: " + d.destination.name + '\n')
+    print("recommendation for user 18: " + d.destination.name)
 
     a = recommendObject.createUserRecommendations(19)
-    print("recommendation for user 19: " + a.destination.name + '\n')
+    print("recommendation for user 19: " + a.destination.name)
 
     b = recommendObject.createUserRecommendations(20)
-    print("recommendation for user 20: " + b.destination.name + '\n')
+    print("recommendation for user 20: " + b.destination.name)
 
     c = recommendObject.createUserRecommendations(21)
-    print("recommendation for user 21: " + c.destination.name + '\n')
+    print("recommendation for user 21: " + c.destination.name)
 
     d = recommendObject.createUserRecommendations(22)
-    print("recommendation for user 22: " + d.destination.name + '\n')
+    print("recommendation for user 22: " + d.destination.name)
 
     c = recommendObject.createUserRecommendations(23)
-    print("recommendation for user 23: " + c.destination.name + '\n')
+    print("recommendation for user 23: " + c.destination.name)
 
     d = recommendObject.createUserRecommendations(24)
-    print("recommendation for user 24: " + d.destination.name + '\n')
+    print("recommendation for user 24: " + d.destination.name)
 
     d = recommendObject.createUserRecommendations(25)
-    print("recommendation for user 24: " + d.destination.name + '\n')
+    print("recommendation for user 24: " + d.destination.name)
 
     return None
 
@@ -289,8 +289,8 @@ def checkNotReturningClubAlreadyIn():
     u102.addClub("Random Other Club", recommendObject)
 
     c = recommendObject.createUserRecommendations(101)
-    print("Recommendation for user 101: " + c.destination.name)
-    print("Should be: Not in it club")
+    assert(c.destination.name == "Not in it club")
+    print("Success! The assertion passed!")
     return None
 
 recommendObject = recommender.Recommender()

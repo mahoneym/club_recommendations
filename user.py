@@ -73,23 +73,18 @@ class User:
         while(club == 0 and foundInUser):
             index = (index + 1) % lengthOfClubs
             usingClubToRecommend = self.__userClubs[index].destination
-            print("Going to " + usingClubToRecommend.name)
             # use club index to call the most common club method on club's object
             club, firstIndexUsed = usingClubToRecommend.returnMostCommonClub(-1)
             if(club != 0):
-                print("Looking to recommend: " + club.destination.name)
                 foundInUser = self.alreadyInClub(club.destination.name)
-                print(str(foundInUser))
                 indexUsed = -1
                 while(foundInUser and (indexUsed != firstIndexUsed)):
-                    print("trying again cause the user is already in it")
                     club, indexUsed = usingClubToRecommend.returnARelatedClub(indexUsed)
-                    print("now I am trying to recommend " + club.destination.name)
                     foundInUser = self.alreadyInClub(club.destination.name)
 
             count = count + 1
 
             # if there are no related clubs and we have tried 5 times
             if(count == 5 and club == 0):
-                club = None         # set club to none so we stop trying
+                club = None             # set club to none so we stop trying
         return club
