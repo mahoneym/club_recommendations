@@ -4,6 +4,7 @@ def addMiniClubs():
     recommendObject.addClub('Computer Science Club', 'Academic', 1)
     recommendObject.addClub('Pep Band', 'Music', 2)
     recommendObject.addClub('A Xavier Christmas', 'Service', 3)
+    #recommendObject.addClub('Accounting Club', 'Academic', 24)
     return None
 
 def addSmallClubs():
@@ -180,78 +181,145 @@ def largeDataSet():
 def miniRecommendations():
     print("\n" + "Mini Recommendations:")
     a = recommendObject.createUserRecommendations(1)
+    #assert(a.getDestination().getClubName() == 'A Xavier Christmas')
     print("recommendation for user 1: " + a.getDestination().getClubName())
 
     b = recommendObject.createUserRecommendations(2)
+    #assert(b.getDestination().getClubName() != 'Pep Band')
+    #assert(b.getDestination().getClubName() != 'A Xavier Christmas')
+    #assert(b.getDestination().getClubName() != 'Computer Science Club')
     print("recommendation for user 2: " + b.getDestination().getClubName())
     return None
 
 def smallRecommendations():
     print("\n" + "Small Recommendations:")
     a = recommendObject.createUserRecommendations(3)
+    assert(a.getDestination().getClubName() != 'A Xavier Christmas')
+    assert(a.getDestination().getClubName() != '4 Paws for Ability')
+    assert(a.getDestination().getClubName() != "Don't Tell Anna")
     print("recommendation for user 3: " + a.getDestination().getClubName())
 
     b = recommendObject.createUserRecommendations(4)
+    assert(b.getDestination().getClubName() != "Don't Tell Anna")
+    assert(b.getDestination().getClubName() != "Pep Band")
+    assert(a.getDestination().getClubName() != "A Xavier Christmas")
     print("recommendation for user 4: " + b.getDestination().getClubName())
     return None
 
 def largeRecommendations():
     print("\n" + "Large recommendations:")
     a = recommendObject.createUserRecommendations(6)
+    assert(a.getDestination().getClubName() != "c1")
+    assert(a.getDestination().getClubName() != "c2")
+    assert(a.getDestination().getClubName() != "c3")
     print("recommendation for user 6: " + a.getDestination().getClubName())
 
     b = recommendObject.createUserRecommendations(7)
+    assert(b.getDestination().getClubName() != "c2")
+    assert(b.getDestination().getClubName() != "c3")
+    assert(b.getDestination().getClubName() != "c4")
     print("recommendation for user 7: " + b.getDestination().getClubName())
 
     c = recommendObject.createUserRecommendations(8)
+    assert(c.getDestination().getClubName() != "c1")
+    assert(c.getDestination().getClubName() != "c3")
+    assert(c.getDestination().getClubName() != "c4")
     print("recommendation for user 8: " + c.getDestination().getClubName())
 
     d = recommendObject.createUserRecommendations(9)
+    assert(d.getDestination().getClubName() != "c2")
+    assert(d.getDestination().getClubName() != "c4")
+    assert(d.getDestination().getClubName() != "c5")
     print("recommendation for user 9: " + d.getDestination().getClubName())
 
     a = recommendObject.createUserRecommendations(10)
+    assert(a.getDestination().getClubName() != "c5")
+    assert(a.getDestination().getClubName() != "c6")
+    assert(a.getDestination().getClubName() != "c7")
     print("recommendation for user 10: " + a.getDestination().getClubName())
 
     b = recommendObject.createUserRecommendations(12)
+    assert(b.getDestination().getClubName() != "c6")
+    assert(b.getDestination().getClubName() != "c7")
+    assert(b.getDestination().getClubName() != "c8")
     print("recommendation for user 12: " + b.getDestination().getClubName())
 
     c = recommendObject.createUserRecommendations(13)
+    assert(c.getDestination().getClubName() != "c8")
+    assert(c.getDestination().getClubName() != "c12")
+    assert(c.getDestination().getClubName() != "c9")
     print("recommendation for user 13: " + c.getDestination().getClubName())
 
     d = recommendObject.createUserRecommendations(14)
+    assert(d.getDestination().getClubName() != "c12")
+    assert(d.getDestination().getClubName() != "c16")
+    assert(d.getDestination().getClubName() != "c15")
     print("recommendation for user 14: " + d.getDestination().getClubName())
 
     a = recommendObject.createUserRecommendations(15)
+    assert(a.getDestination().getClubName() != "c8")
+    assert(a.getDestination().getClubName() != "c12")
+    assert(a.getDestination().getClubName() != "c13")
     print("recommendation for user 15: " + a.getDestination().getClubName())
 
     b = recommendObject.createUserRecommendations(16)
+    assert(b.getDestination().getClubName() != "c8")
+    assert(b.getDestination().getClubName() != "c1")
+    assert(b.getDestination().getClubName() != "c18")
     print("recommendation for user 16: " + b.getDestination().getClubName())
 
     c = recommendObject.createUserRecommendations(17)
+    assert(c.getDestination().getClubName() != "c8")
+    assert(c.getDestination().getClubName() != "c19")
+    assert(c.getDestination().getClubName() != "c1")
     print("recommendation for user 17: " + c.getDestination().getClubName())
 
     d = recommendObject.createUserRecommendations(18)
+    assert(d.getDestination().getClubName() != "c19")
+    assert(d.getDestination().getClubName() != "c2")
+    assert(d.getDestination().getClubName() != "c10")
     print("recommendation for user 18: " + d.getDestination().getClubName())
 
     a = recommendObject.createUserRecommendations(19)
+    assert(a.getDestination().getClubName() != "c5")
+    assert(a.getDestination().getClubName() != "c13")
+    assert(a.getDestination().getClubName() != "c19")
     print("recommendation for user 19: " + a.getDestination().getClubName())
 
     b = recommendObject.createUserRecommendations(20)
+    assert(b.getDestination().getClubName() != "c17")
+    assert(b.getDestination().getClubName() != "c18")
+    assert(b.getDestination().getClubName() != "c14")
     print("recommendation for user 20: " + b.getDestination().getClubName())
 
     c = recommendObject.createUserRecommendations(21)
+    assert(c.getDestination().getClubName() != "c13")
+    assert(c.getDestination().getClubName() != "c14")
+    assert(c.getDestination().getClubName() != "c17")
     print("recommendation for user 21: " + c.getDestination().getClubName())
 
     d = recommendObject.createUserRecommendations(22)
+    assert(d.getDestination().getClubName() != "c16")
+    assert(d.getDestination().getClubName() != "c17")
+    assert(d.getDestination().getClubName() != "c18")
     print("recommendation for user 22: " + d.getDestination().getClubName())
 
     c = recommendObject.createUserRecommendations(23)
+    assert(c.getDestination().getClubName() != "c11")
+    assert(c.getDestination().getClubName() != "c12")
+    assert(c.getDestination().getClubName() != "c13")
     print("recommendation for user 23: " + c.getDestination().getClubName())
 
     d = recommendObject.createUserRecommendations(24)
+    assert(d.getDestination().getClubName() != "c13")
+    assert(d.getDestination().getClubName() != "c14")
+    assert(d.getDestination().getClubName() != "c18")
     print("recommendation for user 24: " + d.getDestination().getClubName())
 
     d = recommendObject.createUserRecommendations(25)
+    assert(d.getDestination().getClubName() != "c8")
+    assert(d.getDestination().getClubName() != "c10")
+    assert(d.getDestination().getClubName() != "c12")
     print("recommendation for user 24: " + d.getDestination().getClubName())
 
     return None
