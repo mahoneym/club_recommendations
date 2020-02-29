@@ -298,5 +298,4 @@ miniDataSet()
 smallDataSet()
 largeDataSet()
 caseForNoRelated()
-
 checkNotReturningClubAlreadyIn()
