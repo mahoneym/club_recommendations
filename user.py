@@ -83,7 +83,9 @@ class User:
                 while(foundInUser and (indexUsed != firstIndexUsed)):
                     club, indexUsed = usingClubToRecommend.returnARelatedClub(indexUsed)
                     foundInUser = self.__alreadyInClub(club.getDestination().getClubName())
-                    if(foundInUser):
+                    # if the club was found
+                    if(foundInUser):   
+                        #reset the club to nothing to use the user's next club for a recommendation
                         club = 0
 
             count = count + 1
