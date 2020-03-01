@@ -71,10 +71,12 @@ class User:
         club = 0
         count = 0
         foundInUser = True
-        index = random.randint(0, 1000)    # this might return numberOfItems
+        index = random.randint(0, 1000)
         while(club == 0 and foundInUser):
+            print("starting the while loop in findClub()")
             index = (index + 1) % lengthOfClubs
             usingClubToRecommend = self.__userClubs[index].getDestination()
+            print("going to: " + usingClubToRecommend.getClubName())
             # use club index to call the most common club method on club's object
             club, firstIndexUsed = usingClubToRecommend.returnMostCommonClub(-1)
             if(club != 0):
@@ -82,11 +84,16 @@ class User:
                 indexUsed = -1
                 while(foundInUser and (indexUsed != firstIndexUsed)):
                     club, indexUsed = usingClubToRecommend.returnARelatedClub(indexUsed)
+                    print("trying: " + club.getDestination().getClubName())
                     foundInUser = self.__alreadyInClub(club.getDestination().getClubName())
+                    print("foundInUser is " + str(foundInUser))
+                    if(foundInUser):
+                        club = 0
 
             count = count + 1
 
             # if there are no related clubs and we have tried 5 times
             if(count == 5 and club == 0):
                 club = None             # set club to none so we stop trying
+
         return club
