@@ -193,7 +193,7 @@ def miniRecommendations():
     assert(b.getDestination().getClubName() != 'A Xavier Christmas')
     assert(b.getDestination().getClubName() != 'Computer Science Club')
 
-    print("Mini recommendations passed.")
+    print("Mini recommendations passed")
     return None
 
 def smallRecommendations():
@@ -210,7 +210,7 @@ def smallRecommendations():
     assert(b.getDestination().getClubName() != "Pep Band")
     assert(a.getDestination().getClubName() != "A Xavier Christmas")
 
-    print("Small recommendations passed.")
+    print("Small recommendations passed")
     return None
 
 def largeRecommendations():
@@ -329,8 +329,7 @@ def largeRecommendations():
     assert(d.getDestination().getClubName() != "c10")
     assert(d.getDestination().getClubName() != "c12")
 
-    print("Large recommendations passed assertions.")
-
+    print("Large recommendations passed")
     return None
 
 def caseForNoRelated():
@@ -344,7 +343,7 @@ def caseForNoRelated():
 
     c = recommendObject.createUserRecommendations(11)
     assert(c == None)
-    print("Success! The assertion passed!")
+    print("The assertion passed")
     return None
 
 def checkNotReturningClubAlreadyIn():
@@ -352,7 +351,6 @@ def checkNotReturningClubAlreadyIn():
 
     u101 = recommendObject.addUser(101)
     u102 = recommendObject.addUser(102)
-    u103 = recommendObject.addUser(103)
 
     a = recommendObject.addClub('Common Club', 'something', 2)
     b = recommendObject.addClub('Not in it club', 'something', 3)
@@ -367,7 +365,7 @@ def checkNotReturningClubAlreadyIn():
 
     c = recommendObject.createUserRecommendations(101)
     assert(c.getDestination().getClubName() == "Not in it club")
-    print("Success! The assertion passed!")
+    print("The assertion passed")
     return None
 
 recommendObject = recommender.Recommender()
