@@ -10,16 +10,24 @@ def getRecommendations():
 def showRecommendations():
     return None
 
-
 interface = Tk()
 interface.title("Club Recommendation System")
+interface.geometry("500x200")                   # sets minimal size of the window when it first opens
+interface.configure(background="navy")          # sets background color to navy
 
-#usernameLabel = Label(interface, text="Student ID", y = 75, x = 0)
 
-button1 = Button(interface, text = "Submit", command = "getRecommendations()")
-button1.place(x = 270, y = 75)
+userID = StringVar()
+userID.set("Student ID:")
+
+usernameLabel = Label(interface, text="Student ID:", fg="grey", background="navy")
+usernameLabel.grid(row = 0, column = 0)
 
 nameEntry = Entry(interface)
-nameEntry.place(x = 75, y = 75)
+#nameEntry.place(x = 75, y = 75)
+nameEntry.grid(row = 0 , column = 1)
+
+button1 = Button(interface, text = "Submit", command = "getRecommendations()")
+#button1.place(x = 270, y = 75)
+button1.grid(row = 0, column =2, padx=2)
 
 interface.mainloop()
