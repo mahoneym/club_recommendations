@@ -8,12 +8,16 @@ import recommender
 
 def getRecommendations():
     # get whatever is in the label
+    idNumber = nameEntry.get()           # get the user's input
+    club = recommend.createUserRecommendations(idNumber)
     # get the recommendations from the recommender object
-    tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
+    if(club == -1):
+        tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
+    else:
+        print(club.getClubName())
     return None
 
-def showRecommendations():
-    return None
+recommend = recommender.Recommender()               # starts the recommender object
 
 interface = Tk()
 interface.title("Club Recommendation System")
@@ -21,8 +25,8 @@ interface.geometry("500x250")                                                   
 interface.configure(background="navy")                                                  # sets background color to navy
 
 # set up the label for the Student ID
-usernameLabel = Label(interface, text="Student ID:", fg="grey", background="navy")
-usernameLabel.grid(row = 0, column = 0)
+idLabel = Label(interface, text="Student ID:", fg="grey", background="navy")
+idLabel.grid(row = 0, column = 0)
 
 # set up the text box for the user to put their student ID
 nameEntry = Entry(interface)
@@ -33,7 +37,8 @@ submitButton = Button(interface, text = "Submit", command = getRecommendations)
 submitButton.grid(row = 0, column =2, padx=2)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
-
+clubName = StringVar(interface)
+clubDescription = StringVar(interface)
 
 ######## START THE INTERFACE ########
 interface.mainloop()

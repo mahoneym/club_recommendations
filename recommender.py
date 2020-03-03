@@ -54,4 +54,5 @@ class Recommender:
             if(user.id == id):
                 # call findClub() in the user's object to get recommendations
                 recommendation = user.findClub()
-        return recommendation
+                return recommendation
+        return -1
