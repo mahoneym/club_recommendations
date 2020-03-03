@@ -1,10 +1,14 @@
 from tkinter import *
+#from tkinter import tkMessageBox
 
+#import tkinter
+import tkinter.messagebox
 # I want to use a grid system so i don't have tp play with pixels all the time
 
 def getRecommendations():
     # get whatever is in the label
     # get the recommendations from the recommender object
+    tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
     return None
 
 def showRecommendations():
@@ -23,11 +27,9 @@ usernameLabel = Label(interface, text="Student ID:", fg="grey", background="navy
 usernameLabel.grid(row = 0, column = 0)
 
 nameEntry = Entry(interface)
-#nameEntry.place(x = 75, y = 75)
 nameEntry.grid(row = 0 , column = 1)
 
-button1 = Button(interface, text = "Submit", command = "getRecommendations()")
-#button1.place(x = 270, y = 75)
+button1 = Button(interface, text = "Submit", command = getRecommendations)
 button1.grid(row = 0, column =2, padx=2)
 
 interface.mainloop()
