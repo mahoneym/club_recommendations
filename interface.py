@@ -17,7 +17,47 @@ def getRecommendations():
         print(club.getClubName())
     return None
 
+def addData():
+    global u1, u2, u3, u4
+
+    u1 = recommend.addUser(1)
+    u2 - recommend.addUser(2)
+    u3 = recommend.addUser(3)
+    u4 = recommend.addUser(4)
+    u5 = recommend.addUser(5)
+
+    recommendObject.addClub('Computer Science Club', 'Academic', 1)
+    recommendObject.addClub('Pep Band', 'Music', 2)
+    recommendObject.addClub('A Xavier Christmas', 'Service', 3)
+    recommendObject.addClub('Accounting Club', 'Academic', 24)
+    recommendObject.addClub("Don't Tell Anna", 'Service', 4)
+    recommendObject.addClub('4 Paws for Ability', 'Animals', 5)
+
+    u1.addClub('Pep Band', recommendObject)
+    u1.addClub('Computer Science Club', recommendObject)
+    u1.addClub("Accounting Club", recommendObject)
+
+    u2.addClub('Pep Band', recommendObject)
+    u2.addClub('A Xavier Christmas', recommendObject)
+    u2.addClub('Computer Science Club', recommendObject)
+
+    u3.addClub('A Xavier Christmas', recommendObject)
+    u3.addClub('4 Paws for Ability', recommendObject)
+    u3.addClub("Don't Tell Anna", recommendObject)
+
+    u4.addClub('A Xavier Christmas', recommendObject)
+    u4.addClub("Don't Tell Anna", recommendObject)
+    u4.addClub('Pep Band', recommendObject)
+
+    u5.addClub("Computer Science Club", recommendObject)
+    u5.addClub("Don't Tell Anna", recommendObject)
+    u5.addClub('A Xavier Christmas', recommendObject)
+
+    return None
+
 recommend = recommender.Recommender()               # starts the recommender object
+addData()
+
 
 interface = Tk()
 interface.title("Club Recommendation System")
