@@ -11,26 +11,32 @@ interface = Tk()
 def getRecommendations():
     # get whatever is in the label
     idNumber = nameEntry.get()           # get the user's input
-    print(str(idNumber))
-    if(idNumber == ''):
+    if(not idNumber.isdigit()):
+        clearRecommendation()
+        tkinter.messagebox.showerror("Oops", "Your student ID is a number shown on your AllCard. Please try again.")
+    elif(idNumber == ''):
         tkinter.messagebox.showerror("Oops", "Please enter your student ID.")
     else:
         club = recommend.createUserRecommendations(int(idNumber))
         # get the recommendations from the recommender object
         if(club == -1):
-            clubNameInterface.configure(text="")
-            clubDescriptionInterface.configure(text="")
-            clubCategoryInterface.configure(text = "")
-
+            clearRecommendation()
             tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
         else:
-            print(club.getDestination().getClubName())
-
             clubNameInterface.configure(text = club.getDestination().getClubName())
             clubDescriptionInterface.configure(text = club.getDestination().getDescription())
             clubCategoryInterface.configure(text = club.getDestination().getCategory())
 
         return None
+
+def clearRecommendation():
+    # delete the recommended club's info
+    clubNameInterface.configure(text="")
+    clubDescriptionInterface.configure(text="")
+    clubCategoryInterface.configure(text = "")
+
+     # clears the user's input in the entry box
+    nameEntry.delete(0,'end')
 
 def addData():
     global u1, u2, u3, u4, u5
@@ -72,7 +78,6 @@ def addData():
 
 recommend = recommender.Recommender()               # starts the recommender object
 addData()
-
 
 interface.title("Club Recommendation System")
 interface.geometry("500x250")                                                           # sets minimal size of the window when it first opens
