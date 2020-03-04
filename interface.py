@@ -9,49 +9,50 @@ import recommender
 def getRecommendations():
     # get whatever is in the label
     idNumber = nameEntry.get()           # get the user's input
-    club = recommend.createUserRecommendations(idNumber)
+    print(str(idNumber))
+    club = recommend.createUserRecommendations(int(idNumber))
     # get the recommendations from the recommender object
     if(club == -1):
         tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
     else:
-        print(club.getClubName())
-    return None
+        print(club.getDestination().getClubName())
+    return club
 
 def addData():
-    global u1, u2, u3, u4
+    global u1, u2, u3, u4, u5
 
     u1 = recommend.addUser(1)
-    u2 - recommend.addUser(2)
+    u2 = recommend.addUser(2)
     u3 = recommend.addUser(3)
     u4 = recommend.addUser(4)
     u5 = recommend.addUser(5)
 
-    recommendObject.addClub('Computer Science Club', 'Academic', 1)
-    recommendObject.addClub('Pep Band', 'Music', 2)
-    recommendObject.addClub('A Xavier Christmas', 'Service', 3)
-    recommendObject.addClub('Accounting Club', 'Academic', 24)
-    recommendObject.addClub("Don't Tell Anna", 'Service', 4)
-    recommendObject.addClub('4 Paws for Ability', 'Animals', 5)
+    recommend.addClub('Computer Science Club', 'Academic', 1)
+    recommend.addClub('Pep Band', 'Music', 2)
+    recommend.addClub('A Xavier Christmas', 'Service', 3)
+    recommend.addClub('Accounting Club', 'Academic', 24)
+    recommend.addClub("Don't Tell Anna", 'Service', 4)
+    recommend.addClub('4 Paws for Ability', 'Animals', 5)
 
-    u1.addClub('Pep Band', recommendObject)
-    u1.addClub('Computer Science Club', recommendObject)
-    u1.addClub("Accounting Club", recommendObject)
+    u1.addClub('Pep Band', recommend)
+    u1.addClub('Computer Science Club', recommend)
+    u1.addClub("Accounting Club", recommend)
 
-    u2.addClub('Pep Band', recommendObject)
-    u2.addClub('A Xavier Christmas', recommendObject)
-    u2.addClub('Computer Science Club', recommendObject)
+    u2.addClub('Pep Band', recommend)
+    u2.addClub('A Xavier Christmas', recommend)
+    u2.addClub('Computer Science Club', recommend)
 
-    u3.addClub('A Xavier Christmas', recommendObject)
-    u3.addClub('4 Paws for Ability', recommendObject)
-    u3.addClub("Don't Tell Anna", recommendObject)
+    u3.addClub('A Xavier Christmas', recommend)
+    u3.addClub('4 Paws for Ability', recommend)
+    u3.addClub("Don't Tell Anna", recommend)
 
-    u4.addClub('A Xavier Christmas', recommendObject)
-    u4.addClub("Don't Tell Anna", recommendObject)
-    u4.addClub('Pep Band', recommendObject)
+    u4.addClub('A Xavier Christmas', recommend)
+    u4.addClub("Don't Tell Anna", recommend)
+    u4.addClub('Pep Band', recommend)
 
-    u5.addClub("Computer Science Club", recommendObject)
-    u5.addClub("Don't Tell Anna", recommendObject)
-    u5.addClub('A Xavier Christmas', recommendObject)
+    u5.addClub("Computer Science Club", recommend)
+    u5.addClub("Don't Tell Anna", recommend)
+    u5.addClub('A Xavier Christmas', recommend)
 
     return None
 
@@ -79,6 +80,8 @@ submitButton.grid(row = 0, column =2, padx=2)
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
 clubName = StringVar(interface)
 clubDescription = StringVar(interface)
+
+
 
 ######## START THE INTERFACE ########
 interface.mainloop()
