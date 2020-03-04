@@ -12,6 +12,7 @@ class Club:
         self.__related = []
         self.__id = clubID
         self.__recommender = recommender
+        self.__description = "abcdefghijklmnopqrstuvwxyz"
 
     def printRelated(self):
         print(self.__name)
@@ -22,6 +23,12 @@ class Club:
 
     def getClubName(self):
         return self.__name
+
+    def getDescription(self):
+        return self.__description
+
+    def getCategory(self):
+        return self.__category
 
     # call when tbe club needs to connect it to person's other clubs
     # param: the club [object/pointer] to connect to

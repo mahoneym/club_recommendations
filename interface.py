@@ -6,17 +6,31 @@ import recommender
 
 ######## THE AREA TO GET USER'S ID ########
 
+interface = Tk()
+
 def getRecommendations():
     # get whatever is in the label
     idNumber = nameEntry.get()           # get the user's input
     print(str(idNumber))
-    club = recommend.createUserRecommendations(int(idNumber))
-    # get the recommendations from the recommender object
-    if(club == -1):
-        tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
+    if(idNumber == ''):
+        tkinter.messagebox.showerror("Oops", "Please enter your student ID.")
     else:
-        print(club.getDestination().getClubName())
-    return club
+        club = recommend.createUserRecommendations(int(idNumber))
+        # get the recommendations from the recommender object
+        if(club == -1):
+            clubNameInterface.configure(text="")
+            clubDescriptionInterface.configure(text="")
+            clubCategoryInterface.configure(text = "")
+
+            tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
+        else:
+            print(club.getDestination().getClubName())
+
+            clubNameInterface.configure(text = club.getDestination().getClubName())
+            clubDescriptionInterface.configure(text = club.getDestination().getDescription())
+            clubCategoryInterface.configure(text = club.getDestination().getCategory())
+
+        return None
 
 def addData():
     global u1, u2, u3, u4, u5
@@ -60,7 +74,6 @@ recommend = recommender.Recommender()               # starts the recommender obj
 addData()
 
 
-interface = Tk()
 interface.title("Club Recommendation System")
 interface.geometry("500x250")                                                           # sets minimal size of the window when it first opens
 interface.configure(background="navy")                                                  # sets background color to navy
@@ -74,14 +87,38 @@ nameEntry = Entry(interface)
 nameEntry.grid(row = 0 , column = 1)
 
 # set up the submit button, which will trigger the looking for recommendations
-submitButton = Button(interface, text = "Submit", command = getRecommendations)
-submitButton.grid(row = 0, column =2, padx=2)
+clubButton = Button(interface, text = "Club Based", command = getRecommendations)
+clubButton.grid(row = 0, column = 2, padx = 6)
+
+#interestButton = Button(interface, text="Interest Based", command= getRecommendations)
+#interestButton.grid(row = 1, column = 2, padx = 2)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
-clubName = StringVar(interface)
-clubDescription = StringVar(interface)
+
+#have the row here just so there's some space between the input and the club recommendations
+rowOneLayer = Label(interface, background="navy")
+rowOneLayer.grid(row = 1)
+
+# create labels that will show what information is being displayed
+clubNameLabel = Label(interface, text="Club name: ", background='navy', fg='grey')
+clubNameLabel.grid(row = 2, column = 0)
+
+clubDescriptionLabel = Label(interface, text= "Description:", background='navy', fg = 'grey')
+clubDescriptionLabel.grid(row = 3, column = 0)
+
+clubCategoryLabel = Label(interface, text = "Club Category: ", background = 'navy', fg = 'grey')
+clubCategoryLabel.grid(row = 4, column = 0)
 
 
+# create the labels that will display a specific club recommendation
+clubNameInterface = Label(interface, text= "", background='navy', fg='grey')
+clubNameInterface.grid(row = 2, column = 1)
+
+clubDescriptionInterface = Label(interface, text="", background= 'navy', fg = 'grey')
+clubDescriptionInterface.grid(row=3, column= 1)
+
+clubCategoryInterface = Label(interface, text="", background = 'navy', fg = 'grey')
+clubCategoryInterface.grid(row=4, column = 1)
 
 ######## START THE INTERFACE ########
 interface.mainloop()
