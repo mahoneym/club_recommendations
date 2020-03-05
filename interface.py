@@ -2,10 +2,6 @@ from tkinter import *
 import tkinter.messagebox
 import recommender
 
-# I want to use a grid system so i don't have to play with pixels all the time
-
-######## THE AREA TO GET USER'S ID ########
-
 interface = Tk()
 
 def getClubRecommendations():
@@ -16,7 +12,7 @@ def getClubRecommendations():
         club = recommend.createUserRecommendations(int(idNumber))
         # get the recommendations from the recommender object
         if(club == -1):
-            clearRecommendation()
+            clearRecommendationArea()
             tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
         else:
             clubNameInterface.configure(text = club.getDestination().getClubName())
@@ -34,7 +30,7 @@ def getInterestRecommendations():
 def checkEntryEdgeCases(idNumber):
     flag = True
     if(not idNumber.isdigit()):
-        clearRecommendation()
+        clearRecommendationArea()
         tkinter.messagebox.showerror("Oops", "Your student ID is a number shown on your AllCard. Please try again.")
         flag = False
     elif(idNumber == ''):
@@ -44,7 +40,7 @@ def checkEntryEdgeCases(idNumber):
         flag = True
     return flag
 
-def clearRecommendation():
+def clearRecommendationArea():
     # delete the recommended club's info
     clubNameInterface.configure(text="")
     clubDescriptionInterface.configure(text="")
@@ -90,6 +86,8 @@ def addData():
     u5.addClub('A Xavier Christmas', recommend)
 
     return None
+
+######## THE AREA TO GET USER'S ID ########
 
 recommend = recommender.Recommender()               # starts the recommender object
 addData()
