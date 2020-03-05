@@ -8,15 +8,11 @@ import recommender
 
 interface = Tk()
 
-def getRecommendations():
+def getClubRecommendations():
     # get whatever is in the label
     idNumber = nameEntry.get()           # get the user's input
-    if(not idNumber.isdigit()):
-        clearRecommendation()
-        tkinter.messagebox.showerror("Oops", "Your student ID is a number shown on your AllCard. Please try again.")
-    elif(idNumber == ''):
-        tkinter.messagebox.showerror("Oops", "Please enter your student ID.")
-    else:
+    flag = checkEntryEdgeCases(idNumber)
+    if(flag == True):
         club = recommend.createUserRecommendations(int(idNumber))
         # get the recommendations from the recommender object
         if(club == -1):
@@ -26,8 +22,27 @@ def getRecommendations():
             clubNameInterface.configure(text = club.getDestination().getClubName())
             clubDescriptionInterface.configure(text = club.getDestination().getDescription())
             clubCategoryInterface.configure(text = club.getDestination().getCategory())
+    return None
 
-        return None
+def getInterestRecommendations():
+    idNumber = nameEntry.get()
+    flag = checkEntryEdgeCases(idNumber)
+    if(flag == True):
+        a = 1 + 1
+    return None
+
+def checkEntryEdgeCases(idNumber):
+    flag = True
+    if(not idNumber.isdigit()):
+        clearRecommendation()
+        tkinter.messagebox.showerror("Oops", "Your student ID is a number shown on your AllCard. Please try again.")
+        flag = False
+    elif(idNumber == ''):
+        tkinter.messagebox.showerror("Oops", "Please enter your student ID.")
+        flag = False
+    else:
+        flag = True
+    return flag
 
 def clearRecommendation():
     # delete the recommended club's info
@@ -35,7 +50,7 @@ def clearRecommendation():
     clubDescriptionInterface.configure(text="")
     clubCategoryInterface.configure(text = "")
 
-     # clears the user's input in the entry box
+    # clears the user's input in the entry box
     nameEntry.delete(0,'end')
 
 def addData():
@@ -80,11 +95,11 @@ recommend = recommender.Recommender()               # starts the recommender obj
 addData()
 
 interface.title("Club Recommendation System")
-interface.geometry("500x250")                                                           # sets minimal size of the window when it first opens
-interface.configure(background="navy")                                                  # sets background color to navy
+interface.geometry("525x200")                                                           # sets minimal size of the window when it first opens
+interface.configure(background="midnight blue")                                                  # sets background color to midnight blue
 
 # set up the label for the Student ID
-idLabel = Label(interface, text="Student ID:", fg="grey", background="navy")
+idLabel = Label(interface, text="Student ID:", fg="gray64", background="midnight blue")
 idLabel.grid(row = 0, column = 0)
 
 # set up the text box for the user to put their student ID
@@ -92,38 +107,37 @@ nameEntry = Entry(interface)
 nameEntry.grid(row = 0 , column = 1)
 
 # set up the submit button, which will trigger the looking for recommendations
-clubButton = Button(interface, text = "Club Based", command = getRecommendations)
+clubButton = Button(interface, text = "Club Based", command = getClubRecommendations)
 clubButton.grid(row = 0, column = 2, padx = 6)
 
-#interestButton = Button(interface, text="Interest Based", command= getRecommendations)
-#interestButton.grid(row = 1, column = 2, padx = 2)
+interestButton = Button(interface, text="Interest Based", command= getInterestRecommendations)
+interestButton.grid(row = 0, column = 3, padx = 2)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
 
 #have the row here just so there's some space between the input and the club recommendations
-rowOneLayer = Label(interface, background="navy")
+rowOneLayer = Label(interface, background="midnight blue")
 rowOneLayer.grid(row = 1)
 
 # create labels that will show what information is being displayed
-clubNameLabel = Label(interface, text="Club name: ", background='navy', fg='grey')
+clubNameLabel = Label(interface, text="Club name: ", background='midnight blue', fg='gray64')
 clubNameLabel.grid(row = 2, column = 0)
 
-clubDescriptionLabel = Label(interface, text= "Description:", background='navy', fg = 'grey')
+clubDescriptionLabel = Label(interface, text= "Description:", background='midnight blue', fg = 'gray64')
 clubDescriptionLabel.grid(row = 3, column = 0)
 
-clubCategoryLabel = Label(interface, text = "Club Category: ", background = 'navy', fg = 'grey')
+clubCategoryLabel = Label(interface, text = "Club Category: ", background = 'midnight blue', fg = 'gray64')
 clubCategoryLabel.grid(row = 4, column = 0)
 
-
 # create the labels that will display a specific club recommendation
-clubNameInterface = Label(interface, text= "", background='navy', fg='grey')
+clubNameInterface = Label(interface, text= "", background='midnight blue', fg='gray64')
 clubNameInterface.grid(row = 2, column = 1)
 
-clubDescriptionInterface = Label(interface, text="", background= 'navy', fg = 'grey')
+clubDescriptionInterface = Label(interface, text="", background= 'midnight blue', fg = 'gray64')
 clubDescriptionInterface.grid(row=3, column= 1)
 
-clubCategoryInterface = Label(interface, text="", background = 'navy', fg = 'grey')
+clubCategoryInterface = Label(interface, text="", background = 'midnight blue', fg = 'gray64')
 clubCategoryInterface.grid(row=4, column = 1)
 
-######## START THE INTERFACE ########
+######## START THE PROGRAM ########
 interface.mainloop()
