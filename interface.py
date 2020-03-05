@@ -112,29 +112,32 @@ interestButton.grid(row = 0, column = 3, padx = 2)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
 
+# the justify attribute only works on wrapped text
+# sticky = "W" is the justify left for non-wrapped text in labels
+
 # have the row here just so there's some space between the input and the club recommendations
 rowOneLayer = Label(interface, background="midnight blue")
 rowOneLayer.grid(row = 1)
 
 # create labels that will show what information is being displayed
 clubNameLabel = Label(interface, text="Club name: ", background='midnight blue', fg='gray64')
-clubNameLabel.grid(row = 2, column = 0)
+clubNameLabel.grid(row = 2, column = 0, sticky="W")
 
 clubDescriptionLabel = Label(interface, text= "Description:", background='midnight blue', fg = 'gray64')
-clubDescriptionLabel.grid(row = 3, column = 0)
+clubDescriptionLabel.grid(row = 3, column = 0, sticky="W")
 
 clubCategoryLabel = Label(interface, text = "Club Category: ", background = 'midnight blue', fg = 'gray64')
-clubCategoryLabel.grid(row = 4, column = 0)
+clubCategoryLabel.grid(row = 4, column = 0, sticky="W")
 
 # create the labels that will display a specific club recommendation
 clubNameInterface = Label(interface, text= "", background='midnight blue', fg='gray64')
-clubNameInterface.grid(row = 2, column = 1)
+clubNameInterface.grid(row = 2, column = 1, columnspan = 3, sticky="W")
 
 clubDescriptionInterface = Label(interface, text="", background= 'midnight blue', fg = 'gray64', wraplength = 400, justify = LEFT)
 clubDescriptionInterface.grid(row=3, column= 1, columnspan = 3)
 
 clubCategoryInterface = Label(interface, text="", background = 'midnight blue', fg = 'gray64')
-clubCategoryInterface.grid(row=4, column = 1)
+clubCategoryInterface.grid(row=4, column = 1, columnspan = 3, sticky="W"cl)
 
 ######## START THE PROGRAM ########
 interface.mainloop()
