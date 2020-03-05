@@ -12,7 +12,8 @@ class Club:
         self.__related = []
         self.__id = clubID
         self.__recommender = recommender
-        self.__description = "abcdefghijklmnopqrstuvwxyz"
+        self.__description = "The Accounting Society seeks to provide students majoring in or interested in accounting opportunities to network with professionals, faculty and other students. In addition to networking opportunities, the Accounting Society provides opportunities for professional development and leadership, and is involved in various community service projects throughout the academic year."
+        # self.__description = "abcdefghijklmnopqrstuvwxyz"
 
     def printRelated(self):
         print(self.__name)

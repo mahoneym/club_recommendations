@@ -92,7 +92,7 @@ recommend = recommender.Recommender()               # starts the recommender obj
 addData()
 
 interface.title("Club Recommendation System")
-interface.geometry("525x200")                                                           # sets minimal size of the window when it first opens
+interface.geometry("525x425")                                                           # sets minimal size of the window when it first opens
 interface.configure(background="midnight blue")                                                  # sets background color to midnight blue
 
 # set up the label for the Student ID
@@ -130,8 +130,8 @@ clubCategoryLabel.grid(row = 4, column = 0)
 clubNameInterface = Label(interface, text= "", background='midnight blue', fg='gray64')
 clubNameInterface.grid(row = 2, column = 1)
 
-clubDescriptionInterface = Label(interface, text="", background= 'midnight blue', fg = 'gray64')
-clubDescriptionInterface.grid(row=3, column= 1)
+clubDescriptionInterface = Label(interface, text="", background= 'midnight blue', fg = 'gray64', wraplength = 400, justify = LEFT)
+clubDescriptionInterface.grid(row=3, column= 1, columnspan = 3)
 
 clubCategoryInterface = Label(interface, text="", background = 'midnight blue', fg = 'gray64')
 clubCategoryInterface.grid(row=4, column = 1)
