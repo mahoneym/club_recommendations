@@ -88,7 +88,6 @@ def addData():
     return None
 
 ######## THE AREA TO GET USER'S ID ########
-
 recommend = recommender.Recommender()               # starts the recommender object
 addData()
 
@@ -113,7 +112,7 @@ interestButton.grid(row = 0, column = 3, padx = 2)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
 
-#have the row here just so there's some space between the input and the club recommendations
+# have the row here just so there's some space between the input and the club recommendations
 rowOneLayer = Label(interface, background="midnight blue")
 rowOneLayer.grid(row = 1)
 
