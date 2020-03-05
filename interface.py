@@ -33,11 +33,6 @@ def checkEntryEdgeCases(idNumber):
         clearRecommendationArea()
         tkinter.messagebox.showerror("Oops", "Your student ID is a number shown on your AllCard. Please try again.")
         flag = False
-    elif(idNumber == ''):
-        tkinter.messagebox.showerror("Oops", "Please enter your student ID.")
-        flag = False
-    else:
-        flag = True
     return flag
 
 def clearRecommendationArea():
@@ -97,7 +92,7 @@ interface.configure(background="midnight blue")                                 
 
 # set up the label for the Student ID
 idLabel = Label(interface, text="Student ID:", fg="gray64", background="midnight blue")
-idLabel.grid(row = 0, column = 0)
+idLabel.grid(row = 0, column = 0, sticky="W")
 
 # set up the text box for the user to put their student ID
 nameEntry = Entry(interface)
@@ -137,7 +132,7 @@ clubDescriptionInterface = Label(interface, text="", background= 'midnight blue'
 clubDescriptionInterface.grid(row=3, column= 1, columnspan = 3)
 
 clubCategoryInterface = Label(interface, text="", background = 'midnight blue', fg = 'gray64')
-clubCategoryInterface.grid(row=4, column = 1, columnspan = 3, sticky="W"cl)
+clubCategoryInterface.grid(row=4, column = 1, columnspan = 3, sticky="W")
 
 ######## START THE PROGRAM ########
 interface.mainloop()
