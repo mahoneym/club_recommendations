@@ -370,7 +370,7 @@ def checkNotReturningClubAlreadyIn():
 
 def tryAddingExcelClubs():
     recommendObject.addExcelClubs()
-    print("Added the clubs")
+    print("Added the clubs from excel")
     return None
 
 recommendObject = recommender.Recommender()
