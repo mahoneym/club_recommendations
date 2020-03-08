@@ -1,37 +1,37 @@
 import recommender
 
 def addMiniClubs():
-    recommendObject.addClub('Computer Science Club', 'Academic', 1)
-    recommendObject.addClub('Pep Band', 'Music', 2)
-    recommendObject.addClub('A Xavier Christmas', 'Service', 3)
-    recommendObject.addClub('Accounting Club', 'Academic', 24)
+    recommendObject.addClub('Computer Science Club', 'Academic', 1,"")
+    recommendObject.addClub('Pep Band', 'Music', 2,"")
+    recommendObject.addClub('A Xavier Christmas', 'Service', 3,"")
+    recommendObject.addClub('Accounting Club', 'Academic', 24,"")
     return None
 
 def addSmallClubs():
-    recommendObject.addClub("Don't Tell Anna", 'Service', 4)
-    recommendObject.addClub('4 Paws for Ability', 'Animals', 5)
+    recommendObject.addClub("Don't Tell Anna", 'Service', 4, "")
+    recommendObject.addClub('4 Paws for Ability', 'Animals', 5,"")
     return None
 
 def addLargeClubs():
-    recommendObject.addClub("c1",'Games', 6)
-    recommendObject.addClub("c2",'Sports', 7)
-    recommendObject.addClub("c3",'Politics', 8)
-    recommendObject.addClub("c4",'Fundraisers', 9)
-    recommendObject.addClub("c5", 'English', 10)
-    recommendObject.addClub("c6", 'English', 10)
-    recommendObject.addClub("c7", 'English', 11)
-    recommendObject.addClub("c8", 'English', 12)
-    recommendObject.addClub("c9", 'English', 13)
-    recommendObject.addClub("c10", 'English', 14)
-    recommendObject.addClub("c11", "English", 15)
-    recommendObject.addClub("c12", 'English', 16)
-    recommendObject.addClub("c13", 'English', 17)
-    recommendObject.addClub("c14", 'English', 18)
-    recommendObject.addClub("c15", 'English', 19)
-    recommendObject.addClub("c16", 'English', 20)
-    recommendObject.addClub("c17", 'English', 21)
-    recommendObject.addClub("c18", 'English', 22)
-    recommendObject.addClub("c19", 'English', 23)
+    recommendObject.addClub("c1",'Games', 6,"")
+    recommendObject.addClub("c2",'Sports', 7,"")
+    recommendObject.addClub("c3",'Politics', 8,"")
+    recommendObject.addClub("c4",'Fundraisers', 9,"")
+    recommendObject.addClub("c5", 'English', 10,"")
+    recommendObject.addClub("c6", 'English', 10,"")
+    recommendObject.addClub("c7", 'English', 11,"")
+    recommendObject.addClub("c8", 'English', 12,"")
+    recommendObject.addClub("c9", 'English', 13,"")
+    recommendObject.addClub("c10", 'English', 14,"")
+    recommendObject.addClub("c11", "English", 15,"")
+    recommendObject.addClub("c12", 'English', 16,"")
+    recommendObject.addClub("c13", 'English', 17,"")
+    recommendObject.addClub("c14", 'English', 18,"")
+    recommendObject.addClub("c15", 'English', 19,"")
+    recommendObject.addClub("c16", 'English', 20,"")
+    recommendObject.addClub("c17", 'English', 21,"")
+    recommendObject.addClub("c18", 'English', 22,"")
+    recommendObject.addClub("c19", 'English', 23,"")
     return None
 
 def miniDataSet():
@@ -335,7 +335,7 @@ def largeRecommendations():
 def caseForNoRelated():
     print("\n" + "A club having no related clubs")
 
-    recommendObject.addClub("Lone Club", 'Test Case', 0)
+    recommendObject.addClub("Lone Club", 'Test Case', 0,"")
 
     u0 = recommendObject.addUser(11)
 
@@ -352,9 +352,9 @@ def checkNotReturningClubAlreadyIn():
     u101 = recommendObject.addUser(101)
     u102 = recommendObject.addUser(102)
 
-    a = recommendObject.addClub('Common Club', 'something', 2)
-    b = recommendObject.addClub('Not in it club', 'something', 3)
-    c = recommendObject.addClub("Random Other Club", 'something', 4)
+    a = recommendObject.addClub('Common Club', 'something', 2,"")
+    b = recommendObject.addClub('Not in it club', 'something', 3,"")
+    c = recommendObject.addClub("Random Other Club", 'something', 4,"")
 
     u101.addClub("Common Club", recommendObject)
     u101.addClub("Random Other Club", recommendObject)
@@ -368,9 +368,15 @@ def checkNotReturningClubAlreadyIn():
     print("The assertion passed")
     return None
 
+def tryAddingExcelClubs():
+    recommendObject.addExcelClubs()
+    print("Added the clubs")
+    return None
+
 recommendObject = recommender.Recommender()
 miniDataSet()
 smallDataSet()
 largeDataSet()
 caseForNoRelated()
 checkNotReturningClubAlreadyIn()
+tryAddingExcelClubs()

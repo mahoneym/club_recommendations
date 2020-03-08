@@ -53,12 +53,12 @@ def addData():
     u4 = recommend.addUser(4)
     u5 = recommend.addUser(5)
 
-    recommend.addClub('Computer Science Club', 'Academic', 1)
-    recommend.addClub('Pep Band', 'Music', 2)
-    recommend.addClub('A Xavier Christmas', 'Service', 3)
-    recommend.addClub('Accounting Club', 'Academic', 24)
-    recommend.addClub("Don't Tell Anna", 'Service', 4)
-    recommend.addClub('4 Paws for Ability', 'Animals', 5)
+    recommend.addClub('Computer Science Club', 'Academic', 1, "")
+    recommend.addClub('Pep Band', 'Music', 2, "")
+    recommend.addClub('A Xavier Christmas', 'Service', 3, "")
+    recommend.addClub('Accounting Club', 'Academic', 24, "")
+    recommend.addClub("Don't Tell Anna", 'Service', 4, "")
+    recommend.addClub('4 Paws for Ability', 'Animals', 5, "")
 
     u1.addClub('Pep Band', recommend)
     u1.addClub('Computer Science Club', recommend)

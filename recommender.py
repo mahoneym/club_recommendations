@@ -1,6 +1,9 @@
 import clubs
 import user
 
+import pandas as pd
+import xlrd
+
 class Recommender:
     """The hub of activity for the project"""
 
@@ -32,8 +35,8 @@ class Recommender:
     # add a new club to the list
     # param: the name of the club, its category, and its ID
     # returns: 0
-    def addClub(self, clubName, clubCategory, clubID):
-        newClub = clubs.Club(clubName, clubCategory, clubID, self)
+    def addClub(self, clubName, clubCategory, clubID, description):
+        newClub = clubs.Club(clubName, clubCategory, clubID, description, self)
         self.__clubs.append(newClub)
         return 0
 
@@ -56,3 +59,13 @@ class Recommender:
                 recommendation = user.findClub()
                 return recommendation
         return -1
+
+    def addExcelClubs(self):
+        excel_file = 'data/Clubs.xlsx'
+
+        excelClubs = pd.read_excel(excel_file)
+
+        for index, rows in excelClubs.iterrows():
+            club = clubs.Club(rows['Name'], rows['Category'], rows['ID'], rows['Description'], self)
+            self.__clubs.append(club)
+        return None

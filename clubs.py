@@ -6,13 +6,14 @@ class Club:
     """Represents clubs at Xavier University"""
 
     # the constructor for the Clubs class
-    def __init__(self, clubName, clubCategory, clubID, recommender):
+    def __init__(self, clubName, clubCategory, clubID, clubDescription, recommender):
         self.__name = clubName
         self.__category = clubCategory
         self.__related = []
         self.__id = clubID
         self.__recommender = recommender
-        self.__description = "The Accounting Society seeks to provide students majoring in or interested in accounting opportunities to network with professionals, faculty and other students. In addition to networking opportunities, the Accounting Society provides opportunities for professional development and leadership, and is involved in various community service projects throughout the academic year."
+        self.__description = clubDescription
+        #self.__description = "The Accounting Society seeks to provide students majoring in or interested in accounting opportunities to network with professionals, faculty and other students. In addition to networking opportunities, the Accounting Society provides opportunities for professional development and leadership, and is involved in various community service projects throughout the academic year."
         # self.__description = "abcdefghijklmnopqrstuvwxyz"
 
     def printRelated(self):
