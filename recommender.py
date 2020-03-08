@@ -47,7 +47,7 @@ class Recommender:
                 return club                         # return the pointer to the club
         return -1                                   # something went wrong if I'm here..
 
-    # gets the recommendation from the user and returns it
+    # gets the recommendation from the user based on their clubs and returns it
     # param: student's ID
     # returns the recommendation
     def createUserRecommendations(self, id):
@@ -60,12 +60,15 @@ class Recommender:
                 return recommendation
         return -1
 
+    # looks at the user's interests and recommends a club based on them
+    def createInterestRecommendation(self, id):
+        recommendation = None
+
     def addExcelClubs(self):
         excel_file = 'data/Clubs.xlsx'
 
         excelClubs = pd.read_excel(excel_file)
 
         for index, rows in excelClubs.iterrows():
-            club = clubs.Club(rows['Name'], rows['Category'], rows['ID'], rows['Description'], self)
-            self.__clubs.append(club)
+            self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
         return None

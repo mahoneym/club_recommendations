@@ -14,6 +14,7 @@ class User:
     def __init__(self, studentId):
         self.id = studentId                             # a unique id for the user => given by the data
         self.__userClubs = []                           # put graph edge objects for the student's interests
+        self.__userInterests = []
 
     # goes through the clubs array and connects the index added and the other indices
     # pre-condition: assumes the item that needs to be connected is the last item in the clubs array
@@ -84,7 +85,7 @@ class User:
                     club, indexUsed = usingClubToRecommend.returnARelatedClub(indexUsed)
                     foundInUser = self.__alreadyInClub(club.getDestination().getClubName())
                     # if the club was found
-                    if(foundInUser):   
+                    if(foundInUser):
                         #reset the club to nothing to use the user's next club for a recommendation
                         club = 0
 
