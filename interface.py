@@ -90,20 +90,29 @@ interface.title("Club Recommendation System")
 interface.geometry("525x425")                                                           # sets minimal size of the window when it first opens
 interface.configure(background="midnight blue")                                                  # sets background color to midnight blue
 
+directions = """Welcome to the club recommender! Please enter your Student ID in the box below. Club-based recommendations will go to one of your clubs and picks a club that other members are in. The interest recommendations will pick one of your interests from the Road To Xavier form and choose a club in the appropriate category"""
+
+
+directionsLabel = Label(interface, text=directions, fg="gray64", background="midnight blue", wraplength = 500, justify = LEFT)
+directionsLabel.grid(row=0, column=0, columnspan=4)
+
+takeUpSpace = Label(interface, background="midnight blue")
+takeUpSpace.grid(row=1)
+
 # set up the label for the Student ID
 idLabel = Label(interface, text="Student ID:", fg="gray64", background="midnight blue")
-idLabel.grid(row = 0, column = 0, sticky="W")
+idLabel.grid(row = 2, column = 0, sticky="W")
 
 # set up the text box for the user to put their student ID
 nameEntry = Entry(interface)
-nameEntry.grid(row = 0 , column = 1)
+nameEntry.grid(row = 2 , column = 1)
 
 # set up the submit button, which will trigger the looking for recommendations
 clubButton = Button(interface, text = "Club Based", command = getClubRecommendations)
-clubButton.grid(row = 0, column = 2, padx = 6)
+clubButton.grid(row = 2, column = 2, padx = 6)
 
 interestButton = Button(interface, text="Interest Based", command= getInterestRecommendations)
-interestButton.grid(row = 0, column = 3, padx = 2)
+interestButton.grid(row = 2, column = 3, padx = 2)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
 
@@ -112,27 +121,27 @@ interestButton.grid(row = 0, column = 3, padx = 2)
 
 # have the row here just so there's some space between the input and the club recommendations
 rowOneLayer = Label(interface, background="midnight blue")
-rowOneLayer.grid(row = 1)
+rowOneLayer.grid(row = 3)
 
 # create labels that will show what information is being displayed
 clubNameLabel = Label(interface, text="Club name: ", background='midnight blue', fg='gray64')
-clubNameLabel.grid(row = 2, column = 0, sticky="W")
+clubNameLabel.grid(row = 4, column = 0, sticky="W")
 
 clubDescriptionLabel = Label(interface, text= "Description:", background='midnight blue', fg = 'gray64')
-clubDescriptionLabel.grid(row = 3, column = 0, sticky="W")
+clubDescriptionLabel.grid(row = 5, column = 0, sticky="W")
 
 clubCategoryLabel = Label(interface, text = "Club Category: ", background = 'midnight blue', fg = 'gray64')
-clubCategoryLabel.grid(row = 4, column = 0, sticky="W")
+clubCategoryLabel.grid(row = 6, column = 0, sticky="W")
 
 # create the labels that will display a specific club recommendation
 clubNameInterface = Label(interface, text= "", background='midnight blue', fg='gray64')
-clubNameInterface.grid(row = 2, column = 1, columnspan = 3, sticky="W")
+clubNameInterface.grid(row = 4, column = 1, columnspan = 3, sticky="W")
 
 clubDescriptionInterface = Label(interface, text="", background= 'midnight blue', fg = 'gray64', wraplength = 400, justify = LEFT)
-clubDescriptionInterface.grid(row=3, column= 1, columnspan = 3)
+clubDescriptionInterface.grid(row=5, column= 1, columnspan = 3)
 
 clubCategoryInterface = Label(interface, text="", background = 'midnight blue', fg = 'gray64')
-clubCategoryInterface.grid(row=4, column = 1, columnspan = 3, sticky="W")
+clubCategoryInterface.grid(row=6, column = 1, columnspan = 3, sticky="W")
 
 ######## START THE PROGRAM ########
 interface.mainloop()
