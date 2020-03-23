@@ -53,7 +53,7 @@ def addData():
     u4 = recommend.addUser(4)
     u5 = recommend.addUser(5)
 
-    recommend.addClub('Computer Science Club', 'Academic', 1, "")
+    recommend.addClub('Computer Science Club', '', 1, "")
     recommend.addClub('Pep Band', 'Music', 2, "")
     recommend.addClub('A Xavier Christmas', 'Service', 3, "")
     recommend.addClub('Accounting Club', 'Academic', 24, "")
@@ -90,10 +90,11 @@ interface.title("Club Recommendation System")
 interface.geometry("525x425")                                                           # sets minimal size of the window when it first opens
 interface.configure(background="midnight blue")                                                  # sets background color to midnight blue
 
-directions = """Welcome to the club recommender! Please enter your Student ID in the box below. Club-based recommendations will go to one of your clubs and picks a club that other members are in. The interest recommendations will pick one of your interests from the Road To Xavier form and choose a club in the appropriate category"""
 
+directions = """Welcome to the club recommender! Please enter your Student ID in the box below."""
+# The interest recommendations will pick one of your interests from the Road To Xavier form and choose a related club.
 
-directionsLabel = Label(interface, text=directions, fg="gray64", background="midnight blue", wraplength = 500, justify = LEFT)
+directionsLabel = Label(interface, text=directions, fg="gray64", background="midnight blue", wraplength = 550, justify = LEFT)
 directionsLabel.grid(row=0, column=0, columnspan=4)
 
 takeUpSpace = Label(interface, background="midnight blue")
@@ -111,8 +112,8 @@ nameEntry.grid(row = 2 , column = 1)
 clubButton = Button(interface, text = "Club Based", command = getClubRecommendations)
 clubButton.grid(row = 2, column = 2, padx = 6)
 
-interestButton = Button(interface, text="Interest Based", command= getInterestRecommendations)
-interestButton.grid(row = 2, column = 3, padx = 2)
+#interestButton = Button(interface, text="Interest Based", command= getInterestRecommendations)
+#interestButton.grid(row = 2, column = 3, padx = 2)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
 

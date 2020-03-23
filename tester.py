@@ -373,10 +373,21 @@ def tryAddingExcelClubs():
     print("Added the clubs from excel")
     return None
 
+def clubBasedTests():
+    miniDataSet()
+    smallDataSet()
+    largeDataSet()
+    caseForNoRelated()
+    checkNotReturningClubAlreadyIn()
+    tryAddingExcelClubs()
+    return 0
+
 recommendObject = recommender.Recommender()
-miniDataSet()
-smallDataSet()
-largeDataSet()
-caseForNoRelated()
-checkNotReturningClubAlreadyIn()
-tryAddingExcelClubs()
+clubBasedTests()
+
+###### INTEREST BASED RECOMMENDATIONS ############
+def addInterests():
+    return None
+
+def interestBasedTests():
+    return None

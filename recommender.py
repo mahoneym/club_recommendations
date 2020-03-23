@@ -1,6 +1,8 @@
 import clubs
 import user
+import interest
 
+# import jazz to read the Excel file
 import pandas as pd
 import xlrd
 
@@ -11,6 +13,7 @@ class Recommender:
     # instance variables
     __users = []                   # array of students
     __clubs = []                   # array of clubs
+    __interests = []               # array of possible interests
 
     # create a user and add to the __user dictionary
     # param: student's ID
@@ -40,6 +43,13 @@ class Recommender:
         self.__clubs.append(newClub)
         return 0
 
+    # adds an interest to the list of possibilities (__userInterests)
+    # param: the interest id, the interest name, and its category id
+    def addInterestToList(self, interestId, interestName, interestCategoryId):
+        newInterest = Interest(interestId, interestName, interestCategoryId)
+        self.__userInterests.append(newInterest)
+        return None
+
     # return the id of the club if it is found; o.w. return -1
     def getClub(self, clubName):
         for club in self.__clubs:
@@ -60,6 +70,8 @@ class Recommender:
                 return recommendation
         return -1
 
+
+
     # looks at the user's interests and recommends a club based on them
     def createInterestRecommendation(self, id):
         recommendation = None
@@ -70,5 +82,30 @@ class Recommender:
         excelClubs = pd.read_excel(excel_file)
 
         for index, rows in excelClubs.iterrows():
-            self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
+            # look for the category in the interests
+            category = rows['Category']
+            foundInInterests = False
+            for interest in self.__interests:
+                if (category == interest):
+                    # add the club
+                    newClub = self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
+                    # connect the club to it's interest that we just found
+                    interest.addRelatedClub(club)
+                    found = True
+            if(found == False):
+                newClub = self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
+                # add the interest cause it doesn't already exist
+                newInterest = Interest(rows['Category'])
+                __interests.append(newInterest)
+                # connect the two
+                newInterest.addRelatedClub(newClub)
         return None
+
+    #def addExcelInterests(self):
+    #    excel_file = 'data/Clubs.xlsx'
+
+    #    excelClubs = pd.read_excel(excel_file)
+
+    #    for index, rows in excelClubs.iterrows():
+    #        self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
+    #    return None
