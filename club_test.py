@@ -379,15 +379,8 @@ def clubBasedTests():
     largeDataSet()
     caseForNoRelated()
     checkNotReturningClubAlreadyIn()
-    tryAddingExcelClubs()
+    #tryAddingExcelClubs()
     return 0
 
 recommendObject = recommender.Recommender()
 clubBasedTests()
-
-###### INTEREST BASED RECOMMENDATIONS ############
-def addInterests():
-    return None
-
-def interestBasedTests():
-    return None

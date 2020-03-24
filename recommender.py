@@ -121,7 +121,7 @@ class Recommender:
                 self.addInterestToList(0, category, 0)
                 # connect the two
                 self.__interests[len(self.__interests)-1].addRelatedClub(newClub)
-        self.print_interests()
+        #self.print_interests()
         return None
 
     #def addExcelInterests(self):
