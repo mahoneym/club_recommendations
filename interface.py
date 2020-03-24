@@ -87,7 +87,7 @@ recommend = recommender.Recommender()               # starts the recommender obj
 addData()
 
 interface.title("Club Recommendation System")
-interface.geometry("525x425")                                                           # sets minimal size of the window when it first opens
+interface.geometry("575x400")                                                           # sets minimal size of the window when it first opens
 interface.configure(background="midnight blue")                                                  # sets background color to midnight blue
 
 

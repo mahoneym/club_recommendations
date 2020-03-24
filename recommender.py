@@ -1,6 +1,6 @@
 import clubs
 import user
-import interest
+from interest import *
 
 # import jazz to read the Excel file
 import pandas as pd
@@ -14,6 +14,9 @@ class Recommender:
     __users = []                   # array of students
     __clubs = []                   # array of clubs
     __interests = []               # array of possible interests
+
+    def __init__(self):
+        self.addExcelClubs()
 
     # create a user and add to the __user dictionary
     # param: student's ID
@@ -35,6 +38,10 @@ class Recommender:
             club.printRelated()
         return 0
 
+    def print_interests(self):
+        for interest in self.__interests:
+            print (interest.getInterestName())
+
     # add a new club to the list
     # param: the name of the club, its category, and its ID
     # returns: 0
@@ -46,14 +53,16 @@ class Recommender:
     # adds an interest to the list of possibilities (__userInterests)
     # param: the interest id, the interest name, and its category id
     def addInterestToList(self, interestId, interestName, interestCategoryId):
-        newInterest = Interest(interestId, interestName, interestCategoryId)
-        self.__userInterests.append(newInterest)
+        # newInterest = Interest(interestId, interestName, interestCategoryId)
+        newInterest = Interest(interestName)
+        self.__interests.append(newInterest)
         return None
 
-    # return the id of the club if it is found; o.w. return -1
+    # gets the club based on the club name
+    # returns the id of the club if it is found; o.w. return -1
     def getClub(self, clubName):
         for club in self.__clubs:
-            if(clubName == club.getClubName()):
+            if(clubName.lower() == club.getClubName().lower()):
                 return club                         # return the pointer to the club
         return -1                                   # something went wrong if I'm here..
 
@@ -70,12 +79,27 @@ class Recommender:
                 return recommendation
         return -1
 
-
+    # returns the user that is being referenced
+    # param: the object itself and the student's id
+    # returns: the user object
+    def getUser(self, id):
+        for user in self.__users:
+            if(user.id == id):
+                return user
 
     # looks at the user's interests and recommends a club based on them
+    # param: the id of the student for which to get the recommendation and the object itself
+    # returns: the interest object to the caller
     def createInterestRecommendation(self, id):
-        recommendation = None
+        user = getUser(id)
+        interest = user.getUserInterest()
+        recommendation = interest.getRandomRecommendation()
+        return recommendation
 
+    # adds the clubs from the excel file and creates the categories
+    # NOTE: categories are acting as the interests at this point
+    # param: none to be passed but it takes the self
+    # returns: a None object
     def addExcelClubs(self):
         excel_file = 'data/Clubs.xlsx'
 
@@ -85,20 +109,19 @@ class Recommender:
             # look for the category in the interests
             category = rows['Category']
             foundInInterests = False
+            # add the club
+            newClub = self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
             for interest in self.__interests:
-                if (category == interest):
-                    # add the club
-                    newClub = self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
+                if (category == interest.getInterestName()):
                     # connect the club to it's interest that we just found
-                    interest.addRelatedClub(club)
-                    found = True
-            if(found == False):
-                newClub = self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
+                    interest.addRelatedClub(newClub)
+                    foundInInterests = True
+            if(foundInInterests == False):         # if the interest was not found
                 # add the interest cause it doesn't already exist
-                newInterest = Interest(rows['Category'])
-                __interests.append(newInterest)
+                self.addInterestToList(0, category, 0)
                 # connect the two
-                newInterest.addRelatedClub(newClub)
+                self.__interests[len(self.__interests)-1].addRelatedClub(newClub)
+        self.print_interests()
         return None
 
     #def addExcelInterests(self):

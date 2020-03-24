@@ -49,13 +49,6 @@ class User:
         self.__makeConnectionsBetweenClubs(recommender)
         return 0
 
-    # adds an interest to the user
-    # param: takes the self and the interest object to be added
-    # returns: nothing
-    def addInterest(self, interest):
-        self.__userInterests.append(interest)
-        return None
-
     # checks to see if this user is in the given club clubName
     # param: the name of the club as a string
     # returns: True if the user is in the club; o.w. False
@@ -110,3 +103,14 @@ class User:
     def addInterest(interest):
         self.__userInterests.append(interest)
         return None
+
+    # adds an interest to the user
+    # param: takes the self and the interest object to be added
+    # returns: nothing
+    def addInterest(self, interest):
+        self.__userInterests.append(interest)
+        return None
+
+    def getUserInterest(self):
+        index = random.randint(0, 1000) % len(self.__userInterests)
+        return self.__userInterests[index]
