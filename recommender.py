@@ -15,6 +15,7 @@ class Recommender:
     __clubs = []                   # array of clubs
     __interests = []               # array of possible interests
 
+    # the constructor for the recommender class
     def __init__(self):
         self.addExcelClubs()
 
@@ -23,7 +24,7 @@ class Recommender:
     # returns: the new user
     def addUser(self, id):
         newUser = user.User(id)                          # call __init__ of the user class
-        self.__users.append(newUser)               # add the user to the dict
+        self.__users.append(newUser)                     # add the user to the dict
         return newUser
 
     def print_users(self):
@@ -47,10 +48,11 @@ class Recommender:
     def addClub(self, clubName, clubCategory, clubID, description):
         newClub = clubs.Club(clubName, clubCategory, clubID, description, self)
         self.__clubs.append(newClub)
-        return 0
+        return newClub
 
     # adds an interest to the list of possibilities (__userInterests)
     # param: the interest id, the interest name, and its category id
+    # returns: a None object
     def addInterestToList(self, interestId, interestName, interestCategoryId):
         # newInterest = Interest(interestId, interestName, interestCategoryId)
         newInterest = Interest(interestName)
@@ -109,7 +111,8 @@ class Recommender:
             category = rows['Category']
             foundInInterests = False
             # add the club
-            newClub = self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
+            self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
+            newClub = self.__clubs[len(self.__clubs)-1]
             for interest in self.__interests:
                 if (category == interest.getInterestName()):
                     # connect the club to it's interest that we just found
@@ -121,6 +124,25 @@ class Recommender:
                 # connect the two
                 self.__interests[len(self.__interests)-1].addRelatedClub(newClub)
         #self.print_interests()
+        return None
+
+    # will find the interest object based on the name
+    # param: the string name of the interest
+    # returns the interest if it's found; o.w. nothing
+    def findInterest(self, interestName):
+        for interest in self.__interests:
+            if(interest.getInterestName() == interestName):
+                return interest
+
+
+    # adds an interest to the user
+    # param: the student's id and the string name of the interest
+    # returns: a None object
+    def addUserInterest(self, id, interestName):
+        user = self.getUser(id)
+        if(user != None):
+            interest = self.findInterest(interestName)
+            user.addInterest(interest)
         return None
 
     #def addExcelInterests(self):

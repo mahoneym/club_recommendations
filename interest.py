@@ -24,7 +24,11 @@ class Interest:
 #    def getInterestCategoryID(self):
 #        return self.__interestCategoryID
 
-    def getRandomRecommendation():
+    def printClubsInCategory(self):
+        for club in self.__relatedClubs:
+            print(club.getClubName())
+
+    def getRandomRecommendation(self):
         index = random.randint(0, 1000) % len(self.__relatedClubs)
         recommendation = self.__relatedClubs[index]
         return recommendation
