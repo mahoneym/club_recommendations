@@ -34,8 +34,7 @@ class Recommender:
 
     def print_clubs(self):
         for club in self.__clubs:
-            print("Printing Related for:" + club.name)
-            club.printRelated()
+            print(club.getClubName())
         return 0
 
     def print_interests(self):
@@ -91,7 +90,7 @@ class Recommender:
     # param: the id of the student for which to get the recommendation and the object itself
     # returns: the interest object to the caller
     def createInterestRecommendation(self, id):
-        user = getUser(id)
+        user = self.getUser(id)
         interest = user.getUserInterest()
         recommendation = interest.getRandomRecommendation()
         return recommendation

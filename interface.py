@@ -23,9 +23,10 @@ def getClubRecommendations():
 def getInterestRecommendations():
     idNumber = nameEntry.get()
     flag = checkEntryEdgeCases(idNumber)
+    club = None
     if(flag == True):
-        a = 1 + 1
-    return None
+        club = recommend.createInterestRecommendation(int(idNumber))
+    return club
 
 def checkEntryEdgeCases(idNumber):
     flag = True
@@ -53,28 +54,21 @@ def addData():
     u4 = recommend.addUser(4)
     u5 = recommend.addUser(5)
 
-    recommend.addClub('Computer Science Club', '', 1, "")
-    recommend.addClub('Pep Band', 'Music', 2, "")
-    recommend.addClub('A Xavier Christmas', 'Service', 3, "")
-    recommend.addClub('Accounting Club', 'Academic', 24, "")
-    recommend.addClub("Don't Tell Anna", 'Service', 4, "")
-    recommend.addClub('4 Paws for Ability', 'Animals', 5, "")
-
-    u1.addClub('Pep Band', recommend)
+    u1.addClub('MuskieTHON', recommend)
     u1.addClub('Computer Science Club', recommend)
-    u1.addClub("Accounting Club", recommend)
+    u1.addClub("Accounting Society", recommend)
 
-    u2.addClub('Pep Band', recommend)
+    u2.addClub('MuskieTHON', recommend)
     u2.addClub('A Xavier Christmas', recommend)
     u2.addClub('Computer Science Club', recommend)
 
     u3.addClub('A Xavier Christmas', recommend)
-    u3.addClub('4 Paws for Ability', recommend)
+    u3.addClub('4 Paws for Ability at XU', recommend)
     u3.addClub("Don't Tell Anna", recommend)
 
     u4.addClub('A Xavier Christmas', recommend)
     u4.addClub("Don't Tell Anna", recommend)
-    u4.addClub('Pep Band', recommend)
+    u4.addClub('MuskieTHON', recommend)
 
     u5.addClub("Computer Science Club", recommend)
     u5.addClub("Don't Tell Anna", recommend)
@@ -112,8 +106,8 @@ nameEntry.grid(row = 2 , column = 1)
 clubButton = Button(interface, text = "Club Based", command = getClubRecommendations)
 clubButton.grid(row = 2, column = 2, padx = 6)
 
-#interestButton = Button(interface, text="Interest Based", command= getInterestRecommendations)
-#interestButton.grid(row = 2, column = 3, padx = 2)
+interestButton = Button(interface, text="Interest Based", command= getInterestRecommendations)
+interestButton.grid(row = 2, column = 3, padx = 2)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
 
@@ -139,7 +133,7 @@ clubNameInterface = Label(interface, text= "", background='midnight blue', fg='g
 clubNameInterface.grid(row = 4, column = 1, columnspan = 3, sticky="W")
 
 clubDescriptionInterface = Label(interface, text="", background= 'midnight blue', fg = 'gray64', wraplength = 400, justify = LEFT)
-clubDescriptionInterface.grid(row=5, column= 1, columnspan = 3)
+clubDescriptionInterface.grid(row=5, column= 1, columnspan = 3, sticky = "W")
 
 clubCategoryInterface = Label(interface, text="", background = 'midnight blue', fg = 'gray64')
 clubCategoryInterface.grid(row=6, column = 1, columnspan = 3, sticky="W")
