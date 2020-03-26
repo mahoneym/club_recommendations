@@ -29,6 +29,23 @@ u5.addClub("Don't Tell Anna", recommend)
 u5.addClub('A Xavier Christmas', recommend)
 
 recommend.addUserInterest(1, "STEM")
+recommend.addUserInterest(1, "General Interests")
+recommend.addUserInterest(1, "Spirituality")
+
+u1Recommendation = recommend.createInterestRecommendation(1)
+assert(u1Recommendation.getClubName() != "MuskieTHON")
+assert(u1Recommendation.getClubName() != "Computer Science Club")
+assert(u1Recommendation.getClubName() != "Accounting Society")
+
+recommend.addUserInterest(2, "Health Professions")
+recommend.addUserInterest(2, "Wellness")
+recommend.addUserInterest(2, "Service and Social Justice")
+
+u2Recommendation = recommend.createInterestRecommendation(2)
+assert(u2Recommendation.getClubName() != "MuskieTHON")
+assert(u2Recommendation.getClubName() != "A Xavier Christmas")
+assert(u2Recommendation.getClubName() != "Computer Science Club")
+
 #recommend.createInterestRecommendation(1)
-print(str(recommend.createInterestRecommendation(1).getClubName()))
-#print(u1.getUserInterest().getInterestName())
+print("user 1: " + str(u1Recommendation.getClubName()))
+print("user 2: " + str(u2Recommendation.getClubName()))

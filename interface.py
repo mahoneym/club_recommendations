@@ -11,13 +11,14 @@ def getClubRecommendations():
     if(flag == True):
         club = recommend.createUserRecommendations(int(idNumber))
         # get the recommendations from the recommender object
-        if(club == -1):
-            clearRecommendationArea()
-            tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
-        else:
-            clubNameInterface.configure(text = club.getDestination().getClubName())
-            clubDescriptionInterface.configure(text = club.getDestination().getDescription())
-            clubCategoryInterface.configure(text = club.getDestination().getCategory())
+        showTheResults(club.getDestination())
+        #if(club == -1):
+        #    clearRecommendationArea()
+        #    tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
+        #else:
+        #    clubNameInterface.configure(text = club.getDestination().getClubName())
+        #    clubDescriptionInterface.configure(text = club.getDestination().getDescription())
+        #    clubCategoryInterface.configure(text = club.getDestination().getCategory())
     return None
 
 def getInterestRecommendations():
@@ -26,7 +27,17 @@ def getInterestRecommendations():
     club = None
     if(flag == True):
         club = recommend.createInterestRecommendation(int(idNumber))
+        showTheResults(club)
     return club
+
+def showTheResults(club):
+    if(club == -1):
+        clearRecommendationArea()
+        tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
+    else:
+        clubNameInterface.configure(text = club.getClubName())
+        clubDescriptionInterface.configure(text = club.getDescription())
+        clubCategoryInterface.configure(text = club.getCategory())
 
 def checkEntryEdgeCases(idNumber):
     flag = True
@@ -73,6 +84,14 @@ def addData():
     u5.addClub("Computer Science Club", recommend)
     u5.addClub("Don't Tell Anna", recommend)
     u5.addClub('A Xavier Christmas', recommend)
+
+    recommend.addUserInterest(1, "STEM")
+    recommend.addUserInterest(1, "General Interests")
+    recommend.addUserInterest(1, "Spirituality")
+
+    recommend.addUserInterest(2, "Health Professions")
+    recommend.addUserInterest(2, "Wellness")
+    recommend.addUserInterest(2, "Service and Social Justice")
 
     return None
 

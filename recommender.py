@@ -18,6 +18,8 @@ class Recommender:
     # the constructor for the recommender class
     def __init__(self):
         self.addExcelClubs()
+        #for interest in self.__interests:
+            #print(interest.getInterestName())
 
     # create a user and add to the __user dictionary
     # param: student's ID
@@ -93,8 +95,9 @@ class Recommender:
     # returns: the interest object to the caller
     def createInterestRecommendation(self, id):
         user = self.getUser(id)
-        interest = user.getUserInterest()
-        recommendation = interest.getRandomRecommendation()
+        #interest = user.getUserInterest()
+        #recommendation = interest.getRandomRecommendation()
+        recommendation = user.getInterestRecommendation()
         return recommendation
 
     # adds the clubs from the excel file and creates the categories

@@ -97,13 +97,6 @@ class User:
 
         return club
 
-    # adds an interest to a user
-    # param: takes a pointer to the interest needing to be added
-    # returns: None
-    def addInterest(interest):
-        self.__userInterests.append(interest)
-        return None
-
     # adds an interest to the user
     # param: takes the self and the interest object to be added
     # returns: nothing
@@ -114,3 +107,26 @@ class User:
     def getUserInterest(self):
         index = random.randint(0, 1000) % len(self.__userInterests)
         return self.__userInterests[index]
+
+    # returns True if the user is in the club
+    def checkForClub(self, club):
+        flag = False
+        for oneClub in self.__userClubs:
+
+            if(oneClub.getDestination() == club):
+                print(oneClub.getDestination().getClubName())
+                flag = True
+        return flag
+
+    def getInterestRecommendation(self):
+        foundOne = False
+        recommendation = None
+        while(foundOne == False):
+            index = random.randint(0, 1000) % (len(self.__userInterests)-1)
+            interest = self.__userInterests[index]
+            recommendation = interest.getRandomRecommendation()
+            flag = self.checkForClub(recommendation)
+            print(str(flag))
+            foundOne = (not flag)
+            print(str(foundOne))
+        return recommendation
