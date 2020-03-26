@@ -20,7 +20,11 @@ def getInterestRecommendations():
     club = None
     if(flag == True):
         club = recommend.createInterestRecommendation(int(idNumber))
-        showTheResults(club)
+        if(club == None):
+            clearRecommendationArea()
+            tkinter.messagebox.showerror("Oops", "You do not have any interests saved in the system. Please try again.")
+        else:
+            showTheResults(club)
     return club
 
 def showTheResults(club):
@@ -134,21 +138,21 @@ rowOneLayer.grid(row = 3)
 clubNameLabel = Label(interface, text="Club name: ", background='midnight blue', fg='gray64')
 clubNameLabel.grid(row = 4, column = 0, sticky="W")
 
-clubDescriptionLabel = Label(interface, text= "Description:", background='midnight blue', fg = 'gray64')
-clubDescriptionLabel.grid(row = 5, column = 0, sticky="W")
-
 clubCategoryLabel = Label(interface, text = "Club Category: ", background = 'midnight blue', fg = 'gray64')
-clubCategoryLabel.grid(row = 6, column = 0, sticky="W")
+clubCategoryLabel.grid(row = 5, column = 0, sticky="NW")
+
+clubDescriptionLabel = Label(interface, text= "Description:", background='midnight blue', fg = 'gray64')
+clubDescriptionLabel.grid(row = 6, column = 0, sticky="NW")
 
 # create the labels that will display a specific club recommendation
 clubNameInterface = Label(interface, text= "", background='midnight blue', fg='gray64')
 clubNameInterface.grid(row = 4, column = 1, columnspan = 3, sticky="W")
 
-clubDescriptionInterface = Label(interface, text="", background= 'midnight blue', fg = 'gray64', wraplength = 400, justify = LEFT)
-clubDescriptionInterface.grid(row=5, column= 1, columnspan = 3, sticky = "W")
-
 clubCategoryInterface = Label(interface, text="", background = 'midnight blue', fg = 'gray64')
-clubCategoryInterface.grid(row=6, column = 1, columnspan = 3, sticky="W")
+clubCategoryInterface.grid(row=5, column = 1, columnspan = 3, sticky="W")
+
+clubDescriptionInterface = Label(interface, text="", background= 'midnight blue', fg = 'gray64', wraplength = 400, justify = LEFT)
+clubDescriptionInterface.grid(row=6, column= 1, columnspan = 3, sticky = "W")
 
 ######## START THE PROGRAM ########
 interface.mainloop()

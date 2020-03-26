@@ -121,7 +121,7 @@ class User:
     def getInterestRecommendation(self):
         foundOne = False
         recommendation = None
-        while(foundOne == False):
+        while(foundOne == False and len(self.__userInterests) > 0):
             index = random.randint(0, 1000) % (len(self.__userInterests)-1)
             interest = self.__userInterests[index]
             recommendation = interest.getRandomRecommendation()
