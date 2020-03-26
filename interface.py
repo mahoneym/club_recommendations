@@ -12,13 +12,6 @@ def getClubRecommendations():
         club = recommend.createUserRecommendations(int(idNumber))
         # get the recommendations from the recommender object
         showTheResults(club.getDestination())
-        #if(club == -1):
-        #    clearRecommendationArea()
-        #    tkinter.messagebox.showerror("Oops", "Your student ID was not found. Please make sure it is correct and try again.")
-        #else:
-        #    clubNameInterface.configure(text = club.getDestination().getClubName())
-        #    clubDescriptionInterface.configure(text = club.getDestination().getDescription())
-        #    clubCategoryInterface.configure(text = club.getDestination().getCategory())
     return None
 
 def getInterestRecommendations():
@@ -95,7 +88,7 @@ def addData():
 
     return None
 
-######## THE AREA TO GET USER'S ID ########
+######## THE AREA TO GET USER'S ID ##########
 recommend = recommender.Recommender()               # starts the recommender object
 addData()
 
