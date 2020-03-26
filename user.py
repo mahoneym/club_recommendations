@@ -108,13 +108,13 @@ class User:
         index = random.randint(0, 1000) % len(self.__userInterests)
         return self.__userInterests[index]
 
-    # returns True if the user is in the club
+    # checks if the user is already in the given club
+    # param: the club object that is being checked for
+    # return: True if the user is in the club; o.w. False
     def checkForClub(self, club):
         flag = False
         for oneClub in self.__userClubs:
-
             if(oneClub.getDestination() == club):
-                print(oneClub.getDestination().getClubName())
                 flag = True
         return flag
 
@@ -126,7 +126,5 @@ class User:
             interest = self.__userInterests[index]
             recommendation = interest.getRandomRecommendation()
             flag = self.checkForClub(recommendation)
-            print(str(flag))
             foundOne = (not flag)
-            print(str(foundOne))
         return recommendation
