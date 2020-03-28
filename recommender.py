@@ -70,7 +70,7 @@ class Recommender:
     # gets the recommendation from the user based on their clubs and returns it
     # param: student's ID
     # returns the recommendation
-    def createUserRecommendations(self, id):
+    def createClubRecommendation(self, id):
         # set recommendation to None (NULL) so it has the scope of the method
         recommendation = None
         for user in self.__users:

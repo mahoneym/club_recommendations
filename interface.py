@@ -9,7 +9,7 @@ def getClubRecommendations():
     idNumber = nameEntry.get()           # get the user's input
     flag = checkEntryEdgeCases(idNumber)
     if(flag == True):
-        club = recommend.createUserRecommendations(int(idNumber))
+        club = recommend.createClubRecommendation(int(idNumber))
         # get the recommendations from the recommender object
         if(not club == None):
             showTheResults(club.getDestination())
