@@ -6,7 +6,7 @@ interface = Tk()
 
 directions = "Welcome to the club recommender! Please enter your Student ID in the box below."
 erroxBoxTop = "Oops"
-errorMessage = "An error occured. Please check your ID number on your AllCard and try again."
+errorMessage = "An error occured. Please check your ID Number on your AllCard and try again."
 backgroundColor = "midnight blue"
 foregroundColor = "gray64"
 
