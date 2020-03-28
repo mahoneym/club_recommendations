@@ -2,7 +2,7 @@ import clubs
 import user
 from interest import *
 
-# import jazz to read the Excel file
+# import to read the Excel file
 import pandas as pd
 import xlrd
 
@@ -95,8 +95,6 @@ class Recommender:
     # returns: the interest object to the caller
     def createInterestRecommendation(self, id):
         user = self.getUser(id)
-        #interest = user.getUserInterest()
-        #recommendation = interest.getRandomRecommendation()
         recommendation = user.getInterestRecommendation()
         return recommendation
 
@@ -126,7 +124,6 @@ class Recommender:
                 self.addInterestToList(0, category, 0)
                 # connect the two
                 self.__interests[len(self.__interests)-1].addRelatedClub(newClub)
-        #self.print_interests()
         return None
 
     # will find the interest object based on the name
@@ -145,6 +142,7 @@ class Recommender:
         user = self.getUser(id)
         if(user != None):
             interest = self.findInterest(interestName)
+            assert(interest != None)
             user.addInterest(interest)
         return None
 

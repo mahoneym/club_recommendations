@@ -88,8 +88,15 @@ def addData():
 
     recommend.addUserInterest(2, "Health Professions")
     recommend.addUserInterest(2, "Wellness")
-    recommend.addUserInterest(2, "Service and Social Justice")
+    recommend.addUserInterest(2, "Service & Social Justice")
 
+    recommend.addUserInterest(3, "STEM")
+    recommend.addUserInterest(3, "General Interests")
+    recommend.addUserInterest(3, "Wellness")
+
+    recommend.addUserInterest(4, "Service & Social Justice")
+    recommend.addUserInterest(4, "Spirituality")
+    recommend.addUserInterest(4, "STEM")
     return None
 
 ######## THE AREA TO GET USER'S ID ##########

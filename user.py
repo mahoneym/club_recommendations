@@ -104,8 +104,14 @@ class User:
         self.__userInterests.append(interest)
         return None
 
+    def printAllInterests(self):
+        for interest in self.__userInterests:
+            print(str(type(interest)))
+            print(interest.getInterestName())
+
     def getUserInterest(self):
         index = random.randint(0, 1000) % len(self.__userInterests)
+        assert(self.__userInterests[index] != None)
         return self.__userInterests[index]
 
     # checks if the user is already in the given club
@@ -122,8 +128,8 @@ class User:
         foundOne = False
         recommendation = None
         while(foundOne == False and len(self.__userInterests) > 0):
-            index = random.randint(0, 1000) % (len(self.__userInterests)-1)
-            interest = self.__userInterests[index]
+            length = len(self.__userInterests)
+            interest = self.getUserInterest()
             recommendation = interest.getRandomRecommendation()
             flag = self.checkForClub(recommendation)
             foundOne = (not flag)
