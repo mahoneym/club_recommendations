@@ -12,8 +12,10 @@ class Club:
         self.__id = clubID
         self.__recommender = recommender
         self.__description = clubDescription
-        #self.__description = "The Accounting Society seeks to provide students majoring in or interested in accounting opportunities to network with professionals, faculty and other students. In addition to networking opportunities, the Accounting Society provides opportunities for professional development and leadership, and is involved in various community service projects throughout the academic year."
 
+    # prints all the clubs that are related to this club
+    # param: None
+    # return: None
     def printRelated(self):
         print(self.__name)
         for club in self.__related:
@@ -21,12 +23,21 @@ class Club:
             print(club.getWeight())
         return None
 
+    # accessor method for the club's name
+    # param: none
+    # return: a string- the name
     def getClubName(self):
         return self.__name
 
+    # accessor method for the club's description
+    # param: none
+    # return: a string- the description
     def getDescription(self):
         return self.__description
 
+    # accessor method for the club's category
+    # param: none
+    # return: a string- the category
     def getCategory(self):
         return self.__category
 
@@ -67,6 +78,8 @@ class Club:
             index = index + 1
         return self.__related[mostCommonIndex], index      # return the club to the user
 
+    # return: a related club
+    # param: last index tried
     def returnARelatedClub(self, index):
         newIndex = (index + 1) % len(self.__related)
         return self.__related[newIndex], newIndex

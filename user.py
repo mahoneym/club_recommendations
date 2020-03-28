@@ -104,11 +104,15 @@ class User:
         self.__userInterests.append(interest)
         return None
 
+    # prints all the user's interests
     def printAllInterests(self):
         for interest in self.__userInterests:
             print(str(type(interest)))
             print(interest.getInterestName())
 
+    # gives the random user interest
+    # param: None
+    # returns: a random user interest 
     def getUserInterest(self):
         index = random.randint(0, 1000) % len(self.__userInterests)
         assert(self.__userInterests[index] != None)
@@ -124,6 +128,9 @@ class User:
                 flag = True
         return flag
 
+    # gets a recommendation based on the user's Interests
+    # param: none
+    # returns: a club recommendation
     def getInterestRecommendation(self):
         foundOne = False
         recommendation = None
