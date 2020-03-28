@@ -11,7 +11,8 @@ def getClubRecommendations():
     if(flag == True):
         club = recommend.createUserRecommendations(int(idNumber))
         # get the recommendations from the recommender object
-        showTheResults(club.getDestination())
+        if(not club == None):
+            showTheResults(club.getDestination())
     return None
 
 def getInterestRecommendations():

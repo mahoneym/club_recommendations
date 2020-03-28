@@ -18,8 +18,6 @@ class Recommender:
     # the constructor for the recommender class
     def __init__(self):
         self.addExcelClubs()
-        #for interest in self.__interests:
-            #print(interest.getInterestName())
 
     # create a user and add to the __user dictionary
     # param: student's ID
@@ -46,7 +44,7 @@ class Recommender:
 
     # add a new club to the list
     # param: the name of the club, its category, and its ID
-    # returns: 0
+    # returns: the new club
     def addClub(self, clubName, clubCategory, clubID, description):
         newClub = clubs.Club(clubName, clubCategory, clubID, description, self)
         self.__clubs.append(newClub)
@@ -62,7 +60,7 @@ class Recommender:
         return None
 
     # gets the club based on the club name
-    # returns the id of the club if it is found; o.w. return -1
+    # returns the id of the club if it is found; o.w. returns -1
     def getClub(self, clubName):
         for club in self.__clubs:
             if(clubName.lower() == club.getClubName().lower()):
@@ -84,24 +82,26 @@ class Recommender:
 
     # returns the user that is being referenced
     # param: the object itself and the student's id
-    # returns: the user object
+    # returns: the user object if it is found
     def getUser(self, id):
         for user in self.__users:
             if(user.id == id):
                 return user
+        return None
 
     # looks at the user's interests and recommends a club based on them
     # param: the id of the student for which to get the recommendation and the object itself
     # returns: the interest object to the caller
     def createInterestRecommendation(self, id):
         user = self.getUser(id)
-        recommendation = user.getInterestRecommendation()
-        return recommendation
+        if(not user == None):
+            recommendation = user.getInterestRecommendation()
+            return recommendation
 
     # adds the clubs from the excel file and creates the categories
     # NOTE: categories are acting as the interests at this point
     # param: none to be passed but it takes the self
-    # returns: a None object
+    # returns: None
     def addExcelClubs(self):
         excel_file = 'data/Clubs.xlsx'
 
@@ -128,8 +128,8 @@ class Recommender:
 
     # will find the interest object based on the name
     # param: the string name of the interest
-    # returns the interest if it's found; o.w. nothing
-    def findInterest(self, interestName):
+    # return: the interest if it's found; o.w. nothing
+    def __findInterest(self, interestName):
         for interest in self.__interests:
             if(interest.getInterestName() == interestName):
                 return interest
@@ -137,20 +137,10 @@ class Recommender:
 
     # adds an interest to the user
     # param: the student's id and the string name of the interest
-    # returns: a None object
+    # returns: None
     def addUserInterest(self, id, interestName):
         user = self.getUser(id)
         if(user != None):
-            interest = self.findInterest(interestName)
-            assert(interest != None)
+            interest = self.__findInterest(interestName)
             user.addInterest(interest)
         return None
-
-    #def addExcelInterests(self):
-    #    excel_file = 'data/Clubs.xlsx'
-
-    #    excelClubs = pd.read_excel(excel_file)
-
-    #    for index, rows in excelClubs.iterrows():
-    #        self.addClub(rows['Name'], rows['Category'], rows['ID'], rows['Description'])
-    #    return None
