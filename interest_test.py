@@ -46,6 +46,26 @@ assert(u2Recommendation.getClubName() != "MuskieTHON")
 assert(u2Recommendation.getClubName() != "A Xavier Christmas")
 assert(u2Recommendation.getClubName() != "Computer Science Club")
 
+recommend.addUserInterest(3, "STEM")
+recommend.addUserInterest(3, "General Interests")
+recommend.addUserInterest(3, "Wellness")
+
+u3Recommendation = recommend.createInterestRecommendation(3)
+assert(u3Recommendation.getClubName() != "A Xavier Christmas")
+assert(u3Recommendation.getClubName() != "4 Paws for Ability at XU")
+assert(u3Recommendation.getClubName() != "Don't Tell Area")
+
+recommend.addUserInterest(4, "Service & Social Justice")
+recommend.addUserInterest(4, "Spirituality")
+recommend.addUserInterest(4, "STEM")
+
+u4Recommendation = recommend.createInterestRecommendation(4)
+assert(u4Recommendation.getClubName() != "A Xavier Christmas")
+assert(u4Recommendation.getClubName() != "Don't Tell Anna")
+assert(u4Recommendation.getClubName() != "MuskieTHON")
+
 #recommend.createInterestRecommendation(1)
 print("user 1: " + str(u1Recommendation.getClubName()))
 print("user 2: " + str(u2Recommendation.getClubName()))
+print("user 3: " + str(u3Recommendation.getClubName()))
+print("user 4: " + str(u4Recommendation.getClubName()))
