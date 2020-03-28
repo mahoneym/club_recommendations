@@ -4,6 +4,8 @@ import recommender
 
 interface = Tk()
 
+errorMessage = "An error occured. Please check your ID number and try again."
+
 def getClubRecommendations():
     # get whatever is in the label
     idNumber = nameEntry.get()           # get the user's input
@@ -11,8 +13,11 @@ def getClubRecommendations():
     if(flag == True):
         club = recommend.createClubRecommendation(int(idNumber))
         # get the recommendations from the recommender object
-        if(not club == None):
+        if(not (club == None or type(club) == type(0))):
             showTheResults(club.getDestination())
+        else:
+            clearRecommendationArea()
+            tkinter.messagebox.showerror("Oops", errorMessage)
     return None
 
 def getInterestRecommendations():
@@ -23,7 +28,7 @@ def getInterestRecommendations():
         club = recommend.createInterestRecommendation(int(idNumber))
         if(club == None):
             clearRecommendationArea()
-            tkinter.messagebox.showerror("Oops", "You do not have any interests saved in the system. Please try again.")
+            tkinter.messagebox.showerror("Oops", errorMessage)
         else:
             showTheResults(club)
     return club
