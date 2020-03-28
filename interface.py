@@ -15,10 +15,10 @@ def getClubRecommendations():
     idNumber = idEntry.get()           # get the user's input
     flag = checkEntryEdgeCases(idNumber)
     if(flag == True):
-        club = recommend.createClubRecommendation(int(idNumber))
+        graphEdge = recommend.createClubRecommendation(int(idNumber))
         # get the recommendations from the recommender object
-        if(not (club == None or type(club) == type(0))):
-            showTheResults(club.getDestination())
+        if(not (graphEdge == None or type(graphEdge) == type(0))):
+            showTheResults(graphEdge.getDestination())
         else:
             clearRecommendationArea()
             tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
