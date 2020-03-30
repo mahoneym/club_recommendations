@@ -46,6 +46,9 @@ def showTheResults(club):
         clubDescriptionInterface.configure(text = club.getDescription())
         clubCategoryInterface.configure(text = club.getCategory())
 
+def getNextEvent():
+    tkinter.messagebox.showerror("YES", "THIS WILL BE ADDED AT A LATER DATE!")
+
 def checkEntryEdgeCases(idNumber):
     flag = True
     if(not idNumber.isdigit()):
@@ -114,7 +117,7 @@ recommend = recommender.Recommender()               # starts the recommender obj
 addData()
 
 interface.title("Club Recommendation System")
-interface.geometry("575x400")                                                                    # sets minimal size of the window when it first opens
+interface.geometry("575x600")                                                                    # sets minimal size of the window when it first opens
 interface.configure(background=backgroundColor)                                                  # sets background color to midnight blue
 
 
@@ -169,6 +172,13 @@ clubCategoryInterface.grid(row=5, column = 1, columnspan = 3, sticky="W")
 
 clubDescriptionInterface = Label(interface, text="", background= backgroundColor, fg = foregroundColor, wraplength = 400, justify = LEFT)
 clubDescriptionInterface.grid(row=6, column= 1, columnspan = 3, sticky = "W")
+
+takeUpSpace = Label(interface, background=backgroundColor)
+takeUpSpace.grid(row=7)
+
+clubEventButton = Button(interface, text = "Get Next Event", command=getNextEvent)
+clubEventButton.grid(row = 8, columnspan = 5, padx = 6, sticky="NSEW")
+
 
 ######## START THE PROGRAM ########
 interface.mainloop()

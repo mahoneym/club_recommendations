@@ -1,6 +1,7 @@
 import user
-import event
-from datetime import date
+from event import *
+
+from datetime import datetime
 from graph_edge import *
 
 class Club:
@@ -14,8 +15,8 @@ class Club:
         self.__id = clubID
         self.__recommender = recommender
         self.__description = clubDescription
-        self.__upcomingEvents = []
-
+        self.__upcomingEvents = []                          # a sorted list of events (sorted by date of occurrance)
+        self.addEvent()
     # prints all the clubs that are related to this club
     # param: None
     # return: None
@@ -88,6 +89,12 @@ class Club:
         return self.__related[newIndex], newIndex
 
     def addEvent(self):
-        date = Date()
-        event = Event()
-        self.__upcomingEvents.append(event)
+        date = datetime(year= 2020, month=5, day= 25, hour=13, minute=59)
+        # time = datetime.time()
+        event = Event("Testing 1,2,3", date, self, "Alter Hall")
+
+    def getNextEvent(self):
+        event = None
+        if(len(self.__upcomingEvents) > 0):
+            event = self.__upcomingEvents[0]
+        return event
