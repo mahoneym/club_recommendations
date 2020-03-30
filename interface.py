@@ -30,6 +30,10 @@ def getInterestRecommendations():
     club = None
     if(flag == True):
         club = recommend.createInterestRecommendation(int(idNumber))
+        #nextEvent = recommend.getNextClubEvent()
+        #nextEventTitle = nextEvent.getEventName()
+        #nextEventLocation = nextEvent.getEventLocation()
+        #nextEventDescription = nextEvent.getEventDescription()
         if(club == None):
             clearRecommendationArea()
             tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
@@ -47,7 +51,35 @@ def showTheResults(club):
         clubCategoryInterface.configure(text = club.getCategory())
 
 def getNextEvent():
-    tkinter.messagebox.showerror("YES", "THIS WILL BE ADDED AT A LATER DATE!")
+    #tkinter.messagebox.showerror("YES", "THIS WILL BE ADDED AT A LATER DATE!")
+    eventPopUp = Tk()
+    eventPopUp.wm_title("Next Event")
+    eventPopUp.configure(background = backgroundColor)                                                  # sets background color to midnight blue
+    eventPopUp.geometry("600x400")
+
+    title = Label(eventPopUp, text = "Event Title: ", background = backgroundColor, fg = foregroundColor)
+    title.grid(row = 0, column = 0)
+
+    location = Label(eventPopUp, text = "Event Location: ", background = backgroundColor, fg = foregroundColor)
+    location.grid(row = 1, column = 0)
+
+    description = Label(eventPopUp, text = "Event Description", background = backgroundColor, fg = foregroundColor)
+    description.grid(row = 2, column = 0)
+
+    eventTitle = Label(eventPopUp, text = nextEventTitle, background = backgroundColor, fg = foregroundColor)
+    eventTitle.grid(row = 0, column = 1)
+
+    eventLocation = Label(eventPopUp, text = nextEventLocation, background = backgroundColor, fg = foregroundColor)
+    eventLocation.grid(row = 1, column = 1)
+
+    eventDescription = Label(eventPopUp, text = nextEventDescription, background = backgroundColor, fg = foregroundColor)
+    eventDescription.grid(row = 2, column = 1)
+
+    filler = Label(eventPopUp, background = backgroundColor)
+    filler.grid(row = 3)
+
+    emailMeButton = Button(eventPopUp, text = "Email Me this Event")
+    emailMeButton.grid(row = 4, columnspan = 2, sticky = "NSEW")
 
 def checkEntryEdgeCases(idNumber):
     flag = True
@@ -121,6 +153,10 @@ interface.geometry("575x600")                                                   
 interface.configure(background=backgroundColor)                                                  # sets background color to midnight blue
 
 
+nextEventTitle = "1"
+nextEventLocation = "2"
+nextEventDescription = "3"
+
 # The interest recommendations will pick one of your interests from the Road To Xavier form and choose a related club.
 
 directionsLabel = Label(interface, text=directions, fg=foregroundColor, background= backgroundColor, wraplength = 550, justify = LEFT)
@@ -160,7 +196,7 @@ clubNameLabel.grid(row = 4, column = 0, sticky="W")
 clubCategoryLabel = Label(interface, text = "Club Category: ", background = backgroundColor, fg = foregroundColor)
 clubCategoryLabel.grid(row = 5, column = 0, sticky="NW")
 
-clubDescriptionLabel = Label(interface, text= "Description:", background=backgroundColor, fg = foregroundColor)
+clubDescriptionLabel = Label(interface, text= "Description: ", background=backgroundColor, fg = foregroundColor)
 clubDescriptionLabel.grid(row = 6, column = 0, sticky="NW")
 
 # create the labels that will display a specific club recommendation
