@@ -92,7 +92,13 @@ class Club:
         date = datetime(year= 2020, month=5, day= 25, hour=13, minute=59)
         # time = datetime.time()
         event = Event("Testing 1,2,3", date, self, "Alter Hall", "adding a description")
-        self.__upcomingEvents.append(event)
+        index = 0
+        looking = True
+        while(index < len(self.__upcomingEvents) && looking == True):
+            if(self.__upcomingEvents[index].getDate() >= date):
+                self.__upcomingEvents.insert(index, event)
+                looking = False
+            index = index + 1
 
     def getNextEvent(self):
         event = None
