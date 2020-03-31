@@ -98,6 +98,10 @@ class Recommender:
             recommendation = user.getInterestRecommendation()
             return recommendation
 
+    def getNextClubEvent(self, club):
+        event = club.getNextEvent()
+        return event
+
     # adds the clubs from the excel file and creates the categories
     # NOTE: categories are acting as the interests at this point
     # param: none to be passed but it takes the self

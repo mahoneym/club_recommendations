@@ -16,6 +16,7 @@ def getClubRecommendations():
     flag = checkEntryEdgeCases(idNumber)
     if(flag == True):
         graphEdge = recommend.createClubRecommendation(int(idNumber))
+        setEventInfo(graphEdge.getDestination())
         # get the recommendations from the recommender object
         if(not (graphEdge == None or type(graphEdge) == type(0))):
             showTheResults(graphEdge.getDestination())
@@ -30,16 +31,20 @@ def getInterestRecommendations():
     club = None
     if(flag == True):
         club = recommend.createInterestRecommendation(int(idNumber))
-        #nextEvent = recommend.getNextClubEvent()
-        #nextEventTitle = nextEvent.getEventName()
-        #nextEventLocation = nextEvent.getEventLocation()
-        #nextEventDescription = nextEvent.getEventDescription()
+        setEventInfo(club)
         if(club == None):
             clearRecommendationArea()
             tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
         else:
             showTheResults(club)
     return club
+
+def setEventInfo(club):
+    global nextEventTitle, nextEventLocation, nextEventDescription
+    nextEvent = recommend.getNextClubEvent(club)
+    nextEventTitle = nextEvent.getName()
+    nextEventLocation = nextEvent.getLocation()
+    nextEventDescription = nextEvent.getDescription()
 
 def showTheResults(club):
     if(club == -1):
@@ -53,30 +58,31 @@ def showTheResults(club):
 def getNextEvent():
     #tkinter.messagebox.showerror("YES", "THIS WILL BE ADDED AT A LATER DATE!")
     eventPopUp = Tk()
+    #eventPopUp = Toplevel()
     eventPopUp.wm_title("Next Event")
-    eventPopUp.configure(background = backgroundColor)                                                  # sets background color to midnight blue
-    eventPopUp.geometry("600x400")
+    eventPopUp.configure(background = foregroundColor)                                                  # sets background color to midnight blue
+    eventPopUp.geometry("400x300")
 
-    title = Label(eventPopUp, text = "Event Title: ", background = backgroundColor, fg = foregroundColor)
-    title.grid(row = 0, column = 0)
+    title = Label(eventPopUp, text = "Event Title: ", background = foregroundColor, fg = backgroundColor)
+    title.grid(row = 0, column = 0, sticky= "W")
 
-    location = Label(eventPopUp, text = "Event Location: ", background = backgroundColor, fg = foregroundColor)
-    location.grid(row = 1, column = 0)
+    location = Label(eventPopUp, text = "Event Location: ", background = foregroundColor, fg = backgroundColor)
+    location.grid(row = 1, column = 0, sticky= "W")
 
-    description = Label(eventPopUp, text = "Event Description", background = backgroundColor, fg = foregroundColor)
-    description.grid(row = 2, column = 0)
+    description = Label(eventPopUp, text = "Event Description", background = foregroundColor, fg = backgroundColor)
+    description.grid(row = 2, column = 0, sticky= "W")
 
-    eventTitle = Label(eventPopUp, text = nextEventTitle, background = backgroundColor, fg = foregroundColor)
-    eventTitle.grid(row = 0, column = 1)
+    eventTitle = Label(eventPopUp, text = nextEventTitle, background = foregroundColor, fg = backgroundColor)
+    eventTitle.grid(row = 0, column = 1, sticky= "W")
 
-    eventLocation = Label(eventPopUp, text = nextEventLocation, background = backgroundColor, fg = foregroundColor)
-    eventLocation.grid(row = 1, column = 1)
+    eventLocation = Label(eventPopUp, text = nextEventLocation, background = foregroundColor, fg = backgroundColor)
+    eventLocation.grid(row = 1, column = 1, sticky= "W")
 
-    eventDescription = Label(eventPopUp, text = nextEventDescription, background = backgroundColor, fg = foregroundColor)
-    eventDescription.grid(row = 2, column = 1)
+    eventDescription = Label(eventPopUp, text = nextEventDescription, background = foregroundColor, fg = backgroundColor)
+    eventDescription.grid(row = 2, column = 1, sticky= "W")
 
-    filler = Label(eventPopUp, background = backgroundColor)
-    filler.grid(row = 3)
+    filler = Label(eventPopUp, background = foregroundColor)
+    filler.grid(row = 3, sticky = "W")
 
     emailMeButton = Button(eventPopUp, text = "Email Me this Event")
     emailMeButton.grid(row = 4, columnspan = 2, sticky = "NSEW")
@@ -149,7 +155,7 @@ recommend = recommender.Recommender()               # starts the recommender obj
 addData()
 
 interface.title("Club Recommendation System")
-interface.geometry("575x600")                                                                    # sets minimal size of the window when it first opens
+interface.geometry("575x375")                                                                    # sets minimal size of the window when it first opens
 interface.configure(background=backgroundColor)                                                  # sets background color to midnight blue
 
 

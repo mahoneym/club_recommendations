@@ -20,8 +20,8 @@ class Event:
     def getLocation(self):
         return self.__location
 
-    def getEventName(self):
+    def getName(self):
         return self.__name
 
-    def getEventDescription(self):
+    def getDescription(self):
         return self.__description

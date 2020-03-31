@@ -92,6 +92,7 @@ class Club:
         date = datetime(year= 2020, month=5, day= 25, hour=13, minute=59)
         # time = datetime.time()
         event = Event("Testing 1,2,3", date, self, "Alter Hall", "adding a description")
+        self.__upcomingEvents.append(event)
 
     def getNextEvent(self):
         event = None
