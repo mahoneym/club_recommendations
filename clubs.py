@@ -17,6 +17,7 @@ class Club:
         self.__description = clubDescription
         self.__upcomingEvents = []                          # a sorted list of events (sorted by date of occurrance)
         self.addEvent()
+
     # prints all the clubs that are related to this club
     # param: None
     # return: None
