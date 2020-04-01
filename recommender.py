@@ -1,5 +1,6 @@
 import clubs
 import user
+from event import *
 from interest import *
 
 # import to read the Excel file
@@ -100,6 +101,7 @@ class Recommender:
 
     def getNextClubEvent(self, club):
         event = club.getNextEvent()
+        assert(not event == None)
         return event
 
     # adds the clubs from the excel file and creates the categories
@@ -148,3 +150,10 @@ class Recommender:
             interest = self.__findInterest(interestName)
             user.addInterest(interest)
         return None
+
+
+    def addEventToClub(self, clubName, name, date, location, description):
+        club = self.getClub(clubName)
+        event = Event(name, date, club, location, description)
+        club.addEvent(event)
+        return 0

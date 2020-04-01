@@ -1,5 +1,5 @@
 import user
-from event import *
+#from event import *
 
 from datetime import datetime
 from graph_edge import *
@@ -16,7 +16,7 @@ class Club:
         self.__recommender = recommender
         self.__description = clubDescription
         self.__upcomingEvents = []                          # a sorted list of events (sorted by date of occurrance)
-        self.addEvent()
+        #self.addEvent()
 
     # prints all the clubs that are related to this club
     # param: None
@@ -89,14 +89,17 @@ class Club:
         newIndex = (index + 1) % len(self.__related)
         return self.__related[newIndex], newIndex
 
-    def addEvent(self):
-        date = datetime(year= 2020, month=5, day= 25, hour=13, minute=59)
+    def addEvent(self, event):
+        #date = datetime(year= 2020, month=5, day= 25, hour=13, minute=59)
         # time = datetime.time()
-        event = Event("Testing 1,2,3", date, self, "Alter Hall", "adding a description")
+        #event = Event("Testing 1,2,3", date, self, "Alter Hall", "adding a description")
         index = 0
         looking = True
-        while(index < len(self.__upcomingEvents) && looking == True):
-            if(self.__upcomingEvents[index].getDate() >= date):
+        if(len(self.__upcomingEvents) == 0):
+            looking = False
+            self.__upcomingEvents.append(event)
+        while(index < len(self.__upcomingEvents) and looking == True):
+            if(self.__upcomingEvents[index].getDate() >= event.getDate()):
                 self.__upcomingEvents.insert(index, event)
                 looking = False
             index = index + 1
@@ -106,3 +109,8 @@ class Club:
         if(len(self.__upcomingEvents) > 0):
             event = self.__upcomingEvents[0]
         return event
+
+    def getClubEvents(self):
+        for event in self.__upcomingEvents:
+            print(event.getName())
+            print(event.getDescription())

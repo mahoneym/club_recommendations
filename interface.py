@@ -42,9 +42,10 @@ def getInterestRecommendations():
 def setEventInfo(club):
     global nextEventTitle, nextEventLocation, nextEventDescription
     nextEvent = recommend.getNextClubEvent(club)
-    nextEventTitle = nextEvent.getName()
-    nextEventLocation = nextEvent.getLocation()
-    nextEventDescription = nextEvent.getDescription()
+    if(not nextEvent == None):
+        nextEventTitle = nextEvent.getName()
+        nextEventLocation = nextEvent.getLocation()
+        nextEventDescription = nextEvent.getDescription()
 
 def showTheResults(club):
     if(club == -1):
@@ -159,9 +160,9 @@ interface.geometry("575x375")                                                   
 interface.configure(background=backgroundColor)                                                  # sets background color to midnight blue
 
 
-nextEventTitle = "1"
-nextEventLocation = "2"
-nextEventDescription = "3"
+nextEventTitle = ""
+nextEventLocation = ""
+nextEventDescription = ""
 
 # The interest recommendations will pick one of your interests from the Road To Xavier form and choose a related club.
 
