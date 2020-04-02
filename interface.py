@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.messagebox
 import recommender
+from datetime import datetime
 
 interface = Tk()
 
@@ -40,12 +41,13 @@ def getInterestRecommendations():
     return club
 
 def setEventInfo(club):
-    global nextEventTitle, nextEventLocation, nextEventDescription
+    global nextEventTitle, nextEventLocation, nextEventDescription, nextEventDate
     nextEvent = recommend.getNextClubEvent(club)
     if(not nextEvent == None):
         nextEventTitle = nextEvent.getName()
         nextEventLocation = nextEvent.getLocation()
         nextEventDescription = nextEvent.getDescription()
+        nextEventDate = nextEvent.getDate().strftime("%a %b %d, %Y %I:%M %p")        # gets the date and puts in "Sat May 25 2019 7:00 PM" format
 
 def showTheResults(club):
     if(club == -1):
@@ -62,31 +64,37 @@ def getNextEvent():
     #eventPopUp = Toplevel()
     eventPopUp.wm_title("Next Event")
     eventPopUp.configure(background = foregroundColor)                                                  # sets background color to midnight blue
-    eventPopUp.geometry("400x300")
+    eventPopUp.geometry("430x200")
 
     title = Label(eventPopUp, text = "Event Title: ", background = foregroundColor, fg = backgroundColor)
     title.grid(row = 0, column = 0, sticky= "W")
 
+    date = Label(eventPopUp, text = "Event Date", background = foregroundColor, fg = backgroundColor)
+    date.grid(row = 1, column = 0, sticky= "W")
+
     location = Label(eventPopUp, text = "Event Location: ", background = foregroundColor, fg = backgroundColor)
-    location.grid(row = 1, column = 0, sticky= "W")
+    location.grid(row = 2, column = 0, sticky= "W")
 
     description = Label(eventPopUp, text = "Event Description", background = foregroundColor, fg = backgroundColor)
-    description.grid(row = 2, column = 0, sticky= "W")
+    description.grid(row = 3, column = 0, sticky= "NW")
 
     eventTitle = Label(eventPopUp, text = nextEventTitle, background = foregroundColor, fg = backgroundColor)
     eventTitle.grid(row = 0, column = 1, sticky= "W")
 
+    eventDate = Label(eventPopUp, text = nextEventDate, background = foregroundColor, fg = backgroundColor)
+    eventDate.grid(row = 1, column = 1, sticky= "W")
+
     eventLocation = Label(eventPopUp, text = nextEventLocation, background = foregroundColor, fg = backgroundColor)
-    eventLocation.grid(row = 1, column = 1, sticky= "W")
+    eventLocation.grid(row = 2, column = 1, sticky= "W")
 
-    eventDescription = Label(eventPopUp, text = nextEventDescription, background = foregroundColor, fg = backgroundColor)
-    eventDescription.grid(row = 2, column = 1, sticky= "W")
+    eventDescription = Label(eventPopUp, text = nextEventDescription, background = foregroundColor, fg = backgroundColor, wraplength = 300, justify = LEFT)
+    eventDescription.grid(row = 3, column = 1, sticky= "W")
 
-    filler = Label(eventPopUp, background = foregroundColor)
-    filler.grid(row = 3, sticky = "W")
+    filler = Label(eventPopUp, background = foregroundColor, text = "")
+    filler.grid(row = 4, sticky = "W")
 
     emailMeButton = Button(eventPopUp, text = "Email Me this Event")
-    emailMeButton.grid(row = 4, columnspan = 2, sticky = "NSEW")
+    emailMeButton.grid(row = 5, columnspan = 2, sticky = "NSEW")
 
 def checkEntryEdgeCases(idNumber):
     flag = True
@@ -105,6 +113,7 @@ def clearRecommendationArea():
     nextEventTitle = ""
     nextEventLocation = ""
     nextEventDescription = ""
+    nextEventDate = None
     # clears the user's input in the entry box
     idEntry.delete(0,'end')
 
@@ -152,6 +161,12 @@ def addData():
     recommend.addUserInterest(4, "Service & Social Justice")
     recommend.addUserInterest(4, "Spirituality")
     recommend.addUserInterest(4, "STEM")
+
+    date_1 = datetime(year= 2019, month = 5, day = 25, hour = 19, minute = 0)
+    date_2 = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
+
+    recommend.addEventToClub("Computer Science Club", "Event_1", date_1, "Alter Hall Rm 101", "This is a longer description to play with text wrapping. The first event that is added to the clubs. It should be showing up for CS club.")
+    recommend.addEventToClub("4 Paws for Ability at XU", "Event_2", date_2, "Alter Hall Rm 102", "Event 2")
     return None
 
 ######## THE AREA TO GET USER'S ID ##########

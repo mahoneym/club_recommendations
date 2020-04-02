@@ -99,9 +99,7 @@ class Club:
             looking = False
             self.__upcomingEvents.append(event)
 
-        print("new event's date: " + str(event.getDate()))
         while(index < len(self.__upcomingEvents) and looking == True):
-            print("Current index's date: " + str(self.__upcomingEvents[index].getDate()))
             if(self.__upcomingEvents[index].getDate() > event.getDate()):
                 self.__upcomingEvents.insert(index, event)
                 looking = False
