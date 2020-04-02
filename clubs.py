@@ -18,6 +18,9 @@ class Club:
         self.__upcomingEvents = []                          # a sorted list of events (sorted by date of occurrance)
         #self.addEvent()
 
+    def getNumberOfRelated(self):
+        return len(self.__related)
+
     # prints all the clubs that are related to this club
     # param: None
     # return: None
@@ -63,7 +66,7 @@ class Club:
     # looks at the club's most common related club
     # look for the club's heaviest edge
     # param: none
-    # returns: club object to the user
+    # returns: graph_edge object
     def returnMostCommonClub(self, previousIndex):
         # set the local variables so they are less than all objects
         mostCommonIndex = -1

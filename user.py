@@ -71,30 +71,24 @@ class User:
         lengthOfClubs = len(self.__userClubs)
         club = 0
         count = 0
-        foundInUser = True
+        keepTrying = True
         index = random.randint(0, 1000)
-        while(club == 0 and foundInUser):
+        while(club == 0 and keepTrying):
             index = (index + 1) % lengthOfClubs
             usingClubToRecommend = self.__userClubs[index].getDestination()
-            # use club index to call the most common club method on club's object
-            club, firstIndexUsed = usingClubToRecommend.returnMostCommonClub(-1)
-            if(club != 0):
-                foundInUser = self.__alreadyInClub(club.getDestination().getClubName())
+            if(usingClubToRecommend.getNumberOfRelated() > 0):
+                # use club index to call the most common club method on club's object
+                club, firstIndexUsed = usingClubToRecommend.returnMostCommonClub(-1)
+                keepTrying = self.__alreadyInClub(club.getDestination().getClubName())
                 indexUsed = -1
-                while(foundInUser and (indexUsed != firstIndexUsed)):
+                while(keepTrying and (indexUsed != firstIndexUsed)):
                     club, indexUsed = usingClubToRecommend.returnARelatedClub(indexUsed)
-                    foundInUser = self.__alreadyInClub(club.getDestination().getClubName())
-                    # if the club was found
-                    if(foundInUser):
-                        #reset the club to nothing to use the user's next club for a recommendation
-                        club = 0
-
-            count = count + 1
-
-            # if there are no related clubs and we have tried 5 times
-            if(count == 5 and club == 0):
-                club = None             # set club to none so we stop trying
-
+                    clubName = club.getDestination().getClubName()
+                    keepTrying = self.__alreadyInClub(clubName)
+                    if(keepTrying):                                                             # if the club was found in the user
+                        club = 0                                                                # reset the club => use the user's next club
+            else:                       
+                club = None
         return club
 
     # adds an interest to the user
@@ -112,10 +106,9 @@ class User:
 
     # gives the random user interest
     # param: None
-    # returns: a random user interest 
+    # returns: a random user interest
     def getUserInterest(self):
         index = random.randint(0, 1000) % len(self.__userInterests)
-        assert(self.__userInterests[index] != None)
         return self.__userInterests[index]
 
     # checks if the user is already in the given club
