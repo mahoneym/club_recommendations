@@ -98,9 +98,15 @@ class Club:
         if(len(self.__upcomingEvents) == 0):
             looking = False
             self.__upcomingEvents.append(event)
+
+        #print(str(len(self.__upcomingEvents)) + " " + str(looking))
         while(index < len(self.__upcomingEvents) and looking == True):
-            if(self.__upcomingEvents[index].getDate() >= event.getDate()):
-                self.__upcomingEvents.insert(index, event)
+            #print("in the while loop")
+            print("already existing date: " + str(self.__upcomingEvents[index].getDate()))
+            print("new date: " + str(event.getDate()))
+            if(self.__upcomingEvents[index].getDate() > event.getDate() or index == (len(self.__upcomingEvents)-1)):
+                print("about to insert it")
+                self.__upcomingEvents.insert(index+1, event)
                 looking = False
             index = index + 1
 
@@ -112,5 +118,4 @@ class Club:
 
     def getClubEvents(self):
         for event in self.__upcomingEvents:
-            print(event.getName())
-            print(event.getDescription())
+            print("Event Name: " + event.getName() + "Event date: " + str(event.getDate()))
