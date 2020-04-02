@@ -90,23 +90,20 @@ class Club:
         return self.__related[newIndex], newIndex
 
     def addEvent(self, event):
-        #date = datetime(year= 2020, month=5, day= 25, hour=13, minute=59)
-        # time = datetime.time()
-        #event = Event("Testing 1,2,3", date, self, "Alter Hall", "adding a description")
         index = 0
         looking = True
         if(len(self.__upcomingEvents) == 0):
             looking = False
             self.__upcomingEvents.append(event)
 
-        #print(str(len(self.__upcomingEvents)) + " " + str(looking))
+        print("new event's date: " + str(event.getDate()))
         while(index < len(self.__upcomingEvents) and looking == True):
-            #print("in the while loop")
-            print("already existing date: " + str(self.__upcomingEvents[index].getDate()))
-            print("new date: " + str(event.getDate()))
-            if(self.__upcomingEvents[index].getDate() > event.getDate() or index == (len(self.__upcomingEvents)-1)):
-                print("about to insert it")
-                self.__upcomingEvents.insert(index+1, event)
+            print("Current index's date: " + str(self.__upcomingEvents[index].getDate()))
+            if(self.__upcomingEvents[index].getDate() > event.getDate()):
+                self.__upcomingEvents.insert(index, event)
+                looking = False
+            elif(index == (len(self.__upcomingEvents)-1)):
+                self.__upcomingEvents.append(event)
                 looking = False
             index = index + 1
 
@@ -118,4 +115,4 @@ class Club:
 
     def getClubEvents(self):
         for event in self.__upcomingEvents:
-            print("Event Name: " + event.getName() + "Event date: " + str(event.getDate()))
+            print("Event Name: " + event.getName() + "     Event date: " + str(event.getDate()))
