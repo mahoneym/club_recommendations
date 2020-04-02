@@ -41,7 +41,7 @@ def twoEventsInOneClub():
 
     print("Two Events In One Club passed :) ")
 
-def ThirdEventInOneClub():
+def thirdEventInOneClub():
     """Putting a third event in the CS Club"""
     print ("\nThe third event in CS Club")
 
@@ -55,6 +55,21 @@ def ThirdEventInOneClub():
 
     print("End of Third Event in One Club")
 
+def fourthEvent():
+    """Putting a fourth event in the CS Club"""
+    print ("\nThe fourth event in CS Club => has the same date as the 3rd event")
+
+    date_3 = datetime(year = 2019, month = 8, day = 25, hour = 19, minute = 0)
+
+    event_3 = Event("Event_4", date_3, csClub, "Alter Hall Rm 101", "Should be 3rd event in the list :)")
+
+    recommend.addEventToClub("Computer Science Club", "Event_4", date_3, "Alter Hall Rm 103", "Event 4")
+
+    csClub.getClubEvents()
+
+    print("End of Fourth Event")
+
 theLoneEvent()
 twoEventsInOneClub()
-ThirdEventInOneClub()
+thirdEventInOneClub()
+fourthEvent()
