@@ -102,6 +102,9 @@ def clearRecommendationArea():
     clubDescriptionInterface.configure(text="")
     clubCategoryInterface.configure(text = "")
 
+    nextEventTitle = ""
+    nextEventLocation = ""
+    nextEventDescription = ""
     # clears the user's input in the entry box
     idEntry.delete(0,'end')
 

@@ -101,7 +101,6 @@ class Recommender:
 
     def getNextClubEvent(self, club):
         event = club.getNextEvent()
-        assert(not event == None)
         return event
 
     # adds the clubs from the excel file and creates the categories
