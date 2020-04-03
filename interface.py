@@ -106,6 +106,8 @@ def checkEntryEdgeCases(idNumber):
     return flag
 
 def clearRecommendationArea():
+    global nextEventTitle, nextEventLocation, nextEventDescription, nextEventDate
+    
     # delete the recommended club's info
     clubNameInterface.configure(text="")
     clubDescriptionInterface.configure(text="")
@@ -183,6 +185,7 @@ interface.configure(background=backgroundColor)                                 
 nextEventTitle = ""
 nextEventLocation = ""
 nextEventDescription = ""
+nextEventDate = None
 
 # The interest recommendations will pick one of your interests from the Road To Xavier form and choose a related club.
 
@@ -239,9 +242,8 @@ clubDescriptionInterface.grid(row=6, column= 1, columnspan = 3, sticky = "W")
 takeUpSpace = Label(interface, background=backgroundColor)
 takeUpSpace.grid(row=7)
 
-clubEventButton = Button(interface, text = "Get Next Event", command=getNextEvent)
+clubEventButton = Button(interface, text = "Get Next Event", state="disabled", command=getNextEvent)
 clubEventButton.grid(row = 8, columnspan = 5, padx = 6, sticky="NSEW")
-clubEventButton["state"] = "disabled"
 
 ######## START THE PROGRAM ########
 interface.mainloop()
