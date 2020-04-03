@@ -44,10 +44,13 @@ def setEventInfo(club):
     global nextEventTitle, nextEventLocation, nextEventDescription, nextEventDate
     nextEvent = recommend.getNextClubEvent(club)
     if(not nextEvent == None):
+        clubEventButton["state"] = "active"
         nextEventTitle = nextEvent.getName()
         nextEventLocation = nextEvent.getLocation()
         nextEventDescription = nextEvent.getDescription()
         nextEventDate = nextEvent.getDate().strftime("%a %b %d, %Y %I:%M %p")        # gets the date and puts in "Sat May 25 2019 7:00 PM" format
+    else:
+        clubEventButton["state"] = "disabled"
 
 def showTheResults(club):
     if(club == -1):
@@ -59,9 +62,7 @@ def showTheResults(club):
         clubCategoryInterface.configure(text = club.getCategory())
 
 def getNextEvent():
-    #tkinter.messagebox.showerror("YES", "THIS WILL BE ADDED AT A LATER DATE!")
     eventPopUp = Tk()
-    #eventPopUp = Toplevel()
     eventPopUp.wm_title("Next Event")
     eventPopUp.configure(background = foregroundColor)                                                  # sets background color to midnight blue
     eventPopUp.geometry("430x200")
@@ -110,12 +111,13 @@ def clearRecommendationArea():
     clubDescriptionInterface.configure(text="")
     clubCategoryInterface.configure(text = "")
 
+    # clean the event pop up
     nextEventTitle = ""
     nextEventLocation = ""
     nextEventDescription = ""
     nextEventDate = None
-    # clears the user's input in the entry box
-    idEntry.delete(0,'end')
+
+    idEntry.delete(0,'end')     # clears the user's input in the entry box
 
 def addData():
     global u1, u2, u3, u4, u5
@@ -239,7 +241,7 @@ takeUpSpace.grid(row=7)
 
 clubEventButton = Button(interface, text = "Get Next Event", command=getNextEvent)
 clubEventButton.grid(row = 8, columnspan = 5, padx = 6, sticky="NSEW")
-
+clubEventButton["state"] = "disabled"
 
 ######## START THE PROGRAM ########
 interface.mainloop()
