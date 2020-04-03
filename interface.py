@@ -44,7 +44,7 @@ def setEventInfo(club):
     global nextEventTitle, nextEventLocation, nextEventDescription, nextEventDate
     nextEvent = recommend.getNextClubEvent(club)
     if(not nextEvent == None):
-        clubEventButton["state"] = "active"
+        clubEventButton["state"] = "normal"
         nextEventTitle = nextEvent.getName()
         nextEventLocation = nextEvent.getLocation()
         nextEventDescription = nextEvent.getDescription()
