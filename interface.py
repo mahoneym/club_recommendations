@@ -75,7 +75,7 @@ def showTheResults(club):
 def getNextEvent():
     eventPopUp = Tk()   # start the pop up window
 
-    # set up the pop up window 
+    # set up the pop up window
     eventPopUp.wm_title("Next Event")
     eventPopUp.configure(background = foregroundColor)                                                  # sets background color to midnight blue
     eventPopUp.geometry("430x200")
@@ -189,10 +189,12 @@ def addData():
 
     # create date objects for the events
     date_1 = datetime(year= 2019, month = 5, day = 25, hour = 19, minute = 0)
+    date_1_2 = datetime(year=3020, month = 5, day = 25, hour = 19, minute = 0)
     date_2 = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
 
     # add events to some clubs
     recommend.addEventToClub("Computer Science Club", "Event_1", date_1, "Alter Hall Rm 101", "This is a longer description to play with text wrapping. The first event that is added to the clubs. It should be showing up for CS club.")
+    recommend.addEventToClub("Computer Science Club", "Event_1_2", date_1_2, "Alter Hall Rm 101", "This is a longer description to play with text wrapping. The first event that is added to the clubs. It should be showing up for CS club.")
     recommend.addEventToClub("4 Paws for Ability at XU", "Event_2", date_2, "Alter Hall Rm 102", "Event 2")
     return None
 
