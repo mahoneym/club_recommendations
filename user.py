@@ -58,6 +58,9 @@ class User:
                 return True
         return False
 
+    # prints the user's clubs
+    # param: none
+    # returns: nothing- just prints stuff
     def print_userClubs(self):
         for club in self.__userClubs:
             print(club.getDestination().getClubName())
@@ -87,7 +90,7 @@ class User:
                     keepTrying = self.__alreadyInClub(clubName)
                     if(keepTrying):                                                             # if the club was found in the user
                         club = 0                                                                # reset the club => use the user's next club
-            else:                       
+            else:
                 club = None
         return club
 
@@ -99,6 +102,8 @@ class User:
         return None
 
     # prints all the user's interests
+    # param: nothing
+    # return: nothing
     def printAllInterests(self):
         for interest in self.__userInterests:
             print(str(type(interest)))

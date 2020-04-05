@@ -8,10 +8,11 @@ recommend = recommender.Recommender()
 csClub = recommend.getClub("Computer Science Club")
 accountingSociety = recommend.getClub("Accounting Society")
 
+# adds one event to one club and tries to get it back successfully
 def theLoneEvent():
     print("The Lone Event")
 
-    # create event_1 for the CS club
+    # create event_1 for the Accounting Society
     date_1 = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
     event_1 = Event("Event_1", date_1, csClub, "Alter hall", "It's the first event. :)")
     recommend.addEventToClub('Accounting Society', "Event_1", date_1, "Smith Somewhere", "It's the first event. :)")
@@ -23,6 +24,7 @@ def theLoneEvent():
     assert(event_1.getName() == event.getName())
     print("The Lone Event passed :) ")
 
+# puts two events in one club and make sure
 def twoEventsInOneClub():
     print("\nTwo Events in One Club Method")
 
@@ -36,11 +38,13 @@ def twoEventsInOneClub():
 
     csClub.getClubEvents()
 
+    # create the event that I expect to get back
     event = recommend.getNextClubEvent(csClub)
-    assert(event_1.getDate() == event.getDate())
+    assert(event_1.getDate() == event.getDate())    # create an assertion to make sure I am getting the right one
 
     print("Two Events In One Club passed :) ")
 
+# put a third event in the CS club and see how that goes
 def thirdEventInOneClub():
     """Putting a third event in the CS Club"""
     print ("\nThe third event in CS Club")
@@ -55,6 +59,7 @@ def thirdEventInOneClub():
 
     print("End of Third Event in One Club")
 
+# puts a fourth event in the CS club with a duplicate date and time to make sure it wouldn't go crazy
 def fourthEvent():
     """Putting a fourth event in the CS Club"""
     print ("\nThe fourth event in CS Club => has the same date as the 3rd event")

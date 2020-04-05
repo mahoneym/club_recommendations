@@ -3,14 +3,18 @@ import tkinter.messagebox
 import recommender
 from datetime import datetime
 
-interface = Tk()
+interface = Tk()        # create the interface
 
+# create string variables for what is used throughout the interface
 directions = "Welcome to the club recommender! Please enter your Student ID in the box below."
 erroxBoxTop = "Oops"
 errorMessage = "An error occured. Please check your ID Number on your AllCard and try again."
 backgroundColor = "midnight blue"
 foregroundColor = "gray64"
 
+# called when the user hits the "Club based" Button
+# uses the recommender object to get a club recommendation for the user
+# knows the user by the student id entered in the text box
 def getClubRecommendations():
     # get whatever is in the label
     idNumber = idEntry.get()           # get the user's input
@@ -26,13 +30,16 @@ def getClubRecommendations():
             tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
     return None
 
+# called when the user hits the "Interest Based" button
+# uses the recommender object to get a interest recommendation for the user
+# knows the user by the student id in the box
 def getInterestRecommendations():
-    idNumber = idEntry.get()
-    flag = checkEntryEdgeCases(idNumber)
+    idNumber = idEntry.get()        # get the user's input
+    flag = checkEntryEdgeCases(idNumber)        # check the idNumber is valid
     club = None
-    if(flag == True):
-        club = recommend.createInterestRecommendation(int(idNumber))
-        setEventInfo(club)
+    if(flag == True):               # if the user id is acceptable
+        club = recommend.createInterestRecommendation(int(idNumber))    # get the recommendation
+        setEventInfo(club)  # get the next event info while the club is handy
         if(club == None):
             clearRecommendationArea()
             tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
@@ -40,6 +47,8 @@ def getInterestRecommendations():
             showTheResults(club)
     return club
 
+# sets up event info for when/if the user wants to see the next event
+# param: the club object that is being used
 def setEventInfo(club):
     global nextEventTitle, nextEventLocation, nextEventDescription, nextEventDate
     nextEvent = recommend.getNextClubEvent(club)
@@ -52,6 +61,7 @@ def setEventInfo(club):
     else:
         clubEventButton["state"] = "disabled"
 
+# show the results of the recommendation
 def showTheResults(club):
     if(club == -1):
         clearRecommendationArea()
@@ -61,8 +71,11 @@ def showTheResults(club):
         clubDescriptionInterface.configure(text = club.getDescription())
         clubCategoryInterface.configure(text = club.getCategory())
 
+# set up and start the next event pop up window
 def getNextEvent():
-    eventPopUp = Tk()
+    eventPopUp = Tk()   # start the pop up window
+
+    # set up the pop up window 
     eventPopUp.wm_title("Next Event")
     eventPopUp.configure(background = foregroundColor)                                                  # sets background color to midnight blue
     eventPopUp.geometry("430x200")
@@ -94,9 +107,11 @@ def getNextEvent():
     filler = Label(eventPopUp, background = foregroundColor, text = "")
     filler.grid(row = 4, sticky = "W")
 
-    emailMeButton = Button(eventPopUp, text = "Email Me this Event")
-    emailMeButton.grid(row = 5, columnspan = 2, sticky = "NSEW")
+    #emailMeButton = Button(eventPopUp, text = "Email Me this Event")
+    #emailMeButton.grid(row = 5, columnspan = 2, sticky = "NSEW")
 
+# make sure the user's entry is all digits
+# if it's not, tell them to go back and check their ALLCARD
 def checkEntryEdgeCases(idNumber):
     flag = True
     if(not idNumber.isdigit()):
@@ -105,9 +120,10 @@ def checkEntryEdgeCases(idNumber):
         flag = False
     return flag
 
+# clears the recommendation and event info area
 def clearRecommendationArea():
     global nextEventTitle, nextEventLocation, nextEventDescription, nextEventDate
-    
+
     # delete the recommended club's info
     clubNameInterface.configure(text="")
     clubDescriptionInterface.configure(text="")
@@ -121,15 +137,19 @@ def clearRecommendationArea():
 
     idEntry.delete(0,'end')     # clears the user's input in the entry box
 
+
+# add data to the interface's recommender object
 def addData():
     global u1, u2, u3, u4, u5
 
+    # create the users
     u1 = recommend.addUser(1)
     u2 = recommend.addUser(2)
     u3 = recommend.addUser(3)
     u4 = recommend.addUser(4)
     u5 = recommend.addUser(5)
 
+    # add clubs to the users
     u1.addClub('MuskieTHON', recommend)
     u1.addClub('Computer Science Club', recommend)
     u1.addClub("Accounting Society", recommend)
@@ -150,6 +170,7 @@ def addData():
     u5.addClub("Don't Tell Anna", recommend)
     u5.addClub('A Xavier Christmas', recommend)
 
+    # add interests to the users
     recommend.addUserInterest(1, "STEM")
     recommend.addUserInterest(1, "General Interests")
     recommend.addUserInterest(1, "Spirituality")
@@ -166,16 +187,18 @@ def addData():
     recommend.addUserInterest(4, "Spirituality")
     recommend.addUserInterest(4, "STEM")
 
+    # create date objects for the events
     date_1 = datetime(year= 2019, month = 5, day = 25, hour = 19, minute = 0)
     date_2 = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
 
+    # add events to some clubs
     recommend.addEventToClub("Computer Science Club", "Event_1", date_1, "Alter Hall Rm 101", "This is a longer description to play with text wrapping. The first event that is added to the clubs. It should be showing up for CS club.")
     recommend.addEventToClub("4 Paws for Ability at XU", "Event_2", date_2, "Alter Hall Rm 102", "Event 2")
     return None
 
 ######## THE AREA TO GET USER'S ID ##########
-recommend = recommender.Recommender()               # starts the recommender object
-addData()
+recommend = recommender.Recommender()                                                            # starts the recommender object
+addData()                                                                                        # adds the data to the recommender
 
 interface.title("Club Recommendation System")
 interface.geometry("550x550")                                                                    # sets minimal size of the window when it first opens

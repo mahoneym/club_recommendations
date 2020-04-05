@@ -1,5 +1,4 @@
 import user
-#from event import *
 
 from datetime import datetime
 from graph_edge import *
@@ -16,10 +15,6 @@ class Club:
         self.__recommender = recommender
         self.__description = clubDescription
         self.__upcomingEvents = []                          # a sorted list of events (sorted by date of occurrance)
-        #self.addEvent()
-
-    def getNumberOfRelated(self):
-        return len(self.__related)
 
     # prints all the clubs that are related to this club
     # param: None
@@ -86,12 +81,16 @@ class Club:
             index = index + 1
         return self.__related[mostCommonIndex], index      # return the club to the user
 
+    # uses a random number to pick a 'random' related club
     # return: a related club
     # param: last index tried
     def returnARelatedClub(self, index):
         newIndex = (index + 1) % len(self.__related)
         return self.__related[newIndex], newIndex
 
+    # adds an event to the club's list
+    # param: a (pointer to an) event object
+    # return: nothing
     def addEvent(self, event):
         index = 0
         looking = True
@@ -108,12 +107,23 @@ class Club:
                 looking = False
             index = index + 1
 
+    # gets the next event
+    # param: none
+    # return: the next event object for this club
     def getNextEvent(self):
         event = None
         if(len(self.__upcomingEvents) > 0):
             event = self.__upcomingEvents[0]
         return event
 
+    # prints the club's Events
+    # param: none
+    # returns: nothing
     def getClubEvents(self):
         for event in self.__upcomingEvents:
             print("Event Name: " + event.getName() + "     Event date: " + str(event.getDate()))
+
+    # get the number of related Clubs
+    # param: none
+    def getNumberOfRelated(self):
+        return len(self.__related)
