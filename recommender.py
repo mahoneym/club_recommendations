@@ -160,8 +160,4 @@ class Recommender:
     def getUserUpcomingEvents(self, idNumber):
         user = self.getUser(idNumber)
         eventList = user.getNextEvents()
-        print(str(len(eventList)))
-        for event in eventList:
-            if(not event == None):
-                print(event.getName())
         return eventList

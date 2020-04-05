@@ -12,6 +12,9 @@ errorMessage = "An error occured. Please check your ID Number on your AllCard an
 backgroundColor = "midnight blue"
 foregroundColor = "gray64"
 
+secondWindowBackground = "gray64"
+secondWindowForeground = "midnight blue"
+
 # called when the user hits the "Club based" Button
 # uses the recommender object to get a club recommendation for the user
 # knows the user by the student id entered in the text box
@@ -54,7 +57,46 @@ def getUserUpcomingEvents():
         print("oops")
     else:
         upcomingEventsList = recommend.getUserUpcomingEvents(int(idNumber))
+
         # do something with the events list
+        eventsList = Tk()
+        eventsList.configure(background=secondWindowBackground)
+        eventsList.wm_title("My Upcoming Events")
+        index = 0
+        while(index < len(upcomingEventsList)):
+
+            currentEvent = upcomingEventsList[index]
+            name = Label(eventsList, text= "Name: ", background=secondWindowBackground, fg = secondWindowForeground)
+            name.grid(row= (5*index) + 1, column = 0)
+
+            club = Label(eventsList, text= "Club: ", background=secondWindowBackground, fg = secondWindowForeground)
+            club.grid(row = (5*index) +2, column = 0)
+
+            date = Label(eventsList, text = "Date: ", background=secondWindowBackground, fg = secondWindowForeground)
+            date.grid(row = (5*index) + 3, column = 0)
+
+            location = Label(eventsList, text = "Location: ", background=secondWindowBackground, fg = secondWindowForeground)
+            location.grid(row = ((5*index) +4), column = 0)
+
+            newName = Label(eventsList, text = currentEvent.getName(), background=secondWindowBackground, fg = secondWindowForeground)
+            newName.grid(row = ((5*index) + 1), column = 1)
+
+            newClub = Label(eventsList, text = currentEvent.getClubHost().getClubName(), background=secondWindowBackground, fg = secondWindowForeground)
+            newClub.grid(row = ((5*index)+2), column = 1 )
+
+            newDate = Label(eventsList, text = currentEvent.getDate().strftime("%a %b %d, %Y %I:%M %p"), background=secondWindowBackground, fg = secondWindowForeground)
+            newDate.grid(row = ((5*index)+3), column = 1)
+
+            newLocation = Label(eventsList, text = currentEvent.getLocation(), background=secondWindowBackground, fg = secondWindowForeground)
+            newLocation.grid(row = ((5*index)+4), column = 1)
+
+            filler = Label(eventsList, background=secondWindowBackground, fg = secondWindowForeground)
+            filler.grid(row=((5*index)+5), column = 1)
+
+            index = index + 1
+
+        eventsList.mainloop()
+
 
 # sets up event info for when/if the user wants to see the next event
 # param: the club object that is being used
