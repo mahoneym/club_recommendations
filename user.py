@@ -139,3 +139,12 @@ class User:
             flag = self.checkForClub(recommendation)
             foundOne = (not flag)
         return recommendation
+
+    def getNextEvents(self):
+        nextEvents = []
+        for graphEdge in self.__userClubs:
+            club = graphEdge.getDestination()
+            nextClubEvent = club.getNextEvent()
+            if(not nextClubEvent == None):
+                nextEvents.append(nextClubEvent)
+        return nextEvents

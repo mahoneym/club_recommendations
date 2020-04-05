@@ -47,6 +47,15 @@ def getInterestRecommendations():
             showTheResults(club)
     return club
 
+def getUserUpcomingEvents():
+    idNumber = idEntry.get()
+    if(idNumber == "" or (not checkEntryEdgeCases(idNumber))):
+        #tkinter.messagebox.showerror(errorBoxTop, errorMessage)
+        print("oops")
+    else:
+        upcomingEventsList = recommend.getUserUpcomingEvents(int(idNumber))
+        # do something with the events list
+
 # sets up event info for when/if the user wants to see the next event
 # param: the club object that is being used
 def setEventInfo(club):
@@ -196,6 +205,9 @@ def addData():
     recommend.addEventToClub("Computer Science Club", "Event_1", date_1, "Alter Hall Rm 101", "This is a longer description to play with text wrapping. The first event that is added to the clubs. It should be showing up for CS club.")
     recommend.addEventToClub("Computer Science Club", "Event_1_2", date_1_2, "Alter Hall Rm 101", "This is a longer description to play with text wrapping. The first event that is added to the clubs. It should be showing up for CS club.")
     recommend.addEventToClub("4 Paws for Ability at XU", "Event_2", date_2, "Alter Hall Rm 102", "Event 2")
+
+    recommend.addEventToClub("Don't Tell Anna", "Spring Show", date_2, "Kennedy Auditorium", "Spring Show")
+    recommend.addEventToClub("MuskieTHON", "Dance Marathon", date_2, "GSC", "The 24 Dance Marathon")
     return None
 
 ######## THE AREA TO GET USER'S ID ##########
@@ -269,6 +281,12 @@ takeUpSpace.grid(row=7)
 
 clubEventButton = Button(interface, text = "Get Next Event", state="disabled", command=getNextEvent)
 clubEventButton.grid(row = 8, columnspan = 5, padx = 6, sticky="NSEW")
+
+rowOneLayer = Label(interface, background=backgroundColor)
+rowOneLayer.grid(row = 9)
+
+upcomingEventsButton = Button(interface, text= "Get Upcoming Events for my Clubs", command = getUserUpcomingEvents)
+upcomingEventsButton.grid(row = 10, columnspan = 4 , padx = 6, sticky = "NSEW")
 
 ######## START THE PROGRAM ########
 interface.mainloop()

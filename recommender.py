@@ -139,7 +139,6 @@ class Recommender:
             if(interest.getInterestName() == interestName):
                 return interest
 
-
     # adds an interest to the user
     # param: the student's id and the string name of the interest
     # returns: None
@@ -156,3 +155,13 @@ class Recommender:
         event = Event(name, date, club, location, description)
         club.addEvent(event)
         return 0
+
+    # returns a list of the next 2 upcoming events for each of the user's clubs
+    def getUserUpcomingEvents(self, idNumber):
+        user = self.getUser(idNumber)
+        eventList = user.getNextEvents()
+        print(str(len(eventList)))
+        for event in eventList:
+            if(not event == None):
+                print(event.getName())
+        return eventList
