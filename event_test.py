@@ -40,7 +40,7 @@ def twoEventsInOneClub():
 
     # create the event that I expect to get back
     event = recommend.getNextClubEvent(csClub)
-    assert(event_1.getDate() == event.getDate())    # create an assertion to make sure I am getting the right one
+    assert(date_2 == event.getDate())    # create an assertion to make sure I am getting the right one
 
     print("Two Events In One Club passed :) ")
 
@@ -74,7 +74,18 @@ def fourthEvent():
 
     print("End of Fourth Event")
 
+def puttingInAPastEvent():
+    print("\n")
+    event_2_date = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
+
+    csClub.getClubEvents()
+
+    nextEvent = csClub.getNextEvent()
+    assert(nextEvent.getDate() == event_2_date)
+    print("End of Past Event")
+
 theLoneEvent()
 twoEventsInOneClub()
 thirdEventInOneClub()
 fourthEvent()
+puttingInAPastEvent()

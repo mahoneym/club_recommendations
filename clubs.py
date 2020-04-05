@@ -113,7 +113,13 @@ class Club:
     def getNextEvent(self):
         event = None
         if(len(self.__upcomingEvents) > 0):
-            event = self.__upcomingEvents[0]
+            index = 0
+            stillInPastEvents = True
+            while(stillInPastEvents == True and index < len(self.__upcomingEvents)):
+                if(self.__upcomingEvents[index].getDate() >= datetime.now()):
+                    stillInPastEvents = False
+                    event = self.__upcomingEvents[index]
+                index = index + 1
         return event
 
     # prints the club's Events
