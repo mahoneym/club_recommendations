@@ -14,8 +14,8 @@ def theLoneEvent():
 
     # create event_1 for the Accounting Society
     date_1 = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
-    event_1 = Event("Event_1", date_1, csClub, "Alter hall", "It's the first event. :)")
-    recommend.addEventToClub('Accounting Society', "Event_1", date_1, "Smith Somewhere", "It's the first event. :)")
+    event_1 = Event("Accounting Event 1", date_1, csClub, "Alter hall", "It's the first event. :)")
+    recommend.addEventToClub('Accounting Society', "Accounting Event 1", date_1, "Smith Somewhere", "It's the first event. :)")
 
     # try to get event 1 back from CS club list
     print("Trying to get the event back")
@@ -31,10 +31,10 @@ def twoEventsInOneClub():
     date_1 = datetime(year= 2019, month = 5, day = 25, hour = 19, minute = 0)
     date_2 = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
 
-    event_1 = Event("Event_1", date_1, csClub, "Alter Hall Rm 101", "Event 1 :)")
+    event_1 = Event("CS Event 1", date_1, csClub, "Alter Hall Rm 101", "Event 1 :)")
 
-    recommend.addEventToClub("Computer Science Club", "Event_1", date_1, "Alter Hall Rm 101", "Event 1")
-    recommend.addEventToClub("Computer Science Club", "Event_2", date_2, "Alter Hall Rm 102", "Event 2")
+    recommend.addEventToClub("Computer Science Club", "CS Event 1", date_1, "Alter Hall Rm 101", "Event 1")
+    recommend.addEventToClub("Computer Science Club", "CS Event 2", date_2, "Alter Hall Rm 102", "Event 2")
 
     csClub.getClubEvents()
 
@@ -51,9 +51,9 @@ def thirdEventInOneClub():
 
     date_3 = datetime(year = 2019, month = 8, day = 25, hour = 19, minute = 0)
 
-    event_3 = Event("Event_3", date_3, csClub, "Alter Hall Rm 101", "Should be 2nd event in the list :)")
+    event_3 = Event("CS Event 3", date_3, csClub, "Alter Hall Rm 101", "Should be 2nd event in the list :)")
 
-    recommend.addEventToClub("Computer Science Club", "Event_3", date_3, "Alter Hall Rm 103", "Event 3")
+    recommend.addEventToClub("Computer Science Club", "CS Event 3", date_3, "Alter Hall Rm 103", "Event 3")
 
     csClub.getClubEvents()
 
@@ -66,9 +66,9 @@ def fourthEvent():
 
     date_3 = datetime(year = 2019, month = 8, day = 25, hour = 19, minute = 0)
 
-    event_3 = Event("Event_4", date_3, csClub, "Alter Hall Rm 101", "Should be 3rd event in the list :)")
+    event_3 = Event("CS Event 4", date_3, csClub, "Alter Hall Rm 101", "Should be 3rd event in the list :)")
 
-    recommend.addEventToClub("Computer Science Club", "Event_4", date_3, "Alter Hall Rm 103", "Event 4")
+    recommend.addEventToClub("Computer Science Club", "CS Event 4", date_3, "Alter Hall Rm 103", "Event 4")
 
     csClub.getClubEvents()
 
@@ -84,8 +84,20 @@ def puttingInAPastEvent():
     assert(nextEvent.getDate() == event_2_date)
     print("End of Past Event")
 
+def upcomingEventsButton():
+    print("Upcoming events button test")
+
+    u1 = recommend.addUser(1)
+
+    u1.addClub('Computer Science Club', recommend)
+    u1.addClub('Accounting Society', recommend)
+
+    recommend.getUserUpcomingEvents(1)
+
+
 theLoneEvent()
 twoEventsInOneClub()
 thirdEventInOneClub()
 fourthEvent()
 puttingInAPastEvent()
+upcomingEventsButton()
