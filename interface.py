@@ -63,35 +63,42 @@ def getUserUpcomingEvents():
         eventsList.configure(background=secondWindowBackground)
         eventsList.wm_title("My Upcoming Events")
         index = 0
+        rowsPerEvent = 6
         while(index < len(upcomingEventsList)):
 
             currentEvent = upcomingEventsList[index]
             name = Label(eventsList, text= "Name: ", background=secondWindowBackground, fg = secondWindowForeground)
-            name.grid(row= (5*index) + 1, column = 0)
+            name.grid(row= (rowsPerEvent*index) + 1, column = 0, sticky = "W")
 
             club = Label(eventsList, text= "Club: ", background=secondWindowBackground, fg = secondWindowForeground)
-            club.grid(row = (5*index) +2, column = 0)
+            club.grid(row = (rowsPerEvent*index) +2, column = 0, sticky = "W")
 
             date = Label(eventsList, text = "Date: ", background=secondWindowBackground, fg = secondWindowForeground)
-            date.grid(row = (5*index) + 3, column = 0)
+            date.grid(row = (rowsPerEvent*index) + 3, column = 0, sticky = "W")
 
             location = Label(eventsList, text = "Location: ", background=secondWindowBackground, fg = secondWindowForeground)
-            location.grid(row = ((5*index) +4), column = 0)
+            location.grid(row = ((rowsPerEvent*index) +4), column = 0, sticky = "W")
+
+            description = Label(eventsList, text = "Description: ", background=secondWindowBackground, fg = secondWindowForeground)
+            description.grid(row = ((rowsPerEvent*index) +5), column = 0, sticky = "W")
 
             newName = Label(eventsList, text = currentEvent.getName(), background=secondWindowBackground, fg = secondWindowForeground)
-            newName.grid(row = ((5*index) + 1), column = 1)
+            newName.grid(row = ((rowsPerEvent*index) + 1), column = 1, sticky = "W")
 
             newClub = Label(eventsList, text = currentEvent.getClubHost().getClubName(), background=secondWindowBackground, fg = secondWindowForeground)
-            newClub.grid(row = ((5*index)+2), column = 1 )
+            newClub.grid(row = ((rowsPerEvent*index)+2), column = 1, sticky = "W")
 
             newDate = Label(eventsList, text = currentEvent.getDate().strftime("%a %b %d, %Y %I:%M %p"), background=secondWindowBackground, fg = secondWindowForeground)
-            newDate.grid(row = ((5*index)+3), column = 1)
+            newDate.grid(row = ((rowsPerEvent*index)+3), column = 1, sticky = "W")
 
             newLocation = Label(eventsList, text = currentEvent.getLocation(), background=secondWindowBackground, fg = secondWindowForeground)
-            newLocation.grid(row = ((5*index)+4), column = 1)
+            newLocation.grid(row = ((rowsPerEvent*index)+4), column = 1, sticky = "W")
+
+            newDescription = Label(eventsList, text = currentEvent.getDescription(), background=secondWindowBackground, fg = secondWindowForeground)
+            newDescription.grid(row = ((rowsPerEvent*index)+5), column = 1, sticky = "W")
 
             filler = Label(eventsList, background=secondWindowBackground, fg = secondWindowForeground)
-            filler.grid(row=((5*index)+5), column = 1)
+            filler.grid(row=((rowsPerEvent*index)+rowsPerEvent), column = 1, sticky = "W")
 
             index = index + 1
 
@@ -131,31 +138,31 @@ def getNextEvent():
     eventPopUp.configure(background = foregroundColor)                                                  # sets background color to midnight blue
     eventPopUp.geometry("430x200")
 
-    title = Label(eventPopUp, text = "Event Title: ", background = foregroundColor, fg = backgroundColor)
+    title = Label(eventPopUp, text = "Event Title: ", background = secondWindowBackground, fg = secondWindowForeground)
     title.grid(row = 0, column = 0, sticky= "W")
 
-    date = Label(eventPopUp, text = "Event Date", background = foregroundColor, fg = backgroundColor)
+    date = Label(eventPopUp, text = "Event Date", background = secondWindowBackground, fg = secondWindowForeground)
     date.grid(row = 1, column = 0, sticky= "W")
 
-    location = Label(eventPopUp, text = "Event Location: ", background = foregroundColor, fg = backgroundColor)
+    location = Label(eventPopUp, text = "Event Location: ", background = secondWindowBackground, fg = secondWindowForeground)
     location.grid(row = 2, column = 0, sticky= "W")
 
-    description = Label(eventPopUp, text = "Event Description", background = foregroundColor, fg = backgroundColor)
+    description = Label(eventPopUp, text = "Event Description", background = secondWindowBackground, fg = secondWindowForeground)
     description.grid(row = 3, column = 0, sticky= "NW")
 
-    eventTitle = Label(eventPopUp, text = nextEventTitle, background = foregroundColor, fg = backgroundColor)
+    eventTitle = Label(eventPopUp, text = nextEventTitle, background = secondWindowBackground, fg = secondWindowForeground)
     eventTitle.grid(row = 0, column = 1, sticky= "W")
 
-    eventDate = Label(eventPopUp, text = nextEventDate, background = foregroundColor, fg = backgroundColor)
+    eventDate = Label(eventPopUp, text = nextEventDate, background = secondWindowBackground, fg = secondWindowForeground)
     eventDate.grid(row = 1, column = 1, sticky= "W")
 
-    eventLocation = Label(eventPopUp, text = nextEventLocation, background = foregroundColor, fg = backgroundColor)
+    eventLocation = Label(eventPopUp, text = nextEventLocation, background = secondWindowBackground, fg = secondWindowForeground)
     eventLocation.grid(row = 2, column = 1, sticky= "W")
 
-    eventDescription = Label(eventPopUp, text = nextEventDescription, background = foregroundColor, fg = backgroundColor, wraplength = 300, justify = LEFT)
+    eventDescription = Label(eventPopUp, text = nextEventDescription, background = secondWindowBackground, fg = secondWindowForeground, wraplength = 300, justify = LEFT)
     eventDescription.grid(row = 3, column = 1, sticky= "W")
 
-    filler = Label(eventPopUp, background = foregroundColor, text = "")
+    filler = Label(eventPopUp, background = secondWindowBackground, text = "")
     filler.grid(row = 4, sticky = "W")
 
     #emailMeButton = Button(eventPopUp, text = "Email Me this Event")
@@ -249,7 +256,7 @@ def addData():
     recommend.addEventToClub("4 Paws for Ability at XU", "Event_2", date_2, "Alter Hall Rm 102", "Event 2")
 
     recommend.addEventToClub("Don't Tell Anna", "Spring Show", date_2, "Kennedy Auditorium", "Spring Show")
-    recommend.addEventToClub("MuskieTHON", "Dance Marathon", date_2, "GSC", "The 24 Dance Marathon")
+    recommend.addEventToClub("MuskieTHON", "Dance Marathon", date_2, "GSC", "The 24 Hour Dance Marathon")
     return None
 
 ######## THE AREA TO GET USER'S ID ##########
