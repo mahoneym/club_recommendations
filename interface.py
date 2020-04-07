@@ -3,6 +3,8 @@ import tkinter.messagebox
 import recommender
 from datetime import datetime
 
+from tkcalendar import Calendar, DateEntry
+
 interface = Tk()        # create the interface
 
 # create string variables for what is used throughout the interface
@@ -110,6 +112,20 @@ def getUserUpcomingEvents():
             index = index + 1
 
         eventsList.mainloop()
+
+def adminSection():
+    id = idEntry.get()
+    if(id == 'Admin'):
+        admin = Tk()
+        admin.configure(background=secondWindowBackground)
+        admin.wm_title("Admin Section")
+
+        # date input
+        dateInput = DateEntry(admin)
+        dateInput.grid(row = 1)
+    else:
+        #tkinter.messagebox.showerror(errorBoxTop, errorMessage)
+        clearRecommendationArea()
 
 
 # sets up event info for when/if the user wants to see the next event
@@ -332,6 +348,15 @@ rowOneLayer.grid(row = 9)
 
 upcomingEventsButton = Button(interface, text= "Get Upcoming Events for my Clubs", command = getUserUpcomingEvents)
 upcomingEventsButton.grid(row = 10, columnspan = 4 , padx = 6, sticky = "NSEW")
+
+space = Label(interface, background= backgroundColor, fg = foregroundColor)
+space.grid(row = 11)
+
+space_2 = Label(interface, background= backgroundColor, fg = foregroundColor)
+space.grid(row = 12)
+
+admin = Button(interface, text= "Admin", command = adminSection)
+admin.grid(row=13, columnspan = 4, sticky = "NSEW")
 
 ######## START THE PROGRAM ########
 interface.mainloop()
