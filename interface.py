@@ -15,6 +15,13 @@ foregroundColor = "gray64"
 secondWindowBackground = "gray64"
 secondWindowForeground = "midnight blue"
 
+dateFormat = "%a %b %d, %Y %I:%M %p"
+
+nextEventTitle = ""
+nextEventLocation = ""
+nextEventDescription = ""
+nextEventDate = None
+
 # called when the user hits the "Club based" Button
 # uses the recommender object to get a club recommendation for the user
 # knows the user by the student id entered in the text box
@@ -45,7 +52,7 @@ def getInterestRecommendations():
         setEventInfo(club)  # get the next event info while the club is handy
         if(club == None):
             clearRecommendationArea()
-            tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
+            tkinter.messagebox.showerror(errorBoxTop, errorMessage)
         else:
             showTheResults(club)
     return club
@@ -53,8 +60,8 @@ def getInterestRecommendations():
 def getUserUpcomingEvents():
     idNumber = idEntry.get()
     if(idNumber == "" or (not checkEntryEdgeCases(idNumber))):
-        #tkinter.messagebox.showerror(errorBoxTop, errorMessage)
-        print("oops")
+        tkinter.messagebox.showerror(errorBoxTop, errorMessage)
+        clearRecommendationArea()
     else:
         upcomingEventsList = recommend.getUserUpcomingEvents(int(idNumber))
 
@@ -88,7 +95,7 @@ def getUserUpcomingEvents():
             newClub = Label(eventsList, text = currentEvent.getClubHost().getClubName(), background=secondWindowBackground, fg = secondWindowForeground)
             newClub.grid(row = ((rowsPerEvent*index)+2), column = 1, sticky = "W")
 
-            newDate = Label(eventsList, text = currentEvent.getDate().strftime("%a %b %d, %Y %I:%M %p"), background=secondWindowBackground, fg = secondWindowForeground)
+            newDate = Label(eventsList, text = currentEvent.getDate().strftime(dateFormat), background=secondWindowBackground, fg = secondWindowForeground)
             newDate.grid(row = ((rowsPerEvent*index)+3), column = 1, sticky = "W")
 
             newLocation = Label(eventsList, text = currentEvent.getLocation(), background=secondWindowBackground, fg = secondWindowForeground)
@@ -115,7 +122,7 @@ def setEventInfo(club):
         nextEventTitle = nextEvent.getName()
         nextEventLocation = nextEvent.getLocation()
         nextEventDescription = nextEvent.getDescription()
-        nextEventDate = nextEvent.getDate().strftime("%a %b %d, %Y %I:%M %p")        # gets the date and puts in "Sat May 25 2019 7:00 PM" format
+        nextEventDate = nextEvent.getDate().strftime(dateFormat)        # gets the date and puts in "Sat May 25 2019 7:00 PM" format
     else:
         clubEventButton["state"] = "disabled"
 
@@ -164,9 +171,6 @@ def getNextEvent():
 
     filler = Label(eventPopUp, background = secondWindowBackground, text = "")
     filler.grid(row = 4, sticky = "W")
-
-    #emailMeButton = Button(eventPopUp, text = "Email Me this Event")
-    #emailMeButton.grid(row = 5, columnspan = 2, sticky = "NSEW")
 
 # make sure the user's entry is all digits
 # if it's not, tell them to go back and check their ALLCARD
@@ -266,14 +270,6 @@ addData()                                                                       
 interface.title("Club Recommendation System")
 interface.geometry("550x550")                                                                    # sets minimal size of the window when it first opens
 interface.configure(background=backgroundColor)                                                  # sets background color to midnight blue
-
-
-nextEventTitle = ""
-nextEventLocation = ""
-nextEventDescription = ""
-nextEventDate = None
-
-# The interest recommendations will pick one of your interests from the Road To Xavier form and choose a related club.
 
 directionsLabel = Label(interface, text=directions, fg=foregroundColor, background= backgroundColor, wraplength = 550, justify = LEFT)
 directionsLabel.grid(row=0, column=0, columnspan=4)
