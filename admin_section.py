@@ -3,6 +3,7 @@ import tkinter.messagebox
 from datetime import datetime, time
 from tkinter import ttk
 from tkcalendar import DateEntry
+from constants import secondWindowBackground, secondWindowForeground, errorBoxTop
 
 class AdminSection:
     """The Admin Section of the GUI"""
@@ -10,8 +11,6 @@ class AdminSection:
     def __init__(self, recommendObject):
         global eventName, descriptionEntry, dateInput, minuteEntry, locationEntry, hourEntry, clubEntry, recommend
         recommend = recommendObject
-        secondWindowBackground = "gray64"
-        secondWindowForeground = "midnight blue"
 
         __clubNames = recommend.getClubNames()
 
@@ -105,7 +104,7 @@ class AdminSection:
             location = locationEntry.get()
             description = descriptionEntry.get()
             if(name == "" or club == "" or date == None or location == "" or description == "" or hour == "" or minute == ""):
-                tkinter.messagebox.showerror("Oops", "You left one or more fields blank. Fill them all in then try again.")
+                tkinter.messagebox.showerror(errorBoxTop, "You left one or more fields blank. Fill them all in then try again.")
             else:
                 newHour = int(hour)
                 newMinute = int(minute)

@@ -3,20 +3,11 @@ import tkinter.messagebox
 import recommender
 import admin_section
 from datetime import datetime
+from constants import errorBoxTop, id_errorMessage, dateFormat, backgroundColor, foregroundColor, secondWindowBackground, secondWindowForeground
 
 interface = Tk()        # create the interface
 
-# create string variables for what is used throughout the interface
 directions = "Welcome to the club recommender! Please enter your Student ID in the box below."
-erroxBoxTop = "Oops"
-errorMessage = "An error occured. Please check your ID Number on your AllCard and try again."
-backgroundColor = "midnight blue"
-foregroundColor = "gray64"
-
-secondWindowBackground = "gray64"
-secondWindowForeground = "midnight blue"
-
-dateFormat = "%a %b %d, %Y %I:%M %p"
 
 nextEventTitle = ""
 nextEventLocation = ""
@@ -38,7 +29,7 @@ def getClubRecommendations():
             showTheResults(graphEdge.getDestination())
         else:
             clearRecommendationArea()
-            tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
+            tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
     return None
 
 # called when the user hits the "Interest Based" button
@@ -50,18 +41,18 @@ def getInterestRecommendations():
     club = None
     if(flag == True):               # if the user id is acceptable
         club = recommend.createInterestRecommendation(int(idNumber))    # get the recommendation
-        setEventInfo(club)  # get the next event info while the club is handy
         if(club == None):
             clearRecommendationArea()
-            tkinter.messagebox.showerror(errorBoxTop, errorMessage)
+            tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
         else:
+            setEventInfo(club)  # get the next event info while the club is handy
             showTheResults(club)
     return club
 
 def getUserUpcomingEvents():
     idNumber = idEntry.get()
     if(idNumber == "" or (not checkEntryEdgeCases(idNumber))):
-        tkinter.messagebox.showerror(errorBoxTop, errorMessage)
+        tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
         clearRecommendationArea()
     else:
         upcomingEventsList = recommend.getUserUpcomingEvents(int(idNumber))
@@ -141,7 +132,7 @@ def setEventInfo(club):
 def showTheResults(club):
     if(club == -1):
         clearRecommendationArea()
-        tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
+        tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
     else:
         clubNameInterface.configure(text = club.getClubName())
         clubDescriptionInterface.configure(text = club.getDescription())
@@ -189,7 +180,7 @@ def checkEntryEdgeCases(idNumber):
     flag = True
     if(not idNumber.isdigit()):
         clearRecommendationArea()
-        tkinter.messagebox.showerror(erroxBoxTop, errorMessage)
+        tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
         flag = False
     return flag
 
