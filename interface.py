@@ -59,9 +59,7 @@ def getUserUpcomingEvents():
         clearRecommendationArea()
     else:
         upcomingEventsList = recommend.getUserUpcomingEvents(int(idNumber))
-        user_events.UserEvents(upcomingEventsList)
-
-#eventName, dateInput, locationEntry, descriptionEntry
+        user_events.UserEvents(upcomingEventsList)      # start user upcoming events GUI
 
 def adminSection():
     id = idEntry.get()
