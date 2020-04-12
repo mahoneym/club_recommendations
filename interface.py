@@ -69,7 +69,6 @@ def adminSection():
     else:
         clearRecommendationArea()
 
-
 # sets up event info for when/if the user wants to see the next event
 # param: the club object that is being used
 def setEventInfo(club):
@@ -124,7 +123,6 @@ def clearRecommendationArea():
     nextEventDate = None
 
     idEntry.delete(0,'end')     # clears the user's input in the entry box
-
 
 # add data to the interface's recommender object
 def addData():
