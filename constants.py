@@ -9,3 +9,7 @@ secondWindowBackground = "gray64"
 secondWindowForeground = "midnight blue"
 
 dateFormat = "%a %b %d, %Y %I:%M %p"
+
+singleLineLeftJustify = "W"
+topRightCorner = "NW"
+wholeRow ="NSEW"

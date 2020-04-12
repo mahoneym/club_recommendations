@@ -1,9 +1,11 @@
 from tkinter import *
 import tkinter.messagebox
+from datetime import datetime
+
 import recommender
 import admin_section
-from datetime import datetime
-from constants import errorBoxTop, id_errorMessage, dateFormat, backgroundColor, foregroundColor, secondWindowBackground, secondWindowForeground
+import next_event
+from constants import topRightCorner, wholeRow, errorBoxTop, id_errorMessage, dateFormat, backgroundColor, foregroundColor, secondWindowBackground, secondWindowForeground, singleLineLeftJustify
 
 interface = Tk()        # create the interface
 
@@ -67,37 +69,37 @@ def getUserUpcomingEvents():
 
             currentEvent = upcomingEventsList[index]
             name = Label(eventsList, text= "Name: ", background=secondWindowBackground, fg = secondWindowForeground)
-            name.grid(row= (rowsPerEvent*index) + 1, column = 0, sticky = "W")
+            name.grid(row= (rowsPerEvent*index) + 1, column = 0, sticky = singleLineLeftJustify)
 
             club = Label(eventsList, text= "Club: ", background=secondWindowBackground, fg = secondWindowForeground)
-            club.grid(row = (rowsPerEvent*index) +2, column = 0, sticky = "W")
+            club.grid(row = (rowsPerEvent*index) +2, column = 0, sticky = singleLineLeftJustify)
 
             date = Label(eventsList, text = "Date: ", background=secondWindowBackground, fg = secondWindowForeground)
-            date.grid(row = (rowsPerEvent*index) + 3, column = 0, sticky = "W")
+            date.grid(row = (rowsPerEvent*index) + 3, column = 0, sticky = singleLineLeftJustify)
 
             location = Label(eventsList, text = "Location: ", background=secondWindowBackground, fg = secondWindowForeground)
-            location.grid(row = ((rowsPerEvent*index) +4), column = 0, sticky = "W")
+            location.grid(row = ((rowsPerEvent*index) +4), column = 0, sticky = singleLineLeftJustify)
 
             description = Label(eventsList, text = "Description: ", background=secondWindowBackground, fg = secondWindowForeground)
-            description.grid(row = ((rowsPerEvent*index) +5), column = 0, sticky = "W")
+            description.grid(row = ((rowsPerEvent*index) +5), column = 0, sticky = singleLineLeftJustify)
 
             newName = Label(eventsList, text = currentEvent.getName(), background=secondWindowBackground, fg = secondWindowForeground)
-            newName.grid(row = ((rowsPerEvent*index) + 1), column = 1, sticky = "W")
+            newName.grid(row = ((rowsPerEvent*index) + 1), column = 1, sticky = singleLineLeftJustify)
 
             newClub = Label(eventsList, text = currentEvent.getClubHost().getClubName(), background=secondWindowBackground, fg = secondWindowForeground)
-            newClub.grid(row = ((rowsPerEvent*index)+2), column = 1, sticky = "W")
+            newClub.grid(row = ((rowsPerEvent*index)+2), column = 1, sticky = singleLineLeftJustify)
 
             newDate = Label(eventsList, text = currentEvent.getDate().strftime(dateFormat), background=secondWindowBackground, fg = secondWindowForeground)
-            newDate.grid(row = ((rowsPerEvent*index)+3), column = 1, sticky = "W")
+            newDate.grid(row = ((rowsPerEvent*index)+3), column = 1, sticky = singleLineLeftJustify)
 
             newLocation = Label(eventsList, text = currentEvent.getLocation(), background=secondWindowBackground, fg = secondWindowForeground)
-            newLocation.grid(row = ((rowsPerEvent*index)+4), column = 1, sticky = "W")
+            newLocation.grid(row = ((rowsPerEvent*index)+4), column = 1, sticky = singleLineLeftJustify)
 
             newDescription = Label(eventsList, text = currentEvent.getDescription(), background=secondWindowBackground, fg = secondWindowForeground)
-            newDescription.grid(row = ((rowsPerEvent*index)+5), column = 1, sticky = "W")
+            newDescription.grid(row = ((rowsPerEvent*index)+5), column = 1, sticky = singleLineLeftJustify)
 
             filler = Label(eventsList, background=secondWindowBackground, fg = secondWindowForeground)
-            filler.grid(row=((rowsPerEvent*index)+rowsPerEvent), column = 1, sticky = "W")
+            filler.grid(row=((rowsPerEvent*index)+rowsPerEvent), column = 1, sticky = singleLineLeftJustify)
 
             index = index + 1
 
@@ -140,39 +142,7 @@ def showTheResults(club):
 
 # set up and start the next event pop up window
 def getNextEvent():
-    eventPopUp = Tk()   # start the pop up window
-
-    # set up the pop up window
-    eventPopUp.wm_title("Next Event")
-    eventPopUp.configure(background = foregroundColor)                                                  # sets background color to midnight blue
-    eventPopUp.geometry("430x200")
-
-    title = Label(eventPopUp, text = "Event Title: ", background = secondWindowBackground, fg = secondWindowForeground)
-    title.grid(row = 0, column = 0, sticky= "W")
-
-    date = Label(eventPopUp, text = "Event Date", background = secondWindowBackground, fg = secondWindowForeground)
-    date.grid(row = 1, column = 0, sticky= "W")
-
-    location = Label(eventPopUp, text = "Event Location: ", background = secondWindowBackground, fg = secondWindowForeground)
-    location.grid(row = 2, column = 0, sticky= "W")
-
-    description = Label(eventPopUp, text = "Event Description", background = secondWindowBackground, fg = secondWindowForeground)
-    description.grid(row = 3, column = 0, sticky= "NW")
-
-    eventTitle = Label(eventPopUp, text = nextEventTitle, background = secondWindowBackground, fg = secondWindowForeground)
-    eventTitle.grid(row = 0, column = 1, sticky= "W")
-
-    eventDate = Label(eventPopUp, text = nextEventDate, background = secondWindowBackground, fg = secondWindowForeground)
-    eventDate.grid(row = 1, column = 1, sticky= "W")
-
-    eventLocation = Label(eventPopUp, text = nextEventLocation, background = secondWindowBackground, fg = secondWindowForeground)
-    eventLocation.grid(row = 2, column = 1, sticky= "W")
-
-    eventDescription = Label(eventPopUp, text = nextEventDescription, background = secondWindowBackground, fg = secondWindowForeground, wraplength = 300, justify = LEFT)
-    eventDescription.grid(row = 3, column = 1, sticky= "W")
-
-    filler = Label(eventPopUp, background = secondWindowBackground, text = "")
-    filler.grid(row = 4, sticky = "W")
+    next_event.NextEvent(nextEventTitle, nextEventDate, nextEventLocation, nextEventDescription)
 
 # make sure the user's entry is all digits
 # if it's not, tell them to go back and check their ALLCARD
@@ -281,7 +251,7 @@ takeUpSpace.grid(row=1)
 
 # set up the label for the Student ID
 idLabel = Label(interface, text="Student ID:", fg=foregroundColor, background=backgroundColor)
-idLabel.grid(row = 2, column = 0, sticky="W")
+idLabel.grid(row = 2, column = 0, sticky=singleLineLeftJustify)
 
 # set up the text box for the user to put their student ID
 idEntry = Entry(interface)
@@ -289,10 +259,10 @@ idEntry.grid(row = 2 , column = 1)
 
 # set up the submit button, which will trigger the looking for recommendations
 clubButton = Button(interface, text = "Club Based", command = getClubRecommendations)
-clubButton.grid(row = 2, column = 2, padx = 6, sticky="NSEW")
+clubButton.grid(row = 2, column = 2, padx = 6, sticky=wholeRow)
 
 interestButton = Button(interface, text="Interest Based", command= getInterestRecommendations)
-interestButton.grid(row = 2, column = 3, padx = 2, sticky = "NSEW")
+interestButton.grid(row = 2, column = 3, padx = 2, sticky = wholeRow)
 
 ######## THE AREA TO SHOW THE RECOMMENDATION ########
 
@@ -305,35 +275,35 @@ rowOneLayer.grid(row = 3)
 
 # create labels that will show what information is being displayed
 clubNameLabel = Label(interface, text="Club name: ", background=backgroundColor, fg=foregroundColor)
-clubNameLabel.grid(row = 4, column = 0, sticky="W")
+clubNameLabel.grid(row = 4, column = 0, sticky=singleLineLeftJustify)
 
 clubCategoryLabel = Label(interface, text = "Club Category: ", background = backgroundColor, fg = foregroundColor)
-clubCategoryLabel.grid(row = 5, column = 0, sticky="NW")
+clubCategoryLabel.grid(row = 5, column = 0, sticky=topRightCorner)
 
 clubDescriptionLabel = Label(interface, text= "Description: ", background=backgroundColor, fg = foregroundColor)
-clubDescriptionLabel.grid(row = 6, column = 0, sticky="NW")
+clubDescriptionLabel.grid(row = 6, column = 0, sticky=topRightCorner)
 
 # create the labels that will display a specific club recommendation
 clubNameInterface = Label(interface, text= "", background=backgroundColor, fg=foregroundColor)
-clubNameInterface.grid(row = 4, column = 1, columnspan = 3, sticky="W")
+clubNameInterface.grid(row = 4, column = 1, columnspan = 3, sticky=singleLineLeftJustify)
 
 clubCategoryInterface = Label(interface, text="", background = backgroundColor, fg = foregroundColor)
-clubCategoryInterface.grid(row=5, column = 1, columnspan = 3, sticky="W")
+clubCategoryInterface.grid(row=5, column = 1, columnspan = 3, sticky=singleLineLeftJustify)
 
 clubDescriptionInterface = Label(interface, text="", background= backgroundColor, fg = foregroundColor, wraplength = 400, justify = LEFT)
-clubDescriptionInterface.grid(row=6, column= 1, columnspan = 3, sticky = "W")
+clubDescriptionInterface.grid(row=6, column= 1, columnspan = 3, sticky = singleLineLeftJustify)
 
 takeUpSpace = Label(interface, background=backgroundColor)
 takeUpSpace.grid(row=7)
 
 clubEventButton = Button(interface, text = "Get Next Event", state="disabled", command=getNextEvent)
-clubEventButton.grid(row = 8, columnspan = 5, padx = 6, sticky="NSEW")
+clubEventButton.grid(row = 8, columnspan = 5, padx = 6, sticky=wholeRow)
 
 rowOneLayer = Label(interface, background=backgroundColor)
 rowOneLayer.grid(row = 9)
 
 upcomingEventsButton = Button(interface, text= "Get Upcoming Events for my Clubs", command = getUserUpcomingEvents)
-upcomingEventsButton.grid(row = 10, columnspan = 4 , padx = 6, sticky = "NSEW")
+upcomingEventsButton.grid(row = 10, columnspan = 4 , padx = 6, sticky = wholeRow)
 
 space = Label(interface, background= backgroundColor, fg = foregroundColor)
 space.grid(row = 11)
@@ -342,7 +312,7 @@ space_2 = Label(interface, background= backgroundColor, fg = foregroundColor)
 space.grid(row = 12)
 
 admin = Button(interface, text= "Admin", command = adminSection)
-admin.grid(row=13, columnspan = 4, sticky = "NSEW")
+admin.grid(row=13, columnspan = 4, sticky = wholeRow)
 
 ######## START THE PROGRAM ########
 interface.mainloop()
