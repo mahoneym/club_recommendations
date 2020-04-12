@@ -161,3 +161,9 @@ class Recommender:
         user = self.getUser(idNumber)
         eventList = user.getNextEvents()
         return eventList
+
+    def getClubNames(self):
+        clubNames = []
+        for club in self.__clubs:
+            clubNames.append(club.getClubName())
+        return clubNames

@@ -1,8 +1,8 @@
 from tkinter import *
 import tkinter.messagebox
 import recommender
-from datetime import datetime
-
+from datetime import datetime, time
+from tkinter import ttk
 from tkcalendar import Calendar, DateEntry
 
 interface = Tk()        # create the interface
@@ -113,20 +113,119 @@ def getUserUpcomingEvents():
 
         eventsList.mainloop()
 
+#eventName, dateInput, locationEntry, descriptionEntry
+
 def adminSection():
+    global dateInput, locationEntry, descriptionEntry, eventName, clubEntry, hourEntry, minuteEntry
     id = idEntry.get()
     if(id == 'Admin'):
+        clubNames = recommend.getClubNames()
+
         admin = Tk()
         admin.configure(background=secondWindowBackground)
         admin.wm_title("Admin Section")
 
+        words = Label(admin, text = "Welcome, Admin! Below you can add an event for any of the clubs. Have a fantastic day :)", background = secondWindowBackground, fg = secondWindowForeground)
+        words.grid(row = 0, columnspan = 2, sticky= "W")
+
+        admin_space_1 = Label(admin, background = secondWindowBackground, fg = secondWindowForeground)
+        admin_space_1.grid(row = 1, sticky= "W")
+
+        eventNameLabel = Label(admin, text = "Event Name: ", background = secondWindowBackground, fg = secondWindowForeground)
+        eventNameLabel.grid(row = 2, column = 0, sticky= "W")
+
+        eventName = Entry(admin)
+        eventName.grid(row = 2, column = 1, sticky= "NSEW")
+
+        admin_space_2 = Label(admin, background = secondWindowBackground, fg = secondWindowForeground)
+        admin_space_2.grid(row = 3, sticky= "W")
+
         # date input
-        dateInput = DateEntry(admin)
-        dateInput.grid(row = 1)
+        dateLabel = Label(admin, text = "Date of Occurance (in MM/DD/YY): ", background = secondWindowBackground, fg = secondWindowForeground)
+        dateLabel.grid(row = 4, column = 0, sticky= "W")
+
+        dateInput = DateEntry(admin, locale = 'en_US')
+        dateInput.grid(row = 4, column = 1, sticky= "NSEW")
+
+        #, background = secondWindowBackground, fg = secondWindowForeground
+
+        admin_space_8 = Label(admin, background = secondWindowBackground, fg = secondWindowForeground)
+        admin_space_8.grid(row = 5, sticky= "W")
+
+        hourLabel = Label(admin, text = "Hour (in 24 hour format): ", background = secondWindowBackground, fg = secondWindowForeground)
+        hourLabel.grid(row = 6, column = 0, sticky = "W")
+
+        hourEntry = Entry(admin)
+        hourEntry.grid(row = 6, column = 1, sticky = "NSEW")
+
+        admin_space_7 = Label(admin, background = secondWindowBackground, fg = secondWindowForeground)
+        admin_space_7.grid(row = 7, sticky= "W")
+
+        minuteLabel = Label(admin, text = "Minute: ", background = secondWindowBackground, fg = secondWindowForeground)
+        minuteLabel.grid(row = 8, column = 0, sticky = "W")
+
+        minuteEntry = Entry(admin)
+        minuteEntry.grid(row = 8, column = 1, sticky = "NSEW")
+
+        admin_space_3 = Label(admin, background = secondWindowBackground, fg = secondWindowForeground)
+        admin_space_3.grid(row = 9, sticky= "W")
+
+        locationLabel = Label(admin, text = "Location: ", background = secondWindowBackground, fg = secondWindowForeground)
+        locationLabel.grid(row = 10, column = 0, sticky= "W")
+
+        locationEntry = Entry(admin)
+        locationEntry.grid(row = 10, column = 1, sticky= "NSEW")
+
+        admin_space_4 = Label(admin, background = secondWindowBackground, fg = secondWindowForeground)
+        admin_space_4.grid(row = 11, sticky= "W")
+
+        descriptionLabel = Label(admin, text = "Event Description: ", background = secondWindowBackground, fg = secondWindowForeground)
+        descriptionLabel.grid(row = 12, column = 0, sticky= "W")
+
+        descriptionEntry = Entry(admin)
+        descriptionEntry.grid(row = 12, column = 1, sticky= "NSEW")
+
+        admin_space_5 = Label(admin, background = secondWindowBackground, fg = secondWindowForeground)
+        admin_space_5.grid(row = 13, sticky= "W")
+
+        clubDescriptionLabel = Label(admin, text = "Club: ", background = secondWindowBackground, fg = secondWindowForeground)
+        clubDescriptionLabel.grid(row = 14, column = 0, sticky = "W")
+
+        clubEntry = ttk.Combobox(admin, values = clubNames)
+        clubEntry.grid(row = 14, column = 1, sticky = "NSEW")
+
+        admin_space_6 = Label(admin, background = secondWindowBackground, fg = secondWindowForeground)
+        admin_space_6.grid(row = 15, sticky= "W")
+
+        submitButton = Button(admin, text = "Submit", background = secondWindowBackground, fg = secondWindowForeground, command = creatingAnEvent)
+        submitButton.grid(row = 16, columnspan = 2, sticky = "NSEW")
+
+
     else:
         #tkinter.messagebox.showerror(errorBoxTop, errorMessage)
         clearRecommendationArea()
 
+def creatingAnEvent():
+    name = eventName.get()
+    club = clubEntry.get()
+    date = dateInput.get_date()
+    hour = hourEntry.get()
+    minute = minuteEntry.get()
+
+    location = locationEntry.get()
+    description = descriptionEntry.get()
+    if(name == "" or club == "" or date == None or location == "" or description == "" or hour == "" or minute == ""):
+        tkinter.messagebox.showerror("Oops", "You left one or more fields blank. Fill them all in then try again.")
+        clearRecommendationArea()
+    else:
+        newHour = int(hour)
+        newMinute = int(minute)
+        eventTime = time(newHour, newMinute)
+        eventDateTime = datetime.combine(date, eventTime)
+        if(eventDateTime < datetime.now()):
+            tkinter.messagebox.showerror("Oops", "The date you entered is in the past.")
+        recommend.addEventToClub(club, name, eventDateTime, location, description)
+        tkinter.messagebox.showinfo("Event Added", "Your event has been added")
 
 # sets up event info for when/if the user wants to see the next event
 # param: the club object that is being used
