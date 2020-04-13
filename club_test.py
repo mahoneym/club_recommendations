@@ -1,3 +1,7 @@
+####### CLUB_TEST.PY #######
+####### This tests clubs being added to the recommender and the connections between the clubs #######
+####### The file also tests the recommendations- makes sure the recommendations are not redundant to the user #######
+
 import recommender
 
 def addMiniClubs():
@@ -216,115 +220,96 @@ def smallRecommendations():
 def largeRecommendations():
     print("\n" + "Large recommendations:")
     a = recommendObject.createClubRecommendation(6)
-    #print("recommendation for user 6: " + a.getDestination().getClubName())
     assert(a.getDestination().getClubName() != "c1")
     assert(a.getDestination().getClubName() != "c2")
     assert(a.getDestination().getClubName() != "c3")
 
     b = recommendObject.createClubRecommendation(7)
-    #print("recommendation for user 7: " + b.getDestination().getClubName())
     assert(b.getDestination().getClubName() != "c2")
     assert(b.getDestination().getClubName() != "c3")
     assert(b.getDestination().getClubName() != "c4")
 
     c = recommendObject.createClubRecommendation(8)
-    #print("recommendation for user 8: " + c.getDestination().getClubName())
     assert(c.getDestination().getClubName() != "c1")
     assert(c.getDestination().getClubName() != "c3")
     assert(c.getDestination().getClubName() != "c4")
 
     d = recommendObject.createClubRecommendation(9)
-    #print("recommendation for user 9: " + d.getDestination().getClubName())
     assert(d.getDestination().getClubName() != "c2")
     assert(d.getDestination().getClubName() != "c4")
     assert(d.getDestination().getClubName() != "c5")
 
     a = recommendObject.createClubRecommendation(10)
-    #print("recommendation for user 10: " + a.getDestination().getClubName())
     assert(a.getDestination().getClubName() != "c5")
     assert(a.getDestination().getClubName() != "c6")
     assert(a.getDestination().getClubName() != "c7")
 
     b = recommendObject.createClubRecommendation(12)
-    #print("recommendation for user 12: " + b.getDestination().getClubName())
     assert(b.getDestination().getClubName() != "c6")
     assert(b.getDestination().getClubName() != "c7")
     assert(b.getDestination().getClubName() != "c8")
 
     c = recommendObject.createClubRecommendation(13)
-    #print("recommendation for user 13: " + c.getDestination().getClubName())
     assert(c.getDestination().getClubName() != "c8")
     assert(c.getDestination().getClubName() != "c12")
     assert(c.getDestination().getClubName() != "c9")
 
     d = recommendObject.createClubRecommendation(14)
-    #print("recommendation for user 14: " + d.getDestination().getClubName())
     assert(d.getDestination().getClubName() != "c12")
     assert(d.getDestination().getClubName() != "c16")
     assert(d.getDestination().getClubName() != "c15")
 
     a = recommendObject.createClubRecommendation(15)
-    #print("recommendation for user 15: " + a.getDestination().getClubName())
     assert(a.getDestination().getClubName() != "c8")
     assert(a.getDestination().getClubName() != "c12")
     assert(a.getDestination().getClubName() != "c13")
 
     b = recommendObject.createClubRecommendation(16)
-    #print("recommendation for user 16: " + b.getDestination().getClubName())
     assert(b.getDestination().getClubName() != "c8")
     assert(b.getDestination().getClubName() != "c1")
     assert(b.getDestination().getClubName() != "c18")
 
     c = recommendObject.createClubRecommendation(17)
-    #print("recommendation for user 17: " + c.getDestination().getClubName())
     assert(c.getDestination().getClubName() != "c8")
     assert(c.getDestination().getClubName() != "c19")
     assert(c.getDestination().getClubName() != "c1")
 
     d = recommendObject.createClubRecommendation(18)
-    #print("recommendation for user 18: " + d.getDestination().getClubName())
     assert(d.getDestination().getClubName() != "c19")
     assert(d.getDestination().getClubName() != "c2")
     assert(d.getDestination().getClubName() != "c10")
 
     a = recommendObject.createClubRecommendation(19)
-    #print("recommendation for user 19: " + a.getDestination().getClubName())
     assert(a.getDestination().getClubName() != "c5")
     assert(a.getDestination().getClubName() != "c13")
     assert(a.getDestination().getClubName() != "c19")
 
     b = recommendObject.createClubRecommendation(20)
-    #print("recommendation for user 20: " + b.getDestination().getClubName())
     assert(b.getDestination().getClubName() != "c17")
     assert(b.getDestination().getClubName() != "c18")
     assert(b.getDestination().getClubName() != "c14")
 
     c = recommendObject.createClubRecommendation(21)
-    #print("recommendation for user 21: " + c.getDestination().getClubName())
     assert(c.getDestination().getClubName() != "c13")
     assert(c.getDestination().getClubName() != "c14")
     assert(c.getDestination().getClubName() != "c17")
 
     d = recommendObject.createClubRecommendation(22)
-    #print("recommendation for user 22: " + d.getDestination().getClubName())
     assert(d.getDestination().getClubName() != "c16")
     assert(d.getDestination().getClubName() != "c17")
     assert(d.getDestination().getClubName() != "c18")
 
     c = recommendObject.createClubRecommendation(23)
-    #print("recommendation for user 23: " + c.getDestination().getClubName())
     assert(c.getDestination().getClubName() != "c11")
     assert(c.getDestination().getClubName() != "c12")
     assert(c.getDestination().getClubName() != "c13")
 
     d = recommendObject.createClubRecommendation(24)
-    #print("recommendation for user 24: " + d.getDestination().getClubName())
     assert(d.getDestination().getClubName() != "c13")
     assert(d.getDestination().getClubName() != "c14")
     assert(d.getDestination().getClubName() != "c18")
 
     d = recommendObject.createClubRecommendation(25)
-    #print("recommendation for user 24: " + d.getDestination().getClubName())
     assert(d.getDestination().getClubName() != "c8")
     assert(d.getDestination().getClubName() != "c10")
     assert(d.getDestination().getClubName() != "c12")
@@ -379,7 +364,6 @@ def clubBasedTests():
     largeDataSet()
     caseForNoRelated()
     checkNotReturningClubAlreadyIn()
-    #tryAddingExcelClubs()
     return 0
 
 recommendObject = recommender.Recommender()

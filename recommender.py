@@ -1,3 +1,7 @@
+####### RECOMMENDER.PY #######
+####### This file contains the Recommender class. A Recommender object runs #######
+####### the whole recommender system (minus the GUI) #######
+
 from Recommender_Classes import Club
 from Recommender_Classes import User
 from Recommender_Classes import Event
@@ -149,19 +153,26 @@ class Recommender:
             user.addInterest(interest)
         return None
 
-
+    # adds an event to a club
+    # param: the club name (string), the event name (string), date (datetime object), location (string), and description (string)
+    # returns: 0
     def addEventToClub(self, clubName, name, date, location, description):
         club = self.getClub(clubName)
         event = Event(name, date, club, location, description)
         club.addEvent(event)
         return 0
 
-    # returns a list of the next 2 upcoming events for each of the user's clubs
+    # returns a list of the next upcoming event for each of the user's clubs
+    # param: the user's id numbers
+    # returns: a list(/array) of events
     def getUserUpcomingEvents(self, idNumber):
         user = self.getUser(idNumber)
         eventList = user.getNextEvents()
         return eventList
 
+    # get the names of all the clubs
+    # param: none
+    # returns: a list of club names (strings)
     def getClubNames(self):
         clubNames = []
         for club in self.__clubs:

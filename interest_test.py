@@ -1,3 +1,6 @@
+####### INTEREST_TEST.PY #######
+####### This tests adding interests to the user and getting recommendations from it #######
+
 import recommender
 
 recommend = recommender.Recommender()

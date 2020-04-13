@@ -1,3 +1,7 @@
+####### APPLICATION.PY #######
+####### This file runs the application #######
+####### It starts the recommender object, adds the data, and starts the GUI #######
+
 import recommender
 from datetime import datetime
 from Interface_Classes import MainWindow
@@ -65,6 +69,7 @@ def addData():
     recommend.addEventToClub("MuskieTHON", "Dance Marathon", date_2, "GSC", "The 24 Hour Dance Marathon")
     return None
 
+####### START THE PROGRAM #######
 
 recommend = recommender.Recommender()                  # starts the recommender object
 addData()                                              # adds the data to the recommender

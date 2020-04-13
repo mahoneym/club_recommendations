@@ -1,3 +1,6 @@
+####### CLUBS.PY #######
+####### This file contains the Club class. A club object will represent a club in the recommender system. #######
+
 from Recommender_Classes import user
 
 from datetime import datetime
@@ -131,5 +134,6 @@ class Club:
 
     # get the number of related Clubs
     # param: none
+    # returns the number of related list
     def getNumberOfRelated(self):
         return len(self.__related)

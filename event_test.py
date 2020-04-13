@@ -1,3 +1,7 @@
+####### EVENT_TEST.PY #######
+####### This tests events being added to the clubs #######
+####### It also tests that the correct events are being returned for a club's next event #######
+
 import recommender
 from Recommender_Classes import Event
 from datetime import datetime

@@ -1,3 +1,7 @@
+####### EVENT.PY #######
+####### Contains the event class #######
+####### Event objects will be contained in clubs #######
+
 from datetime import date
 
 class Event:
@@ -29,6 +33,6 @@ class Event:
     def getName(self):
         return self.__name
 
-    # returns the descripton of the event 
+    # returns the descripton of the event
     def getDescription(self):
         return self.__description

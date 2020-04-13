@@ -11,6 +11,8 @@ import random
 class User:
     """Represents a student in the recommendation system"""
 
+    # constructor for the user class
+    # param: studentId (integer)
     def __init__(self, studentId):
         self.id = studentId                             # a unique id for the user => given by the data
         self.__userClubs = []                           # put graph edge objects for the student's interests
@@ -141,6 +143,9 @@ class User:
                 foundOne = (not flag)
         return recommendation
 
+    # gets the next events for the user (1 per user's club)
+    # param: none
+    # returns: a list of events
     def getNextEvents(self):
         nextEvents = []
         for graphEdge in self.__userClubs:

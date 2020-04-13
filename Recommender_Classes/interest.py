@@ -1,3 +1,7 @@
+####### INTEREST.PY #######
+####### The interest class #######
+####### These objects will represent the interests of students and will point to related clubs #######
+
 from Recommender_Classes import graph_edge
 import random
 
@@ -6,6 +10,7 @@ class Interest:
         the Road To/Thru Xavier Form"""
 
     # constructor for the interest class
+    # param: the name of the interest being created (string)
     def __init__(self, interestName):
         self.__name = interestName
         self.__relatedClubs = []
