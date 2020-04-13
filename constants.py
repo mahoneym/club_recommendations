@@ -13,3 +13,6 @@ dateFormat = "%a %b %d, %Y %I:%M %p"
 singleLineLeftJustify = "W"
 topRightCorner = "NW"
 wholeRow ="NSEW"
+
+
+secondWindowWrap = 300

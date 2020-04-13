@@ -1,4 +1,4 @@
-from constants import topRightCorner, secondWindowBackground, secondWindowForeground, singleLineLeftJustify
+from constants import topRightCorner, secondWindowBackground, secondWindowForeground, singleLineLeftJustify, secondWindowWrap
 from tkinter import *
 
 class NextEvent():
@@ -32,7 +32,7 @@ class NextEvent():
         __eventLocation = Label(__eventPopUp, text = nextEventLocation, background = secondWindowBackground, fg = secondWindowForeground)
         __eventLocation.grid(row = 2, column = 1, sticky= singleLineLeftJustify)
 
-        __eventDescription = Label(__eventPopUp, text = nextEventDescription, background = secondWindowBackground, fg = secondWindowForeground, wraplength = 300, justify = LEFT)
+        __eventDescription = Label(__eventPopUp, text = nextEventDescription, background = secondWindowBackground, fg = secondWindowForeground, wraplength = secondWindowWrap, justify = LEFT)
         __eventDescription.grid(row = 3, column = 1, sticky= singleLineLeftJustify)
 
         __filler = Label(__eventPopUp, background = secondWindowBackground, text = "")

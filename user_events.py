@@ -1,4 +1,4 @@
-from constants import dateFormat, secondWindowBackground, secondWindowForeground, singleLineLeftJustify
+from constants import dateFormat, secondWindowBackground, secondWindowForeground, singleLineLeftJustify, secondWindowWrap
 from tkinter import *
 
 class UserEvents:
@@ -41,7 +41,7 @@ class UserEvents:
             newLocation = Label(__eventsList, text = currentEvent.getLocation(), background=secondWindowBackground, fg = secondWindowForeground)
             newLocation.grid(row = ((rowsPerEvent*index)+4), column = 1, sticky = singleLineLeftJustify)
 
-            newDescription = Label(__eventsList, text = currentEvent.getDescription(), background=secondWindowBackground, fg = secondWindowForeground)
+            newDescription = Label(__eventsList, text = currentEvent.getDescription(), background=secondWindowBackground, fg = secondWindowForeground, wraplength = secondWindowWrap, justify = LEFT)
             newDescription.grid(row = ((rowsPerEvent*index)+5), column = 1, sticky = singleLineLeftJustify)
 
             filler = Label(__eventsList, background=secondWindowBackground, fg = secondWindowForeground)
