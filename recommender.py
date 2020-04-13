@@ -32,21 +32,6 @@ class Recommender:
         self.__users.append(newUser)                     # add the user to the dict
         return newUser
 
-    def print_users(self):
-        for user in self.__users:
-            print(user.id)
-            user.print_userClubs()
-        return 0
-
-    def print_clubs(self):
-        for club in self.__clubs:
-            print(club.getClubName())
-        return 0
-
-    def print_interests(self):
-        for interest in self.__interests:
-            print (interest.getInterestName())
-
     # add a new club to the list
     # param: the name of the club, its category, and its ID
     # returns: the new club
@@ -103,6 +88,9 @@ class Recommender:
             recommendation = user.getInterestRecommendation()
             return recommendation
 
+    # gets the next club event
+    # param: the club object to look at
+    # returns: the event
     def getNextClubEvent(self, club):
         event = club.getNextEvent()
         return event

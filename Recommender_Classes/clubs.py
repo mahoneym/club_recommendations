@@ -19,16 +19,6 @@ class Club:
         self.__description = clubDescription
         self.__upcomingEvents = []                          # a sorted list of events (sorted by date of occurrance)
 
-    # prints all the clubs that are related to this club
-    # param: None
-    # return: None
-    def printRelated(self):
-        print(self.__name)
-        for club in self.__related:
-            print("Club:" + club.getDestination().getClubName())
-            print(club.getWeight())
-        return None
-
     # accessor method for the club's name
     # param: none
     # return: a string- the name

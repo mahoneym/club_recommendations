@@ -60,14 +60,6 @@ class User:
                 return True
         return False
 
-    # prints the user's clubs
-    # param: none
-    # returns: nothing- just prints stuff
-    def print_userClubs(self):
-        for club in self.__userClubs:
-            print(club.getDestination().getClubName())
-            print(club.getWeight())
-
     # find club with highest weight to a random club that the user is in
     # param: None
     # returns: the club with the heaviest connection to the one chosen in this method
@@ -102,14 +94,6 @@ class User:
     def addInterest(self, interest):
         self.__userInterests.append(interest)
         return None
-
-    # prints all the user's interests
-    # param: nothing
-    # return: nothing
-    def printAllInterests(self):
-        for interest in self.__userInterests:
-            print(str(type(interest)))
-            print(interest.getInterestName())
 
     # gives the random user interest
     # param: None

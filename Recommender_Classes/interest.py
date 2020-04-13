@@ -19,11 +19,6 @@ class Interest:
     def getInterestName(self):
         return self.__name
 
-    # prints the clubs in the interest
-    def printClubsInCategory(self):
-        for club in self.__relatedClubs:
-            print(club.getClubName())
-
     # returns a random club based on the random number
     # param: None
     # returns: a club object
