@@ -2,9 +2,9 @@ from tkinter import *
 import tkinter.messagebox
 from datetime import datetime
 
-import admin_section
-import next_event
-import user_events
+from Interface_Classes import admin_section
+from Interface_Classes import next_event
+from Interface_Classes import user_events
 from constants import topRightCorner, wholeRow, errorBoxTop, id_errorMessage, dateFormat, backgroundColor, foregroundColor, secondWindowBackground, secondWindowForeground, singleLineLeftJustify
 
 

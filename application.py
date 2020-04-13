@@ -1,6 +1,6 @@
 import recommender
 from datetime import datetime
-from main_window import MainWindow
+from Interface_Classes import MainWindow
 
 # add data to the interface's recommender object
 def addData():
