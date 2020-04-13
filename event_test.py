@@ -1,5 +1,5 @@
 import recommender
-from event import *
+from Recommender_Classes import Event
 from datetime import datetime
 
 recommend = recommender.Recommender()

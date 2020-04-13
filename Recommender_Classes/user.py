@@ -135,9 +135,10 @@ class User:
         while(foundOne == False and len(self.__userInterests) > 0):
             length = len(self.__userInterests)
             interest = self.getUserInterest()
-            recommendation = interest.getRandomRecommendation()
-            flag = self.checkForClub(recommendation)
-            foundOne = (not flag)
+            if(not (interest == None)):
+                recommendation = interest.getRandomRecommendation()
+                flag = self.checkForClub(recommendation)
+                foundOne = (not flag)
         return recommendation
 
     def getNextEvents(self):
