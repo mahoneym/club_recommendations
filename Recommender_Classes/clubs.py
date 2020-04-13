@@ -1,7 +1,7 @@
-import user
+from Recommender_Classes import user
 
 from datetime import datetime
-from graph_edge import *
+from Recommender_Classes import graph_edge
 
 class Club:
     """Represents clubs at Xavier University"""
@@ -54,7 +54,7 @@ class Club:
                 return 0                                    # get out of here cause we don't need to add it again
 
         # If I am here, I know the club was not already related
-        newConnection = GraphEdge(clubToConnectTo)
+        newConnection = graph_edge.GraphEdge(clubToConnectTo)
         self.__related.append(newConnection)
         return 1
 

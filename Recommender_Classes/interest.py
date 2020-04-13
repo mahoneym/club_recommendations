@@ -1,4 +1,4 @@
-from graph_edge import *
+from Recommender_Classes import graph_edge
 import random
 
 class Interest:

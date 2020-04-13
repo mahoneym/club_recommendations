@@ -4,8 +4,8 @@
 # each one) and keeps a list of the user's clubs. As a result, the class is
 # able to addClubs and calls the methods to maintain the connections between clubs.
 
-import clubs
-from graph_edge import *
+from Recommender_Classes import clubs
+from Recommender_Classes import graph_edge
 import random
 
 class User:
@@ -42,7 +42,7 @@ class User:
             index = index + 1
 
         club = recommender.getClub(clubName)                # get the club object that I need
-        newClub = GraphEdge(club)                           # create a graph_edge object
+        newClub = graph_edge.GraphEdge(club)                           # create a graph_edge object
         self.__userClubs.append(newClub)                    # append the graph_edge object to the clubs dictionary
 
         # add connections between the new club and the rest of the user's clubs

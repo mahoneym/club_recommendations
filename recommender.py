@@ -1,7 +1,7 @@
-import clubs
-import user
-from event import *
-from interest import *
+from Recommender_Classes import Club
+from Recommender_Classes import User
+from Recommender_Classes import Event
+from Recommender_Classes import Interest
 
 # import to read the Excel file
 import pandas as pd
@@ -24,7 +24,7 @@ class Recommender:
     # param: student's ID
     # returns: the new user
     def addUser(self, id):
-        newUser = user.User(id)                          # call __init__ of the user class
+        newUser = User(id)                          # call __init__ of the user class
         self.__users.append(newUser)                     # add the user to the dict
         return newUser
 
@@ -47,7 +47,7 @@ class Recommender:
     # param: the name of the club, its category, and its ID
     # returns: the new club
     def addClub(self, clubName, clubCategory, clubID, description):
-        newClub = clubs.Club(clubName, clubCategory, clubID, description, self)
+        newClub = Club(clubName, clubCategory, clubID, description, self)
         self.__clubs.append(newClub)
         return newClub
 
