@@ -8,8 +8,13 @@ from constants import singleLineLeftJustify, wholeRow, secondWindowBackground, s
 class AdminSection:
     """The Admin Section of the GUI"""
 
+    # the constructor for the AdminSection
+    # CREATES AND STARTS THE ADMIN SECTION
+    # param: the recommender object
+    # returns: nothing
     def __init__(self, recommendObject):
         global eventName, descriptionEntry, dateInput, minuteEntry, locationEntry, hourEntry, clubEntry, recommend
+
         recommend = recommendObject
 
         __clubNames = recommend.getClubNames()
@@ -94,6 +99,10 @@ class AdminSection:
 
         __admin.mainloop()
 
+    # creates an event based on user input
+    # gets called when the user hits submit
+    # param: none
+    # returns: nothings
     def creatingAnEvent(self):
             name = eventName.get()
             club = clubEntry.get()
@@ -119,6 +128,9 @@ class AdminSection:
                 self.__clearTheScreen()
 
 
+    # clears the Admin screen
+    # param: none
+    # returns: none
     def __clearTheScreen(self):
         eventName.delete(0,'end')     # clears the user's input in the entry box
         clubEntry.delete(0, 'end')

@@ -4,6 +4,10 @@ from tkinter import *
 class UserEvents:
     """The Class for the User's Upcoming Events GUI"""
 
+    # constructor for the User Events window
+    # this will start the user event's window
+    # param: a list of upcoming events (events objects) for a given user
+    # returns: nothing
     def __init__(self, upcomingEventsList):
         __eventsList = Tk()
         __eventsList.configure(background=secondWindowBackground)

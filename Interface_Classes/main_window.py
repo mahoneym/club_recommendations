@@ -16,6 +16,10 @@ class MainWindow:
     nextEventDescription = ""
     nextEventDate = None
 
+    # the constructor for the main window of the application
+    # THIS WILL START THE MAIN WINDOW
+    # param: the recommender object
+    # returns: None
     def __init__(self, recommender):
         global recommend, idEntry, clubEventButton, clubNameInterface,clubDescriptionInterface, clubCategoryInterface
 
@@ -44,7 +48,7 @@ class MainWindow:
         idEntry = Entry(interface)
         idEntry.grid(row = 2 , column = 1)
 
-        # set up the submit button, which will trigger the looking for recommendations
+        # set up the recommendations button, which will trigger the looking for recommendations
         clubButton = Button(interface, text = "Club Based", command = self.getClubRecommendations)
         clubButton.grid(row = 2, column = 2, padx = 6, sticky = wholeRow)
 
@@ -54,7 +58,7 @@ class MainWindow:
         ######## THE AREA TO SHOW THE RECOMMENDATION ########
 
         # the justify attribute only works on wrapped text
-        # sticky = "W" is the justify left for non-wrapped text in labels
+        # sticky = "W" is the justify left for non-wrapped text
 
         # have the row here just so there's some space between the input and the club recommendations
         rowOneLayer = Label(interface, background = backgroundColor)
@@ -127,6 +131,8 @@ class MainWindow:
     # called when the user hits the "Interest Based" button
     # uses the recommender object to get a interest recommendation for the user
     # knows the user by the student id in the box
+    # param: none
+    # returns: the club
     def getInterestRecommendations(self):
         idNumber = idEntry.get()        # get the user's input
         flag = self.checkEntryEdgeCases(idNumber)        # check the idNumber is valid
@@ -141,6 +147,10 @@ class MainWindow:
                 self.showTheResults(club)
         return club
 
+    # gets the user's upcoming events
+    # gets called when the user hits the "Get Upcoming Events for my Clubs" button
+    # param: none
+    # returns: nothing
     def getUserUpcomingEvents(self):
         idNumber = idEntry.get()
         if(idNumber == "" or (not self.checkEntryEdgeCases(idNumber))):
@@ -149,6 +159,9 @@ class MainWindow:
             upcomingEventsList = recommend.getUserUpcomingEvents(int(idNumber))
             user_events.UserEvents(upcomingEventsList)      # start user upcoming events GUI
 
+    # starts the admin section
+    # param: none
+    # returns: nothing
     def adminSection(self):
         id = idEntry.get()
         if(id == 'Admin'):
@@ -159,6 +172,7 @@ class MainWindow:
 
     # sets up event info for when/if the user wants to see the next event
     # param: the club object that is being used
+    # returns: nothing
     def setEventInfo(self, club):
         global nextEventTitle, nextEventLocation, nextEventDescription, nextEventDate
         nextEvent = recommend.getNextClubEvent(club)
@@ -172,6 +186,8 @@ class MainWindow:
             clubEventButton["state"] = "disabled"
 
     # show the results of the recommendation
+    # param: the club object
+    # returns: nothing
     def showTheResults(self, club):
         if(club == -1):
             self.clearRecommendationArea()
@@ -182,11 +198,14 @@ class MainWindow:
             clubCategoryInterface.configure(text = club.getCategory())
 
     # set up and start the next event pop up window
+    # param: none
+    # returns: nothing
     def getNextEvent(self):
         next_event.NextEvent(self.nextEventTitle, self.nextEventDate, self.nextEventLocation, self.nextEventDescription)
 
-    # make sure the user's entry is all digits
-    # if it's not, tell them to go back and check their ALLCARD
+    # make sure the user's entry is all digits; if it's not, tell them to go back and check their ALLCARD
+    # param: the student's idNumber (integer)
+    # returns: True if the idNumber is valid; o.w. returns False
     def checkEntryEdgeCases(self, idNumber):
         flag = True
         if(not idNumber.isdigit()):
@@ -196,6 +215,8 @@ class MainWindow:
         return flag
 
     # clears the recommendation and event info area
+    # param: none
+    # returns: nothing
     def clearRecommendationArea(self):
         global nextEventTitle, nextEventLocation, nextEventDescription, nextEventDate
 

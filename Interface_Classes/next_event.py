@@ -4,6 +4,10 @@ from tkinter import *
 class NextEvent():
     """The GUI Class for a Club's Upcoming Event"""
 
+    # the constructor for the NextEvent window
+    # THIS WILL START THE NEXT EVENT WINODW
+    # param: the event's: title (string), date (datetime), location (string), description (string)
+    # returns: nothing 
     def __init__(self, nextEventTitle, nextEventDate, nextEventLocation, nextEventDescription):
         __eventPopUp = Tk()
 
