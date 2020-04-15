@@ -5,7 +5,7 @@ from datetime import datetime
 from Interface_Classes import admin_section
 from Interface_Classes import next_event
 from Interface_Classes import user_events
-from constants import topRightCorner, wholeRow, errorBoxTop, id_errorMessage, dateFormat, backgroundColor, foregroundColor, secondWindowBackground, secondWindowForeground, singleLineLeftJustify
+from constants import TOP_RIGHT_CORNER, WHOLE_ROW, ERROR_BOX_TOP, ID_ERROR_MESSAGE, DATE_FORMAT, BACKGROUND_COLOR, FOREGROUND_COLOR, SECOND_WINDOW_BACKGROUND, SECOND_WINDOW_FOREGROUND, SINGLE_LINE_LEFT_JUSTIFY
 
 
 class MainWindow:
@@ -31,18 +31,18 @@ class MainWindow:
 
         interface.title("Club Recommendation System")
         interface.geometry("550x550")                                                                    # sets minimal size of the window when it first opens
-        interface.configure(background = backgroundColor)                                                  # sets background color to midnight blue
+        interface.configure(background = BACKGROUND_COLOR)                                                  # sets background color to midnight blue
 
         ######## THE AREA TO GET USER'S ID ##########
-        directionsLabel = Label(interface, text = directions, fg=foregroundColor, background= backgroundColor, wraplength = 550, justify = LEFT)
+        directionsLabel = Label(interface, text = directions, fg=FOREGROUND_COLOR, background= BACKGROUND_COLOR, wraplength = 550, justify = LEFT)
         directionsLabel.grid(row=0, column=0, columnspan=4)
 
-        takeUpSpace = Label(interface, background=backgroundColor)
+        takeUpSpace = Label(interface, background=BACKGROUND_COLOR)
         takeUpSpace.grid(row=1)
 
         # set up the label for the Student ID
-        idLabel = Label(interface, text="Student ID:", fg = foregroundColor, background = backgroundColor)
-        idLabel.grid(row = 2, column = 0, sticky = singleLineLeftJustify)
+        idLabel = Label(interface, text="Student ID:", fg = FOREGROUND_COLOR, background = BACKGROUND_COLOR)
+        idLabel.grid(row = 2, column = 0, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
         # set up the text box for the user to put their student ID
         idEntry = Entry(interface)
@@ -50,10 +50,10 @@ class MainWindow:
 
         # set up the recommendations button, which will trigger the looking for recommendations
         clubButton = Button(interface, text = "Club Based", command = self.getClubRecommendations)
-        clubButton.grid(row = 2, column = 2, padx = 6, sticky = wholeRow)
+        clubButton.grid(row = 2, column = 2, padx = 6, sticky = WHOLE_ROW)
 
         interestButton = Button(interface, text="Interest Based", command = self.getInterestRecommendations)
-        interestButton.grid(row = 2, column = 3, padx = 2, sticky = wholeRow)
+        interestButton.grid(row = 2, column = 3, padx = 2, sticky = WHOLE_ROW)
 
         ######## THE AREA TO SHOW THE RECOMMENDATION ########
 
@@ -61,49 +61,49 @@ class MainWindow:
         # sticky = "W" is the justify left for non-wrapped text
 
         # have the row here just so there's some space between the input and the club recommendations
-        rowOneLayer = Label(interface, background = backgroundColor)
+        rowOneLayer = Label(interface, background = BACKGROUND_COLOR)
         rowOneLayer.grid(row = 3)
 
         # create labels that will show what information is being displayed
-        clubNameLabel = Label(interface, text = "Club name: ", background = backgroundColor, fg = foregroundColor)
-        clubNameLabel.grid(row = 4, column = 0, sticky = singleLineLeftJustify)
+        clubNameLabel = Label(interface, text = "Club name: ", background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
+        clubNameLabel.grid(row = 4, column = 0, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
-        clubCategoryLabel = Label(interface, text = "Club Category: ", background = backgroundColor, fg = foregroundColor)
-        clubCategoryLabel.grid(row = 5, column = 0, sticky=topRightCorner)
+        clubCategoryLabel = Label(interface, text = "Club Category: ", background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
+        clubCategoryLabel.grid(row = 5, column = 0, sticky=TOP_RIGHT_CORNER)
 
-        clubDescriptionLabel = Label(interface, text = "Description: ", background = backgroundColor, fg = foregroundColor)
-        clubDescriptionLabel.grid(row = 6, column = 0, sticky = topRightCorner)
+        clubDescriptionLabel = Label(interface, text = "Description: ", background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
+        clubDescriptionLabel.grid(row = 6, column = 0, sticky = TOP_RIGHT_CORNER)
 
         # create the labels that will display a specific club recommendation
-        clubNameInterface = Label(interface, text= "", background = backgroundColor, fg = foregroundColor)
-        clubNameInterface.grid(row = 4, column = 1, columnspan = 3, sticky = singleLineLeftJustify)
+        clubNameInterface = Label(interface, text= "", background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
+        clubNameInterface.grid(row = 4, column = 1, columnspan = 3, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
-        clubCategoryInterface = Label(interface, text="", background = backgroundColor, fg = foregroundColor)
-        clubCategoryInterface.grid(row=5, column = 1, columnspan = 3, sticky=singleLineLeftJustify)
+        clubCategoryInterface = Label(interface, text="", background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
+        clubCategoryInterface.grid(row=5, column = 1, columnspan = 3, sticky=SINGLE_LINE_LEFT_JUSTIFY)
 
-        clubDescriptionInterface = Label(interface, text="", background= backgroundColor, fg = foregroundColor, wraplength = 400, justify = LEFT)
-        clubDescriptionInterface.grid(row=6, column= 1, columnspan = 3, sticky = singleLineLeftJustify)
+        clubDescriptionInterface = Label(interface, text="", background= BACKGROUND_COLOR, fg = FOREGROUND_COLOR, wraplength = 400, justify = LEFT)
+        clubDescriptionInterface.grid(row=6, column= 1, columnspan = 3, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
-        takeUpSpace = Label(interface, background=backgroundColor)
+        takeUpSpace = Label(interface, background=BACKGROUND_COLOR)
         takeUpSpace.grid(row=7)
 
         clubEventButton = Button(interface, text = "Get Next Event", state = "disabled", command = self.getNextEvent)
-        clubEventButton.grid(row = 8, columnspan = 5, padx = 6, sticky = wholeRow)
+        clubEventButton.grid(row = 8, columnspan = 5, padx = 6, sticky = WHOLE_ROW)
 
-        rowOneLayer = Label(interface, background = backgroundColor)
+        rowOneLayer = Label(interface, background = BACKGROUND_COLOR)
         rowOneLayer.grid(row = 9)
 
         upcomingEventsButton = Button(interface, text= "Get Upcoming Events for my Clubs", command = self.getUserUpcomingEvents)
-        upcomingEventsButton.grid(row = 10, columnspan = 4 , padx = 6, sticky = wholeRow)
+        upcomingEventsButton.grid(row = 10, columnspan = 4 , padx = 6, sticky = WHOLE_ROW)
 
-        space = Label(interface, background = backgroundColor, fg = foregroundColor)
+        space = Label(interface, background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
         space.grid(row = 11)
 
-        space_2 = Label(interface, background = backgroundColor, fg = foregroundColor)
+        space_2 = Label(interface, background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
         space.grid(row = 12)
 
         admin = Button(interface, text = "Admin", command = self.adminSection)
-        admin.grid(row=13, columnspan = 4, sticky = wholeRow)
+        admin.grid(row=13, columnspan = 4, sticky = WHOLE_ROW)
 
         ######## START THE PROGRAM ########
         interface.mainloop()
@@ -125,7 +125,7 @@ class MainWindow:
                 self.showTheResults(graphEdge.getDestination())
             else:
                 self.clearRecommendationArea()
-                tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
+                tkinter.messagebox.showerror(ERROR_BOX_TOP, ID_ERROR_MESSAGE)
         return None
 
     # called when the user hits the "Interest Based" button
@@ -141,7 +141,7 @@ class MainWindow:
             club = recommend.createInterestRecommendation(int(idNumber))    # get the recommendation
             if(club == None):
                 self.clearRecommendationArea()
-                tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
+                tkinter.messagebox.showerror(ERROR_BOX_TOP, ID_ERROR_MESSAGE)
             else:
                 self.setEventInfo(club)  # get the next event info while the club is handy
                 self.showTheResults(club)
@@ -181,7 +181,7 @@ class MainWindow:
             self.nextEventTitle = nextEvent.getName()
             self.nextEventLocation = nextEvent.getLocation()
             self.nextEventDescription = nextEvent.getDescription()
-            self.nextEventDate = nextEvent.getDate().strftime(dateFormat)        # gets the date and puts in "Sat May 25 2019 7:00 PM" format
+            self.nextEventDate = nextEvent.getDate().strftime(DATE_FORMAT)        # gets the date and puts in "Sat May 25 2019 7:00 PM" format
         else:
             clubEventButton["state"] = "disabled"
 
@@ -191,7 +191,7 @@ class MainWindow:
     def showTheResults(self, club):
         if(club == -1):
             self.clearRecommendationArea()
-            tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
+            tkinter.messagebox.showerror(ERROR_BOX_TOP, ID_ERROR_MESSAGE)
         else:
             clubNameInterface.configure(text = club.getClubName())
             clubDescriptionInterface.configure(text = club.getDescription())
@@ -210,7 +210,7 @@ class MainWindow:
         flag = True
         if(not idNumber.isdigit()):
             self.clearRecommendationArea()
-            tkinter.messagebox.showerror(errorBoxTop, id_errorMessage)
+            tkinter.messagebox.showerror(ERROR_BOX_TOP, ID_ERROR_MESSAGE)
             flag = False
         return flag
 

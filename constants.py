@@ -1,18 +1,18 @@
 # create string variables for what is used throughout the interface
-errorBoxTop = "Oops"
-id_errorMessage = "An error occured. Please check your ID Number on your AllCard and try again."
+ERROR_BOX_TOP = "Oops"
+ID_ERROR_MESSAGE = "An error occured. Please check your ID Number on your AllCard and try again."
 
-backgroundColor = "midnight blue"
-foregroundColor = "gray64"
+BACKGROUND_COLOR = "midnight blue"
+FOREGROUND_COLOR = "gray64"
 
-secondWindowBackground = "gray64"
-secondWindowForeground = "midnight blue"
+SECOND_WINDOW_BACKGROUND = "gray64"
+SECOND_WINDOW_FOREGROUND = "midnight blue"
 
-dateFormat = "%a %b %d, %Y %I:%M %p"
+DATE_FORMAT = "%a %b %d, %Y %I:%M %p"
 
-singleLineLeftJustify = "W"
-topRightCorner = "NW"
-wholeRow ="NSEW"
+SINGLE_LINE_LEFT_JUSTIFY = "W"
+TOP_RIGHT_CORNER = "NW"
+WHOLE_ROW ="NSEW"
 
 
-secondWindowWrap = 300
+SECOND_WINDOW_WRAP = 300
