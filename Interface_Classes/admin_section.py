@@ -29,68 +29,71 @@ class AdminSection:
         __admin_space_1 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
         __admin_space_1.grid(row = 1, sticky= SINGLE_LINE_LEFT_JUSTIFY)
 
+        __clubDescriptionLabel = Label(__admin, text = "Club: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
+        __clubDescriptionLabel.grid(row = 2, column = 0, sticky = SINGLE_LINE_LEFT_JUSTIFY)
+
+        clubEntry = ttk.Combobox(__admin, values = __clubNames)
+        clubEntry.grid(row = 2, column = 1, sticky = WHOLE_ROW)
+
         __eventNameLabel = Label(__admin, text = "Name: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __eventNameLabel.grid(row = 2, column = 0, sticky= SINGLE_LINE_LEFT_JUSTIFY)
+        __eventNameLabel.grid(row = 2, column = 2, sticky= SINGLE_LINE_LEFT_JUSTIFY)
 
         eventName = Entry(__admin)
-        eventName.grid(row = 2, column = 1, sticky= WHOLE_ROW)
+        eventName.grid(row = 2, column = 3, sticky= WHOLE_ROW)
+
+        __locationLabel = Label(__admin, text = "Location: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
+        __locationLabel.grid(row = 2, column = 4, sticky= SINGLE_LINE_LEFT_JUSTIFY)
+
+        locationEntry = Entry(__admin)
+        locationEntry.grid(row = 2, column = 5, sticky= WHOLE_ROW)
 
         __admin_space_2 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
         __admin_space_2.grid(row = 3, sticky= SINGLE_LINE_LEFT_JUSTIFY)
 
         # place to enter the date
         __monthLabel = Label(__admin, text = "Month:", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __monthLabel.grid(row=4, column = 0, sticky = SINGLE_LINE_LEFT_JUSTIFY)
+        __monthLabel.grid(row=6, column = 0, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
         monthEntry = Entry(__admin)
-        monthEntry.grid(row=4, column =1, sticky = WHOLE_ROW)
+        monthEntry.grid(row=6, column =1, sticky = WHOLE_ROW)
 
         __dayLabel = Label(__admin, text = "Day:", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __dayLabel.grid(row=4, column = 2)
+        __dayLabel.grid(row=6, column = 2, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
         dayEntry = Entry(__admin)
-        dayEntry.grid(row=4, column =3, sticky = WHOLE_ROW)
+        dayEntry.grid(row=6, column =3, sticky = WHOLE_ROW)
 
         __yearLabel = Label(__admin, text = "Year: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __yearLabel.grid(row=4, column =4)
+        __yearLabel.grid(row=6, column =4, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
         yearEntry = Entry(__admin)
-        yearEntry.grid(row=4, column =5, sticky = WHOLE_ROW)
+        yearEntry.grid(row=6, column =5, sticky = WHOLE_ROW)
 
         __admin_space_3 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __admin_space_3.grid(row = 5, sticky= SINGLE_LINE_LEFT_JUSTIFY)
+        __admin_space_3.grid(row = 7, sticky= SINGLE_LINE_LEFT_JUSTIFY)
 
         __hourLabel = Label(__admin, text = "Hour: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __hourLabel.grid(row = 6, column = 0, sticky = SINGLE_LINE_LEFT_JUSTIFY)
+        __hourLabel.grid(row = 8, column = 0, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
         hourEntry = Entry(__admin)
-        hourEntry.grid(row = 6, column = 1, sticky = WHOLE_ROW)
+        hourEntry.grid(row = 8, column = 1, sticky = WHOLE_ROW)
 
         __minuteLabel = Label(__admin, text = "Minute: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __minuteLabel.grid(row = 6, column = 2, sticky = SINGLE_LINE_LEFT_JUSTIFY)
+        __minuteLabel.grid(row = 8, column = 2, sticky = SINGLE_LINE_LEFT_JUSTIFY)
+
+        minuteEntry = Entry(__admin)
+        minuteEntry.grid(row = 8, column = 3, sticky = WHOLE_ROW)
 
         amOrPm = 1
 
-        __inMorning = Radiobutton(__admin, text= "AM", variable = amOrPm, value = 0, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __inMorning.grid(row = 6, column = 4, padx = 10)
+        __morning = Radiobutton(__admin, text= "AM", variable = amOrPm, value = 0, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
+        __morning.grid(row = 8, column = 4, padx = 10)
 
         __afternoon = Radiobutton(__admin, text = "PM", variable = amOrPm, value = 1, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __afternoon.grid(row=6, column = 5, sticky = SINGLE_LINE_LEFT_JUSTIFY)
-
-        minuteEntry = Entry(__admin)
-        minuteEntry.grid(row = 6, column = 3, sticky = WHOLE_ROW)
+        __afternoon.grid(row = 8, column = 5, sticky = SINGLE_LINE_LEFT_JUSTIFY)
 
         __admin_space_4 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __admin_space_4.grid(row = 7, sticky= SINGLE_LINE_LEFT_JUSTIFY)
-
-        __locationLabel = Label(__admin, text = "Location: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __locationLabel.grid(row = 8, column = 0, sticky= SINGLE_LINE_LEFT_JUSTIFY)
-
-        locationEntry = Entry(__admin)
-        locationEntry.grid(row = 8, column = 1, sticky= WHOLE_ROW)
-
-        __admin_space_5 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __admin_space_5.grid(row = 9, sticky= SINGLE_LINE_LEFT_JUSTIFY)
+        __admin_space_4.grid(row = 9, sticky= SINGLE_LINE_LEFT_JUSTIFY)
 
         __descriptionLabel = Label(__admin, text = "Description: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
         __descriptionLabel.grid(row = 10, column = 0, sticky= SINGLE_LINE_LEFT_JUSTIFY)
@@ -101,17 +104,8 @@ class AdminSection:
         __admin_space_6 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
         __admin_space_6.grid(row = 11, sticky= SINGLE_LINE_LEFT_JUSTIFY)
 
-        __clubDescriptionLabel = Label(__admin, text = "Club: ", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __clubDescriptionLabel.grid(row = 12, column = 0, sticky = SINGLE_LINE_LEFT_JUSTIFY)
-
-        clubEntry = ttk.Combobox(__admin, values = __clubNames)
-        clubEntry.grid(row = 12, column = 1, sticky = WHOLE_ROW)
-
-        __admin_space_7 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __admin_space_7.grid(row = 13, sticky= SINGLE_LINE_LEFT_JUSTIFY)
-
         __submitButton = Button(__admin, text = "Submit", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND, command = self.creatingAnEvent)
-        __submitButton.grid(row = 14, columnspan = 6, sticky = WHOLE_ROW)
+        __submitButton.grid(row = 12, columnspan = 6, sticky = WHOLE_ROW)
 
         __admin.mainloop()
 
