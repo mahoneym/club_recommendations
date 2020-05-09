@@ -62,7 +62,7 @@ def addData():
 
     # add events to some clubs
     recommend.addEventToClub("Computer Science Club", "Event_1", date_1, "Alter Hall Rm 101", "This is a longer description to play with text wrapping. The first event that is added to the clubs. It should be showing up for CS club.")
-    recommend.addEventToClub("Computer Science Club", "Event_1_2", date_1_2, "Alter Hall Rm 101", "This is a longer description to play with text wrapping. The first event that is added to the clubs. It should be showing up for CS club.")
+    recommend.addEventToClub("Computer Science Club", "Event TBD", date_1_2, "Alter Hall Rm 101", "The description will be available closer to the event. Please check back a week before the event.")
     recommend.addEventToClub("4 Paws for Ability at XU", "Event_2", date_2, "Alter Hall Rm 102", "Event 2")
 
     recommend.addEventToClub("Don't Tell Anna", "Spring Show", date_2, "Kennedy Auditorium", "Spring Show")
