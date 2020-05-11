@@ -1,13 +1,13 @@
 ####### RECOMMENDER.PY #######
 ####### This file contains the Recommender class. A Recommender object runs #######
-####### the whole recommender system (minus the GUI) #######
+####### the whole recommender system (except the GUI) #######
 
 from Recommender_Classes import Club
 from Recommender_Classes import User
 from Recommender_Classes import Event
 from Recommender_Classes import Interest
 
-# import to read the Excel file
+# import to read the Excel file data
 import pandas as pd
 import xlrd
 
@@ -21,6 +21,7 @@ class Recommender:
     __interests = []               # array of possible interests
 
     # the constructor for the recommender class
+    # adds the clubs from the excel file
     def __init__(self):
         self.addExcelClubs()
 
@@ -44,7 +45,6 @@ class Recommender:
     # param: the interest id, the interest name, and its category id
     # returns: a None object
     def addInterestToList(self, interestId, interestName, interestCategoryId):
-        # newInterest = Interest(interestId, interestName, interestCategoryId)
         newInterest = Interest(interestName)
         self.__interests.append(newInterest)
         return None
@@ -65,7 +65,7 @@ class Recommender:
         recommendation = None
         for user in self.__users:
             if(user.id == id):
-                # call findClub() in the user's object to get recommendations
+                # call findClub() in the user to get recommendation
                 recommendation = user.findClub()
                 return recommendation
         return -1

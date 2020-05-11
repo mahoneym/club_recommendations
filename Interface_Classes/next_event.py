@@ -1,3 +1,6 @@
+####### next_event.py #######
+####### The NextEvent class starts the next event window #######
+
 from constants import TOP_RIGHT_CORNER, SECOND_WINDOW_BACKGROUND, SECOND_WINDOW_FOREGROUND, SINGLE_LINE_LEFT_JUSTIFY, SECOND_WINDOW_WRAP
 from tkinter import *
 
@@ -7,7 +10,7 @@ class NextEvent():
     # the constructor for the NextEvent window
     # THIS WILL START THE NEXT EVENT WINODW
     # param: the event's: title (string), date (datetime), location (string), description (string)
-    # returns: nothing 
+    # returns: nothing
     def __init__(self, nextEventTitle, nextEventDate, nextEventLocation, nextEventDescription):
         __eventPopUp = Tk()
 

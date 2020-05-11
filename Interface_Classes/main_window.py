@@ -1,3 +1,6 @@
+####### main_window.py #######
+####### This holds the MainWindow class, which is the first window in the GUI #######
+
 from tkinter import *
 import tkinter.messagebox
 from datetime import datetime
@@ -98,9 +101,6 @@ class MainWindow:
 
         space = Label(interface, background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
         space.grid(row = 11)
-
-        space_2 = Label(interface, background = BACKGROUND_COLOR, fg = FOREGROUND_COLOR)
-        space.grid(row = 12)
 
         admin = Button(interface, text = "Admin", command = self.adminSection)
         admin.grid(row=13, columnspan = 4, sticky = WHOLE_ROW)

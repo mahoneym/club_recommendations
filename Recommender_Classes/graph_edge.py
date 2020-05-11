@@ -19,7 +19,7 @@ class GraphEdge:
         self.__weight = self.__weight + 1
         return self.__weight
 
-    # returns the destination
+    # returns: the destination of the edge
     # param: none
     def getDestination(self):
         return self.__destination

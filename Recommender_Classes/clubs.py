@@ -64,7 +64,7 @@ class Club:
             previousIndex = (previousIndex + 1) % len(self.__related)
             return self.__related[previousIndex], previousIndex
         # go through the related and look for the most common link
-        index = 0                   # 0 since we need to start at the beginning
+        index = 0
         if(len(self.__related) == 0):
             return 0, 0
         while(index < len(self.__related)-1):
@@ -87,7 +87,8 @@ class Club:
     def addEvent(self, event):
         index = 0
         looking = True
-        if(len(self.__upcomingEvents) == 0):
+        if(len(self.__upcomingEvents) == 0):        # if there's no Events
+            # we don't have to look and we can just add the event to be the first in the list
             looking = False
             self.__upcomingEvents.append(event)
 

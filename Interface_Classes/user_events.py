@@ -1,3 +1,7 @@
+####### user_events.py #######
+####### holds the UserEvents class #######
+####### This class represents the window for the user's upcoming events #######
+
 from constants import DATE_FORMAT, SECOND_WINDOW_BACKGROUND, SECOND_WINDOW_FOREGROUND, SINGLE_LINE_LEFT_JUSTIFY, SECOND_WINDOW_WRAP
 from tkinter import *
 

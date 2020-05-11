@@ -35,16 +35,17 @@ def twoEventsInOneClub():
     date_1 = datetime(year= 2019, month = 5, day = 25, hour = 19, minute = 0)
     date_2 = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
 
+    # create the event that I expect to get back
     event_1 = Event("CS Event 1", date_1, csClub, "Alter Hall Rm 101", "Event 1 :)")
 
+    # add two events to the CS Club
     recommend.addEventToClub("Computer Science Club", "CS Event 1", date_1, "Alter Hall Rm 101", "Event 1")
     recommend.addEventToClub("Computer Science Club", "CS Event 2", date_2, "Alter Hall Rm 102", "Event 2")
 
     csClub.getClubEvents()
 
-    # create the event that I expect to get back
     event = recommend.getNextClubEvent(csClub)
-    assert(date_2 == event.getDate())    # create an assertion to make sure I am getting the right one
+    assert(date_2 == event.getDate())    # create an assertion to make sure I am getting the right event back
 
     print("Two Events In One Club passed :) ")
 
@@ -78,6 +79,7 @@ def fourthEvent():
 
     print("End of Fourth Event")
 
+# adding a past event to the GUI to make sure it is not given as next event
 def puttingInAPastEvent():
     print("\n")
     event_2_date = datetime(year= 2020, month = 5, day = 25, hour = 19, minute = 0)
@@ -88,6 +90,7 @@ def puttingInAPastEvent():
     assert(nextEvent.getDate() == event_2_date)
     print("End of Past Event")
 
+# test user's upcoming events functionality
 def upcomingEventsButton():
     print("Upcoming events button test")
 

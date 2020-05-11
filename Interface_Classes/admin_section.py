@@ -1,3 +1,8 @@
+####### admin_section.py #######
+####### Contains the AdminSection class #######
+####### This object will be created when the admin button is pressed by the user #######
+
+
 from tkinter import *
 import tkinter.messagebox
 from datetime import datetime, time
@@ -101,8 +106,8 @@ class AdminSection:
         descriptionEntry = Entry(__admin)
         descriptionEntry.grid(row = 10, column = 1, columnspan = 5, sticky= WHOLE_ROW)
 
-        __admin_space_6 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
-        __admin_space_6.grid(row = 11, sticky= SINGLE_LINE_LEFT_JUSTIFY)
+        __admin_space_5 = Label(__admin, background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND)
+        __admin_space_5.grid(row = 11, sticky= SINGLE_LINE_LEFT_JUSTIFY)
 
         __submitButton = Button(__admin, text = "Submit", background = SECOND_WINDOW_BACKGROUND, fg = SECOND_WINDOW_FOREGROUND, command = self.creatingAnEvent)
         __submitButton.grid(row = 12, columnspan = 6, sticky = WHOLE_ROW)
@@ -149,7 +154,6 @@ class AdminSection:
 
         eventDate = datetime(year = int(year), month= int(month), day = int(day), hour = hour, minute = int(minute))
         return eventDate
-
 
     # clears the Admin screen
     # param: none
